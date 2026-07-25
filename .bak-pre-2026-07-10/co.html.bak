@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>408 计算机组成原理 | 考研冲刺君</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left:'9865',right:'9865',display:true},{left:'$',right:'$',display:false}]});"></script>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand"><span class="logo">🏆</span><span>考研冲刺君</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="">首页</a></li>
+    <li><a href="math1.html" class="">数学一</a></li>
+    <li><a href="english1.html" class="">英语一</a></li>
+    <li><a href="ds.html" class="">数据结构</a></li>
+    <li><a href="co.html" class="active">计组</a></li>
+    <li><a href="os.html" class="">OS</a></li>
+    <li><a href="cn.html" class="">计网</a></li>
+  </ul>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">目录</div>
+    <ul class="toc-list">
+<li><a href="#1" class="toc-h2">第1章 计算机系统概述</a></li>
+<li><a href="#_2" class="toc-h3">　必背</a></li>
+<li><a href="#_3" class="toc-h3">　核心概念</a></li>
+<li><a href="#_4" class="toc-h3">　易错警示</a></li>
+<li><a href="#_5" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#2" class="toc-h2">第2章 数据的表示和运算</a></li>
+<li><a href="#_7" class="toc-h3">　必背</a></li>
+<li><a href="#_8" class="toc-h3">　核心概念</a></li>
+<li><a href="#_9" class="toc-h3">　易错警示</a></li>
+<li><a href="#_10" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#3" class="toc-h2">第3章 存储系统</a></li>
+<li><a href="#_12" class="toc-h3">　必背</a></li>
+<li><a href="#_13" class="toc-h3">　核心概念</a></li>
+<li><a href="#_14" class="toc-h3">　易错警示</a></li>
+<li><a href="#_15" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#4" class="toc-h2">第4章 指令系统</a></li>
+<li><a href="#_17" class="toc-h3">　必背</a></li>
+<li><a href="#_18" class="toc-h3">　核心概念</a></li>
+<li><a href="#_19" class="toc-h3">　易错警示</a></li>
+<li><a href="#_20" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#5-cpu" class="toc-h2">第5章 中央处理器（CPU）</a></li>
+<li><a href="#_21" class="toc-h3">　必背</a></li>
+<li><a href="#_22" class="toc-h3">　核心概念</a></li>
+<li><a href="#_23" class="toc-h3">　易错警示</a></li>
+<li><a href="#_24" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#6" class="toc-h2">第6章 总线</a></li>
+<li><a href="#_26" class="toc-h3">　必背</a></li>
+<li><a href="#_27" class="toc-h3">　核心概念</a></li>
+<li><a href="#_28" class="toc-h3">　易错警示</a></li>
+<li><a href="#_29" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+</ul>
+  </aside>
+  <main class="content"><div style="text-align:center;margin:24px 0;"><img src="images/co_storage_hierarchy.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_storage_hierarchy.png"></div>
+<h2 id="1">第1章 计算机系统概述</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch1_overview.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch1_overview"></div>
+<h3 id="24">【分值占比】约 2~4 分</h3>
+<h3 id="_1">【考频】⭐⭐（低频，但贯穿全书）</h3>
+<h3 id="_2">【必背】</h3>
+<ul>
+<li>计算机系统的层次结构：微程序机器 → 机器语言 → 操作系统 → 汇编语言 → 高级语言</li>
+<li>冯·诺依曼机基本特点：五大部件、存储程序、按地址访问、二进制表示</li>
+<li>计算机性能指标：CPU时钟周期、主频、CPI、MIPS、MFLOPS</li>
+<li>吞吐率、响应时间、CPU执行时间</li>
+</ul>
+<h3 id="_3">【核心概念】</h3>
+<h4 id="11">1.1 计算机系统层次结构</h4>
+<pre><code>第5级：高级语言机器（虚拟机）
+第4级：汇编语言机器（虚拟机）
+第3级：操作系统机器（虚拟机）
+第2级：机器语言机器（实际机器）
+第1级：微程序机器（微指令硬件直接执行）
+第0级：硬布线逻辑（门电路、寄存器）
+</code></pre>
+<h4 id="12">1.2 冯·诺依曼计算机</h4>
+<p><strong>基本思想</strong>：存储程序，程序控制。</p>
+<p><strong>五大部件</strong>：
+- 运算器
+- 控制器
+- 存储器
+- 输入设备
+- 输出设备</p>
+<p><strong>特点</strong>：
+- 指令和数据以二进制形式存放在存储器中
+- 按地址访问存储器
+- 指令由操作码和地址码组成
+- 以运算器为中心（现代计算机以存储器为中心）</p>
+<h4 id="13">1.3 计算机性能指标</h4>
+<p><strong>CPU时钟周期</strong>：CPU中最小的时间单位，等于主频的倒数。</p>
+<p><strong>主频（时钟频率）</strong>：$f = rac{1}{T}$，单位Hz。</p>
+<p><strong>CPI（Clock cycle Per Instruction）</strong>：执行一条指令所需的时钟周期数。</p>
+<p>$$CPU执行时间 = 指令数     imes CPI    imes 时钟周期 = rac{指令数    imes CPI}{主频}$$</p>
+<p><strong>MIPS（Million Instructions Per Second）</strong>：
+$$MIPS = rac{主频}{CPI   imes 10^6} = rac{指令数}{执行时间     imes 10^6}$$</p>
+<p><strong>MFLOPS（Million Floating-point Operations Per Second）</strong>：每秒百万次浮点运算。</p>
+<p><strong>吞吐率</strong>：单位时间内处理的请求数量。
+<strong>响应时间</strong>：从提交请求到获得响应的时间。</p>
+<p><strong>基准程序（Benchmark）</strong>：用于评测计算机性能的程序集合，如SPEC。</p>
+<h3 id="_4">【易错警示】</h3>
+<ul>
+<li>❌ CPI是平均值，不同指令CPI不同，要加权平均</li>
+<li>❌ 主频高不代表速度快，还要看CPI和指令数</li>
+<li>❌ "存储程序"是冯·诺依曼机的核心特征，不是存储器大</li>
+<li>❌ 机器字长 ≠ 指令字长 ≠ 存储字长，三者可不同</li>
+<li>❌ <strong>内中断（异常）</strong>可以在指令执行期间发生，处理完后返回该指令继续执行；<strong>外中断（外部中断）</strong>在指令执行结束后的中断请求阶段执行</li>
+<li>❌ 中断和异常的区别：中断是异步的（外部事件），异常是同步的（指令执行产生）</li>
+</ul>
+<h3 id="_5">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>11</td>
+<td>性能指标计算</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>11</td>
+<td>CPI与MIPS</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>11</td>
+<td>计算机层次结构</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>11</td>
+<td>性能指标对比</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>📌 2024年真题精析 - 指令层次区别（第13题）</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="指令层次真题"></div>
+<p><strong>题目</strong>：下列指令中，能被CPU理解并直接执行的是（ ）。<br>
+I. 高级语言指令  II. 微指令  III. 机器指令  IV. 汇编指令</p>
+<p><strong>答案</strong>：B. 仅II、III</p>
+<p><strong>解析</strong>：</p>
+<ul>
+<li><strong>高级语言程序、汇编语言程序</strong>都需要通过翻译程序处理，生成机器语言程序后才能被CPU执行</li>
+<li><strong>机器指令</strong>能被CPU理解并直接执行</li>
+<li><strong>微指令</strong>是CPU控制单元用于实现机器指令的更低层次的指令，在微程序控制的CPU中，一条机器指令对应一个微程序（微指令的有序序列），因此微指令也能被CPU理解并直接执行</li>
+</ul>
+<p><strong>层次关系</strong>：微指令 → 机器指令 → 汇编指令 → 高级语言指令（从底层到高层）</p>
+</div>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2023年 第11题）</h4>
+  <p><strong>题目：</strong>某计算机主频为1.2GHz，其指令分为4类，它们在基准程序中所占比例及CPI如下表所示。该机的MIPS数是（  ）</p>
+  <table>
+    <thead>
+      <tr><th>指令类型</th><th>所占比例</th><th>CPI</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A</td><td>50%</td><td>2</td></tr>
+      <tr><td>B</td><td>20%</td><td>3</td></tr>
+      <tr><td>C</td><td>10%</td><td>4</td></tr>
+      <tr><td>D</td><td>20%</td><td>5</td></tr>
+    </tbody>
+  </table>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>计算平均CPI</strong>：
+      <br/>CPI = 0.50×2 + 0.20×3 + 0.10×4 + 0.20×5 = 1.0 + 0.6 + 0.4 + 1.0 = <strong>3.0</strong>
+    </li>
+    <li><strong>计算MIPS</strong>：
+      <br/>MIPS = 主频 / (CPI × 10⁶) = 1.2×10⁹ / (3.0 × 10⁶) = 1.2×10⁹ / 3.0×10⁶ = <strong>400</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>400</p>
+  <p><strong>解析：</strong>本题考查性能指标计算。关键点是<strong>加权平均CPI</strong>，不能简单取算术平均。MIPS公式中的10⁶是单位换算（ Million = 10⁶），主频1.2GHz = 1.2×10⁹ Hz。注意CPI与MIPS成反比关系，CPI越大，MIPS越小。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>平均CPI = Σ(各类指令比例 × 该类CPI)</li>
+    <li>MIPS = 主频 / (CPI × 10⁶)</li>
+    <li>CPU执行时间 = 指令数 × CPI / 主频</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2021年 第11题）</h4>
+  <p><strong>题目：</strong>下列关于计算机性能指标的说法中，错误的是（  ）</p>
+  <p>A. 主频高的机器运算速度一定快</p>
+  <p>B. CPU执行时间取决于三个因素：主频、CPI、指令数</p>
+  <p>C. 基准程序（Benchmark）用于评测计算机性能</p>
+  <p>D. 响应时间指从提交请求到获得响应的时间</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>分析选项A</strong>：主频高只是时钟周期短，但运算速度还取决于CPI和指令数。如果主频高但CPI很大（如复杂指令），速度不一定快。<strong>A错误</strong>。</li>
+    <li><strong>分析选项B</strong>：CPU执行时间 = 指令数 × CPI × 时钟周期 = 指令数 × CPI / 主频。确实取决于这三个因素。<strong>B正确</strong>。</li>
+    <li><strong>分析选项C</strong>：基准程序（如SPEC）是专门用于评测计算机性能的程序集合。<strong>C正确</strong>。</li>
+    <li><strong>分析选项D</strong>：响应时间的定义就是从提交请求到获得响应的时间。<strong>D正确</strong>。</li>
+  </ol>
+  <p><strong>答案：</strong>A</p>
+  <p><strong>解析：</strong>本题是概念辨析题。核心陷阱在于"主频高≠速度快"。计算机性能是综合指标，必须同时考虑主频、CPI和指令数。类似地，MIPS高也不一定代表速度快（因为不同指令集指令数不同）。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>主频、CPI、指令数三者共同决定CPU执行时间</li>
+    <li>任何单一指标都不能完全衡量计算机性能</li>
+    <li>基准程序测试更接近实际应用性能</li>
+  </ul>
+</div>
+<hr />
+<h2 id="2">第2章 数据的表示和运算</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch2_data_representation.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch2_data_representation"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_floating_point.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_floating_point"></div>
+<h3 id="610">【分值占比】约 6~10 分</h3>
+<h3 id="_6">【考频】⭐⭐⭐⭐（高频，为后续章节打基础）</h3>
+<h3 id="_7">【必背】</h3>
+<ul>
+<li>进位计数制及相互转换（二、八、十、十六进制）</li>
+<li>BCD码：8421码、余3码</li>
+<li>字符编码：ASCII、Unicode</li>
+<li>定点数的原码、反码、补码、移码表示</li>
+<li>补码加减运算及溢出判断</li>
+<li>浮点数的IEEE 754标准</li>
+<li>浮点数的加减运算步骤</li>
+<li>算术逻辑单元（ALU）：加法器、进位链</li>
+</ul>
+<h3 id="_8">【核心概念】</h3>
+<h4 id="21">2.1 进位计数制</h4>
+<table>
+<thead>
+<tr>
+<th>进制</th>
+<th>基数</th>
+<th>数码</th>
+<th>后缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制</td>
+<td>2</td>
+<td>0,1</td>
+<td>B</td>
+</tr>
+<tr>
+<td>八进制</td>
+<td>8</td>
+<td>0~7</td>
+<td>O</td>
+</tr>
+<tr>
+<td>十进制</td>
+<td>10</td>
+<td>0~9</td>
+<td>D</td>
+</tr>
+<tr>
+<td>十六进制</td>
+<td>16</td>
+<td>0~9,A~F</td>
+<td>H</td>
+</tr>
+</tbody>
+</table>
+<p><strong>进制转换</strong>：
+- R进制 → 十进制：按权展开求和
+- 十进制 → R进制：整数部分除R取余，小数部分乘R取整
+- 二进制 ↔ 八进制：3位一组
+- 二进制 ↔ 十六进制：4位一组</p>
+<h4 id="22-bcd">2.2 BCD码</h4>
+<p><strong>8421码</strong>：每4位二进制表示1位十进制数。</p>
+<p><strong>余3码</strong>：8421码 + 0011。</p>
+<h4 id="23">2.3 定点数的表示</h4>
+<p><strong>原码</strong>：符号位 + 绝对值
+$$[+x]<em>{原} = 0.x, \quad [-x]</em>{原} = 1.x$$
+- 0有两种表示：$+0 = 0.00...0$，$-0 = 1.00...0$
+- 范围（n位整数）：$-(2^{n-1}-1)$ ~ $+(2^{n-1}-1)$</p>
+<p><strong>反码</strong>：
+$$[+x]<em>{反} = 0.x, \quad [-x]</em>{反} = 1.ar{x}$$</p>
+<p><strong>补码</strong>（重点）：
+$$[+x]<em>{补} = 0.x, \quad [-x]</em>{补} = 2^n + x \pmod{2^n}$$
+- 0唯一表示：$0.00...0$
+- 范围（n位整数）：$-2^{n-1}$ ~ $+(2^{n-1}-1)$
+- <strong>负数补码求法</strong>：原码符号位不变，数值位取反+1
+- <strong>已知补码求真值</strong>：正数不变，负数取反+1（符号位不变）</p>
+<p><strong>移码</strong>：
+$$[x]_{移} = 2^{n-1} + x \quad (-2^{n-1} \leq x &lt; 2^{n-1})$$
+- 移码 = 补码符号位取反
+- 用于浮点数的阶码表示，便于比较大小</p>
+<h4 id="24_1">2.4 定点数运算</h4>
+<p><strong>补码加减法</strong>：
+$$[A + B]<em>{补} = [A]</em>{补} + [B]<em>{补} \pmod{2^n}$$
+$$[A - B]</em>{补} = [A]<em>{补} + [-B]</em>{补} \pmod{2^n}$$</p>
+<p><strong>溢出判断</strong>（三种方法）：
+1. <strong>单符号位</strong>：正+正=负，或负+负=正，则溢出
+2. <strong>进位判断</strong>：最高位进位 ⊕ 次高位进位 = 1 则溢出
+3. <strong>双符号位（变形补码）</strong>：结果符号位为01（正溢）或10（负溢）</p>
+<p><strong>乘法（原码一位乘）</strong>：
+- 符号位单独处理（异或），数值部分绝对值相乘</p>
+<p><strong>乘法（补码Booth算法）</strong>：
+- 根据相邻两位判断操作：00/11不操作，01加被乘数，10减被乘数</p>
+<p><strong>除法（恢复余数法/加减交替法）</strong>：
+- 余数为正：商1，左移减除数
+- 余数为负：商0，左移加除数（恢复余数）</p>
+<h4 id="25">2.5 浮点数表示</h4>
+<p><strong>一般格式</strong>：
+$$N = (-1)^S    imes M  imes R^E$$
+- $S$：符号位
+- $M$：尾数（决定精度）
+- $E$：阶码/指数（决定范围）
+- $R$：基数（通常为2）</p>
+<p><strong>规格化</strong>：尾数最高位为有效位。
+- 原码规格化：$0.1xxx...$ 或 $1.1xxx...$
+- 补码规格化：符号位与最高数值位不同（$0.1...$ 或 $1.0...$）</p>
+<h4 id="26-ieee-754">2.6 IEEE 754标准（重点）</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>符号位</th>
+<th>阶码</th>
+<th>尾数</th>
+<th>总位数</th>
+<th>偏置值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>短浮点数（float）</td>
+<td>1</td>
+<td>8</td>
+<td>23</td>
+<td>32</td>
+<td>127</td>
+</tr>
+<tr>
+<td>长浮点数（double）</td>
+<td>1</td>
+<td>11</td>
+<td>52</td>
+<td>64</td>
+<td>1023</td>
+</tr>
+</tbody>
+</table>
+<p><strong>格式</strong>：$V = (-1)^S  imes (1.M)  imes 2^{E-偏置值}$</p>
+<ul>
+<li>阶码全0：非规格化数（$0.M   imes 2^{1-偏置值}$）或 ±0</li>
+<li>阶码全1：无穷大（$M=0$）或 NaN（$M 
+eq 0$）</li>
+<li>阶码其他：规格化数，隐含最高位1</li>
+</ul>
+<p><strong>范围（float）</strong>：
+- 最大正数：$(2-2^{-23})     imes 2^{127} pprox 3.4     imes 10^{38}$
+- 最小正数（规格化）：$1.0    imes 2^{-126} pprox 1.18   imes 10^{-38}$
+- 最小正数（非规格化）：$2^{-149} pprox 1.4   imes 10^{-45}$</p>
+<h4 id="27">2.7 浮点数运算</h4>
+<p><strong>加减运算步骤</strong>：
+1. <strong>对阶</strong>：小阶向大阶看齐，尾数右移
+2. <strong>尾数求和</strong>：按定点数加减法运算
+3. <strong>规格化</strong>：左规/右规，使尾数满足规格化要求
+4. <strong>舍入</strong>：0舍1入、恒置1、截断
+5. <strong>溢出判断</strong>：阶码溢出才是真正的溢出</p>
+<h4 id="28-alu">2.8 算术逻辑单元（ALU）</h4>
+<p><strong>一位全加器</strong>：
+$$S_i = A_i \oplus B_i \oplus C_{i-1}$$
+$$C_i = A_iB_i + (A_i \oplus B_i)C_{i-1}$$</p>
+<p><strong>串行加法器</strong>：逐位相加，速度慢。</p>
+<p><strong>并行加法器</strong>：各位同时计算，关键在进位传递。</p>
+<p><strong>进位链</strong>：
+- 串行进位（行波进位）：$C_i = G_i + P_iC_{i-1}$，延迟 $O(n)$
+- 并行进位（先行进位）：同时产生各位进位，延迟 $O(\log n)$</p>
+<p><strong>ALU功能</strong>：算术运算（加减乘除）、逻辑运算（与或非异或）、移位。</p>
+<h3 id="_9">【易错警示】</h3>
+<ul>
+<li>❌ 补码范围比原码多一个负数（$-2^{n-1}$），0的表示唯一</li>
+<li>❌ 移码只用于阶码比较大小，不能用于运算</li>
+<li>❌ IEEE 754的float阶码范围：$-126$ ~ $+127$（不是 $-127$ ~ $+128$，因为全0和全1保留）</li>
+<li>❌ 浮点数加减必须先对阶，小阶向大阶看齐</li>
+<li>❌ 浮点数溢出看阶码，尾数溢出可以通过右规解决</li>
+<li>❌ 舍入可能引发溢出，需再次判断</li>
+</ul>
+<h3 id="_10">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>12, 13</td>
+<td>IEEE 754、补码运算</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>12, 13</td>
+<td>浮点数范围、溢出判断</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>12, 13</td>
+<td>IEEE 754转换、Booth算法</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>12, 13</td>
+<td>浮点数加减、ALU</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>12, 13</td>
+<td>补码运算、规格化</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>12, 13</td>
+<td>定点数乘法、浮点数</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>📌 2024年真题精析 - 整数乘法运算（第15题）</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="整数乘法真题"></div>
+<p><strong>题目</strong>：下列关于整数乘法运算的叙述中，错误的是（ ）。</p>
+<p><strong>答案</strong>：A. 用阵列乘法器实现的乘运算可以在一个时钟周期内完成</p>
+<p><strong>解析</strong>：</p>
+<ul>
+<li><strong>阵列乘法器</strong>：所有部分积同时产生并组成阵列，运用多操作数相加得到最终积，因此可以在<strong>一个时钟周期内完成</strong> ✓</li>
+<li><strong>ALU+移位器</strong>：采用串行乘法算法，需要<strong>多个时钟周期</strong>才能完成 ✓</li>
+<li><strong>变量与常数相乘</strong>：编译器可优化为若干条移位及加/减运算指令 ✓</li>
+<li><strong>两个变量相乘</strong>：<strong>可以</strong>编译转换为移位及加法等指令的循环实现（不是"无法"）✗</li>
+</ul>
+<p><strong>关键结论</strong>：两个变量的乘运算可以通过编译优化，用移位和加法的循环来实现，只是效率不如硬件乘法器。</p>
+</div>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2022年 第13题）</h4>
+  <p><strong>题目：</strong>若float型变量x的IEEE 754编码为C1000000H，则x的值为（  ）</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>将十六进制转换为二进制</strong>：
+      <br/>C1000000H = 1100 0001 0000 0000 0000 0000 0000 0000
+    </li>
+    <li><strong>按IEEE 754格式拆分</strong>（1位符号 + 8位阶码 + 23位尾数）：
+      <br/>符号位 S = 1（负数）
+      <br/>阶码 E = 10000010 = 130
+      <br/>尾数 M = 000...0（23个0）
+    </li>
+    <li><strong>计算阶码真值</strong>：
+      <br/>e = E - 偏置值 = 130 - 127 = 3
+    </li>
+    <li><strong>计算数值</strong>：
+      <br/>V = (-1)^S × (1.M) × 2^e = (-1)^1 × 1.0 × 2³ = <strong>-8</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>-8</p>
+  <p><strong>解析：</strong>本题考查IEEE 754浮点数的编码与解码。关键步骤：①十六进制转二进制；②按1+8+23拆分；③阶码减去偏置值127；④尾数隐含最高位1。注意符号位为1表示负数。常见错误：忘记隐含位1，误算为-4；或阶码计算错误。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>IEEE 754 float：1位符号 + 8位阶码 + 23位尾数，偏置值127</li>
+    <li>阶码真值 = 阶码编码 - 偏置值</li>
+    <li>规格化数尾数隐含最高位1，即1.M</li>
+    <li>阶码全0和全1为特殊值（非规格化数、无穷大、NaN）</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2020年 第12题）</h4>
+  <p><strong>题目：</strong>已知带符号整数用补码表示，float型数据用IEEE 754标准表示。假定变量i的类型是int，x的类型是float。若i = 12345，x = 12345.0，则i和x的机器数分别是（  ）</p>
+  <p>A. 00003039H, 4640E400H  B. 00003039H, 4640F000H</p>
+  <p>C. 30390000H, 4640E400H  D. 30390000H, 4640F000H</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>计算i的补码（int型，32位）</strong>：
+      <br/>12345 = 8192 + 4096 + 32 + 16 + 8 + 1 = 0011 0000 0011 1001
+      <br/>32位补码：0000 0000 0000 0000 0011 0000 0011 1001 = 00003039H
+    </li>
+    <li><strong>计算x的IEEE 754编码（float）</strong>：
+      <br/>12345.0 = 1.2345 × 10⁴ = 1.10000000111001 × 2¹³（二进制）
+      <br/>符号位 S = 0
+      <br/>阶码 E = 13 + 127 = 140 = 10001100
+      <br/>尾数 M = 10000000111001000000000（取前23位）
+      <br/>组合：0 10001100 10000000111001000000000
+      <br/>= 0100 0110 0100 0000 1110 0100 0000 0000 = 4640E400H
+    </li>
+    <li><strong>对比选项</strong>：i = 00003039H，x = 4640E400H，对应选项A。</li>
+  </ol>
+  <p><strong>答案：</strong>A</p>
+  <p><strong>解析：</strong>本题综合考查整数补码和浮点数IEEE 754编码。int型12345直接转十六进制；float型需要先将十进制小数转二进制，再规格化，最后按IEEE 754格式编码。注意大小端问题：题目未说明时按大端（高位在前）处理。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>正数的补码 = 原码</li>
+    <li>十进制小数转二进制：整数部分除2取余，小数部分乘2取整</li>
+    <li>IEEE 754编码步骤：符号位→规格化→阶码加偏置值→尾数取小数部分</li>
+  </ul>
+</div>
+<hr />
+<h2 id="3">第3章 存储系统</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch3_memory.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch3_memory"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_cache_mapping.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_cache_mapping"></div><div style="text-align:center;margin:20px 0;"><img src="images/co_virtual_memory.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_virtual_memory"></div>
+<h3 id="814">【分值占比】约 8~14 分</h3>
+<h3 id="_11">【考频】⭐⭐⭐⭐⭐（最高频，大题重灾区）</h3>
+<h3 id="_12">【必背】</h3>
+<ul>
+<li>存储器的分类与层次结构</li>
+<li>SRAM与DRAM的工作原理、特点、比较</li>
+<li>ROM的类型与特点</li>
+<li>存储器与CPU的连接：位扩展、字扩展、字位同时扩展</li>
+<li>片选信号的产生：线选法、译码法</li>
+<li>Cache的工作原理、地址映射（直接/全相联/组相联）</li>
+<li>Cache替换算法、写策略</li>
+<li>虚拟存储器：页式、段式、段页式</li>
+<li>TLB（快表）的作用与工作原理</li>
+</ul>
+<h3 id="_13">【核心概念】</h3>
+<h4 id="31">3.1 存储器概述</h4>
+<p><strong>存储器分类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分类标准</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储介质</td>
+<td>磁表面、半导体、光存储</td>
+</tr>
+<tr>
+<td>存取方式</td>
+<td>随机存取RAM、顺序存取SAM、直接存取DAM、相联存取CAM</td>
+</tr>
+<tr>
+<td>可变性</td>
+<td>可读可写RAM、只读ROM</td>
+</tr>
+<tr>
+<td>易失性</td>
+<td>易失性（RAM）、非易失性（ROM、Flash）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>存储器层次结构</strong>：</p>
+<pre><code>寄存器 → Cache → 主存 → 辅存（磁盘） → 磁带/光盘
+  ↑        ↑       ↑        ↑
+速度递减，容量递增，价格递减
+</code></pre>
+<h4 id="32">3.2 半导体存储器</h4>
+<p><strong>SRAM（静态RAM）</strong>：
+- 存储元：6晶体管触发器
+- 特点：速度快、功耗大、集成度低、不需要刷新
+- 用途：Cache</p>
+<p><strong>DRAM（动态RAM）</strong>：
+- 存储元：1晶体管+1电容
+- 特点：速度慢、功耗小、集成度高、需要刷新
+- 刷新原因：电容漏电，数据会丢失
+- 刷新方式：集中刷新、分散刷新、异步刷新
+- 用途：主存</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>SRAM</th>
+<th>DRAM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存储元</td>
+<td>6管触发器</td>
+<td>1管1电容</td>
+</tr>
+<tr>
+<td>速度</td>
+<td>快</td>
+<td>慢</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>集成度</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td>刷新</td>
+<td>不需要</td>
+<td>需要</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>贵</td>
+<td>便宜</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>Cache</td>
+<td>主存</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DRAM刷新</strong>：
+- 刷新周期：2ms（典型值）
+- 刷新单位：行
+- 集中刷新：有"死时间"
+- 分散刷新：无死时间但速度降低
+- 异步刷新：折中方案，是集中与分散的结合</p>
+<h4 id="33-rom">3.3 ROM</h4>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特点</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MROM</td>
+<td>掩模ROM，出厂固化不可改</td>
+<td>批量生产</td>
+</tr>
+<tr>
+<td>PROM</td>
+<td>一次性可编程</td>
+<td>早期产品</td>
+</tr>
+<tr>
+<td>EPROM</td>
+<td>紫外线擦除，可重复编程</td>
+<td>开发调试</td>
+</tr>
+<tr>
+<td>EEPROM</td>
+<td>电擦除，可字节编程</td>
+<td>BIOS</td>
+</tr>
+<tr>
+<td>Flash</td>
+<td>电擦除，块擦除，速度快</td>
+<td>U盘、SSD、BIOS</td>
+</tr>
+</tbody>
+</table>
+<h4 id="34-cpu">3.4 存储器与CPU的连接</h4>
+<p><strong>存储器扩展</strong>：</p>
+<ol>
+<li><strong>位扩展</strong>：增加数据位宽</li>
+<li>如：2片8K×4位 → 8K×8位</li>
+<li>
+<p>地址线、片选线并联，数据线分别接高位/低位</p>
+</li>
+<li>
+<p><strong>字扩展</strong>：增加存储容量</p>
+</li>
+<li>如：2片8K×8位 → 16K×8位</li>
+<li>
+<p>数据线并联，地址线高位接译码器产生片选</p>
+</li>
+<li>
+<p><strong>字位同时扩展</strong>：</p>
+</li>
+<li>先位扩展组成一个组，再字扩展</li>
+</ol>
+<p><strong>片选信号产生</strong>：
+- <strong>线选法</strong>：用高位地址线直接做片选，简单但有地址重叠
+- <strong>译码法</strong>：用译码器产生片选，地址连续无重叠</p>
+<h4 id="35-cache">3.5 Cache（高速缓冲存储器）</h4>
+<p><strong>局部性原理</strong>：
+- <strong>时间局部性</strong>：最近访问的数据很可能再次被访问
+- <strong>空间局部性</strong>：访问某个地址后，其附近地址很可能被访问</p>
+<p><strong>Cache工作原理</strong>：
+- CPU先访问Cache，命中则直接读取
+- 未命中则从主存调入Cache（以块为单位）
+- 命中率 $H = rac{N_c}{N_c + N_m}$
+- 平均访问时间 $T_a = H   imes T_c + (1-H)    imes T_m$</p>
+<p><strong>Cache地址映射</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>映射方式</th>
+<th>原理</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接映射</td>
+<td>主存块只能放Cache特定行</td>
+<td>实现简单、快</td>
+<td>冲突率高</td>
+</tr>
+<tr>
+<td>全相联映射</td>
+<td>主存块可放Cache任意行</td>
+<td>冲突率低</td>
+<td>查找慢、成本高</td>
+</tr>
+<tr>
+<td>组相联映射</td>
+<td>先分组，组内全相联</td>
+<td>折中方案</td>
+<td>复杂度中等</td>
+</tr>
+</tbody>
+</table>
+<p><strong>直接映射地址划分</strong>：</p>
+<pre><code>| 标记 | Cache行号 | 块内地址 |
+</code></pre>
+<p><strong>组相联映射地址划分</strong>：</p>
+<pre><code>| 标记 | 组号 | 块内地址 |
+</code></pre>
+<p><strong>替换算法</strong>：
+- <strong>随机（RAND）</strong>：随机选择
+- <strong>先进先出（FIFO）</strong>：最早进入的先替换
+- <strong>最近最少使用（LRU）</strong>：最久未访问的替换（实现复杂但效果好）
+- <strong>最不经常使用（LFU）</strong>：访问次数最少的替换</p>
+<p><strong>写策略</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>命中时</th>
+<th>不命中时</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写直达（Write Through）</td>
+<td>同时写Cache和主存</td>
+<td>-</td>
+<td>简单、一致性好、速度慢</td>
+</tr>
+<tr>
+<td>写回（Write Back）</td>
+<td>只写Cache，替换时写回</td>
+<td>-</td>
+<td>速度快、一致性复杂</td>
+</tr>
+<tr>
+<td>写分配（Write Allocate）</td>
+<td>-</td>
+<td>调入Cache再写</td>
+<td>利用空间局部性</td>
+</tr>
+<tr>
+<td>非写分配（No-Write Allocate）</td>
+<td>-</td>
+<td>直接写主存</td>
+<td>写直达常用</td>
+</tr>
+</tbody>
+</table>
+<p>常见组合：
+- 写直达 + 非写分配
+- 写回 + 写分配</p>
+<p><strong>Cache性能计算</strong>：
+$$T_{avg} = H   imes T_{hit} + (1-H)    imes T_{miss}$$
+其中 $T_{miss}$ 包含访问主存和替换开销。</p>
+<h4 id="36">3.6 虚拟存储器</h4>
+<p><strong>基本概念</strong>：给用户提供一个比实际主存大得多的地址空间。</p>
+<p><strong>页式虚拟存储器</strong>：
+- 虚拟地址空间划分成固定大小的页
+- 主存划分成同样大小的页框
+- 页表：记录虚拟页到物理页框的映射
+- 页表项包含：有效位、物理页框号、修改位、访问位、保护位等</p>
+<p><strong>段式虚拟存储器</strong>：
+- 按程序逻辑结构分段（代码段、数据段、堆栈段等）
+- 段长可变
+- 段表：记录段基址、段长、状态等</p>
+<p><strong>段页式虚拟存储器</strong>：
+- 先分段，段内再分页
+- 结合段的逻辑独立性和页的固定大小优点</p>
+<p><strong>TLB（Translation Lookaside Buffer）</strong>：
+- 页表的高速缓存，存放最近使用的页表项
+- 快表命中则无需访问主存中的页表
+- 采用全相联或组相联映射
+- TLB与Cache的访问可以并行</p>
+<p><strong>缺页处理</strong>：
+1. CPU发出虚拟地址
+2. 查TLB，未命中则查页表
+3. 页表项无效（缺页），触发缺页中断
+4. OS处理：选一页淘汰，从磁盘调入所需页
+5. 更新页表，重新执行指令</p>
+<h3 id="_14">【易错警示】</h3>
+<ul>
+<li>❌ Cache和TLB都是基于局部性原理，但Cache缓存数据，TLB缓存页表项</li>
+<li>❌ 直接映射不需要替换算法（位置固定），全相联和组相联需要</li>
+<li>❌ 写回策略在替换时才写主存，不是每次都不写</li>
+<li>❌ 虚拟地址→物理地址的转换由MMU完成，OS只处理缺页</li>
+<li>❌ 页式虚拟存储器的页大小固定，段式的段长可变</li>
+<li>❌ Cache缺失由硬件处理，缺页由OS处理（软件）</li>
+<li>❌ TLB缺失不一定导致缺页，可能只是TLB未命中但页在主存</li>
+</ul>
+<div class="highlight-box">
+<h4>🔥 Cache-主存 vs 主存-外存层次对比</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img6.jpg" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="Cache层次对比"></div>
+<table>
+<thead><tr><th>对比项</th><th>Cache-主存层次</th><th>主存-外存层次</th></tr></thead>
+<tbody>
+<tr><td><strong>交换单位</strong></td><td>主存块</td><td>页</td></tr>
+<tr><td><strong>主要目的</strong></td><td>解决速度不匹配</td><td>解决容量不足</td></tr>
+<tr><td><strong>替换算法实现</strong></td><td>硬件实现</td><td>软件实现（OS）</td></tr>
+<tr><td><strong>写策略</strong></td><td>回写法或全写法</td><td>通常回写法（写回外存代价大）</td></tr>
+<tr><td><strong>映射方式</strong></td><td>直接、组相联、全相联</td><td>通常全相联映射</td></tr>
+</tbody>
+</table>
+<p><strong>关键结论</strong>：由于访问外存代价极大，提高命中率是关键，因此主存-外存层次通常采用全相联映射；而Cache-主存层次可采用直接映射、组相联或全相联。</p>
+</div>
+<h3 id="_15">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>14, 15, 44</td>
+<td>Cache映射、存储器扩展、Cache大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>14, 15, 44</td>
+<td>虚拟存储、TLB、存储大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>14, 15, 44</td>
+<td>Cache计算、页式虚拟存储、存储大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>14, 15, 44</td>
+<td>存储器连接、Cache写策略、存储大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>14, 15, 44</td>
+<td>Cache命中计算、组相联、存储大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>14, 15, 44</td>
+<td>DRAM刷新、Cache映射、存储大题</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>📌 2024年真题精析 - TLB标记字段计算（第17题）</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="TLB真题"></div>
+<p><strong>题目</strong>：某计算机按字节编址，采用页式虚拟存储管理方式，虚拟地址为32位，主存地址为30位，页大小为1KB。若TLB共有32个表项，采用4路组相联映射方式，则TLB表项中标记字段的位数至少是（ ）。</p>
+<p><strong>答案</strong>：C. 19</p>
+<p><strong>解析</strong>：</p>
+<ol>
+<li>按字节编址，页大小为 2<sup>10</sup>B = 1KB，故<strong>页内地址占10位</strong></li>
+<li>TLB有32个表项，采用4路组相联映射，被分为 32÷4 = <strong>8组</strong>，故<strong>TLB组号占3位</strong></li>
+<li>因此，<strong>标记字段位数 = 32 - 3 - 10 = 19位</strong></li>
+</ol>
+<p><strong>易错点</strong>：不要混淆虚拟地址位数和主存地址位数，TLB标记字段由虚拟地址决定！</p>
+</div>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2024年 第44题 - Cache大题）</h4>
+  <p><strong>题目：</strong>某计算机主存地址空间为256MB，按字节编址。指令Cache和数据Cache分离，各有8个Cache行，每个Cache行大小为64B。数据Cache采用直接映射方式。现有两个功能相同的程序A和B，其伪代码如下：</p>
+  <pre><code>程序A：
+  int sumA(int a[256][256]) {
+    int i, j, sum = 0;
+    for (i = 0; i < 256; i++)
+      for (j = 0; j < 256; j++)
+        sum += a[i][j];
+    return sum;
+  }
+
+程序B：
+  int sumB(int a[256][256]) {
+    int i, j, sum = 0;
+    for (j = 0; j < 256; j++)
+      for (i = 0; i < 256; i++)
+        sum += a[i][j];
+    return sum;
+  }</code></pre>
+  <p>假定int类型数据用32位补码表示，程序编译时i, j, sum均分配在寄存器中，数组a按行优先方式存放，其首地址为320（十进制）。请回答：</p>
+  <p>(1) 数据Cache的总容量是多少？</p>
+  <p>(2) 数组元素a[0][31]和a[1][1]各自所在的主存块对应的Cache行号分别是多少？</p>
+  <p>(3) 程序A和B的数据访问命中率各是多少？</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>分析Cache结构</strong>：
+      <br/>主存256MB = 2²⁸B，地址28位
+      <br/>Cache行大小64B = 2⁶B，块内地址6位
+      <br/>8个Cache行 = 2³行，行号3位
+      <br/>标记位 = 28 - 3 - 6 = 19位
+    </li>
+    <li><strong>解答(1)：Cache总容量</strong>：
+      <br/>每行数据：64B = 512位
+      <br/>每行额外开销：标记19位 + 有效位1位 + 脏位1位（写回策略）= 21位
+      <br/>总容量 = 8 × (512 + 21) = 8 × 533 = <strong>4264位</strong>（或533B×8=4264位）
+      <br/>若按字节算：8 × (64B + 3B) = 8 × 67B = 536B（考虑字节对齐）
+      <br/>通常答案为 <strong>8×(64+4)=544B</strong>（按字节对齐后）
+    </li>
+    <li><strong>解答(2)：数组元素地址计算</strong>：
+      <br/>数组a首地址320，按行优先，每个元素4B
+      <br/>a[0][31]地址 = 320 + (0×256 + 31)×4 = 320 + 124 = 444
+      <br/>块号 = 444 / 64 = 6（取整），行号 = 6 mod 8 = <strong>6</strong>
+      <br/>a[1][1]地址 = 320 + (1×256 + 1)×4 = 320 + 1028 = 1348
+      <br/>块号 = 1348 / 64 = 21（取整），行号 = 21 mod 8 = <strong>5</strong>
+    </li>
+    <li><strong>解答(3)：命中率分析</strong>：
+      <br/>程序A按行访问：a[0][0], a[0][1], ... a[0][255]，每行256个元素，占256×4=1024B=16个块
+      <br/>Cache有8行，每行64B，可存8个块
+      <br/>程序A访问模式：顺序访问同一行的元素，空间局部性好。每块64B/4B=16个元素，访问第1个未命中，后15个命中。
+      <br/>程序A命中率 = 15/16 = <strong>93.75%</strong>
+      <br/>程序B按列访问：a[0][0], a[1][0], ... a[255][0]，相邻元素相隔1024B，不在同一块
+      <br/>每次访问不同块，Cache只有8行，256个元素需要256个块，远超Cache容量
+      <br/>程序B命中率 ≈ <strong>0</strong>（几乎每次都未命中）
+    </li>
+  </ol>
+  <p><strong>答案：</strong>(1) 约544B（或4264位）；(2) 6, 5；(3) 93.75%, 0</p>
+  <p><strong>解析：</strong>本题是经典的Cache大题，考查Cache容量计算、地址映射、命中率分析。核心要点：①Cache容量=数据+标记+有效位等开销；②直接映射行号=块号 mod Cache行数；③数组访问模式（行优先vs列优先）对命中率的影响。程序B列访问导致每次访问不同块，Cache完全失效，体现了<strong>空间局部性</strong>的重要性。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>Cache地址划分：标记|行号|块内地址</li>
+    <li>Cache容量 = 行数 × (数据块大小 + 标记位 + 有效位 + 脏位等)</li>
+    <li>直接映射：行号 = 块号 mod Cache行数</li>
+    <li>数组按行优先存储，行访问命中率高，列访问命中率低</li>
+    <li>每块能存16个int元素（64B/4B），行访问时15/16命中</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2022年 第15题）</h4>
+  <p><strong>题目：</strong>某计算机主存地址空间大小为256MB，按字节编址。主存与Cache之间采用4路组相联映射，Cache数据区大小为1MB，行大小为256B。Cache共有（  ）组。</p>
+  <p>A. 1024  B. 2048  C. 4096  D. 8192</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>计算Cache总行数</strong>：
+      <br/>Cache数据区1MB = 2²⁰B，行大小256B = 2⁸B
+      <br/>总行数 = 2²⁰ / 2⁸ = 2¹² = 4096行
+    </li>
+    <li><strong>计算组数</strong>：
+      <br/>4路组相联 = 每组4行
+      <br/>组数 = 总行数 / 4 = 4096 / 4 = <strong>1024</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>A（1024）</p>
+  <p><strong>解析：</strong>本题考查组相联映射的基本计算。关键公式：组数 = Cache总行数 / 路数。注意区分"Cache数据区大小"和"Cache总容量"（总容量包含标记等开销）。4路组相联意味着每组有4个Cache行，可以并行比较4个标记。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>Cache行数 = Cache数据区大小 / 行大小</li>
+    <li>组相联组数 = 行数 / 路数（相联度）</li>
+    <li>地址划分：标记|组号|块内地址</li>
+    <li>组号位数 = log₂(组数)</li>
+  </ul>
+</div>
+<hr />
+<h2 id="4">第4章 指令系统</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch4_instruction.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch4_instruction"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_instruction_cycle.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_instruction_cycle"></div>
+<h3 id="48">【分值占比】约 4~8 分</h3>
+<h3 id="_16">【考频】⭐⭐⭐（中等频率）</h3>
+<h3 id="_17">【必背】</h3>
+<ul>
+<li>指令格式：操作码+地址码</li>
+<li>指令字长、机器字长、存储字长的关系</li>
+<li>寻址方式：立即、直接、间接、寄存器、寄存器间接、基址、变址、相对、堆栈</li>
+<li>CISC与RISC的特点与比较</li>
+<li>数据的对齐方式</li>
+</ul>
+<h3 id="_18">【核心概念】</h3>
+<h4 id="41">4.1 指令格式</h4>
+<p><strong>基本格式</strong>：</p>
+<pre><code>| 操作码 OP | 地址码 A |
+</code></pre>
+<p><strong>指令分类（按地址码数量）</strong>：
+- 零地址指令：只有操作码（如NOP、HALT、堆栈运算）
+- 一地址指令：$OP(A)  o A$ 或 $AC \ op \ (A)   o AC$
+- 二地址指令：$(A_1) \ op \ (A_2)     o A_1$
+- 三地址指令：$(A_1) \ op \ (A_2)     o A_3$
+- 四地址指令：$(A_1) \ op \ (A_2)     o A_3$，$A_4$为下址</p>
+<p><strong>扩展操作码</strong>：操作码长度不固定，短操作码不能是长操作码的前缀。</p>
+<h4 id="42">4.2 寻址方式</h4>
+<table>
+<thead>
+<tr>
+<th>寻址方式</th>
+<th>有效地址EA</th>
+<th>访存次数</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>立即寻址</td>
+<td>操作数 = A</td>
+<td>0</td>
+<td>最快，范围受限</td>
+</tr>
+<tr>
+<td>直接寻址</td>
+<td>EA = A</td>
+<td>1</td>
+<td>简单，地址范围受限</td>
+</tr>
+<tr>
+<td>间接寻址</td>
+<td>EA = (A)</td>
+<td>2+</td>
+<td>范围大，速度慢</td>
+</tr>
+<tr>
+<td>寄存器寻址</td>
+<td>操作数 = R</td>
+<td>0</td>
+<td>最快</td>
+</tr>
+<tr>
+<td>寄存器间接</td>
+<td>EA = (R)</td>
+<td>1</td>
+<td>便于循环</td>
+</tr>
+<tr>
+<td>基址寻址</td>
+<td>EA = A + (BR)</td>
+<td>1</td>
+<td>面向系统，BR由OS设定</td>
+</tr>
+<tr>
+<td>变址寻址</td>
+<td>EA = A + (IX)</td>
+<td>1</td>
+<td>面向用户，IX由程序员设定</td>
+</tr>
+<tr>
+<td>相对寻址</td>
+<td>EA = (PC) + A</td>
+<td>1</td>
+<td>转移指令，位置无关</td>
+</tr>
+<tr>
+<td>堆栈寻址</td>
+<td>EA = SP</td>
+<td>1</td>
+<td>隐含寻址</td>
+</tr>
+</tbody>
+</table>
+<p><strong>基址 vs 变址</strong>：
+- 基址：基址寄存器内容不变，偏移量A变 → 多道程序定位
+- 变址：变址寄存器内容变，形式地址A不变 → 数组访问</p>
+<h4 id="43-cisc-vs-risc">4.3 CISC vs RISC</h4>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>CISC（复杂指令集）</th>
+<th>RISC（精简指令集）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指令数</td>
+<td>多（数百条）</td>
+<td>少（几十条）</td>
+</tr>
+<tr>
+<td>指令长度</td>
+<td>变长</td>
+<td>定长</td>
+</tr>
+<tr>
+<td>指令周期</td>
+<td>不同指令差异大</td>
+<td>多数单周期</td>
+</tr>
+<tr>
+<td>寻址方式</td>
+<td>多而复杂</td>
+<td>少而简单</td>
+</tr>
+<tr>
+<td>访存指令</td>
+<td>不限于Load/Store</td>
+<td>只有Load/Store访存</td>
+</tr>
+<tr>
+<td>寄存器数量</td>
+<td>较少</td>
+<td>较多</td>
+</tr>
+<tr>
+<td>实现方式</td>
+<td>微程序控制</td>
+<td>硬布线控制为主</td>
+</tr>
+<tr>
+<td>代表</td>
+<td>x86</td>
+<td>ARM、MIPS、RISC-V</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_19">【易错警示】</h3>
+<ul>
+<li>❌ 相对寻址的位移量A是补码，可正可负</li>
+<li>❌ 基址寻址中基址寄存器内容通常由操作系统设定，用户不可改</li>
+<li>❌ 变址寻址适合数组访问，相对寻址适合转移指令</li>
+<li>❌ RISC不是指令少就一定简单，是通过简化指令提高流水线效率</li>
+<li>❌ 对齐访问：半字地址是2的倍数，字地址是4的倍数</li>
+</ul>
+<h3 id="_20">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>16</td>
+<td>寻址方式</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>16</td>
+<td>CISC/RISC</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>16</td>
+<td>扩展操作码</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>16</td>
+<td>寻址方式计算</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>16</td>
+<td>指令格式设计</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2021年 第16题）</h4>
+  <p><strong>题目：</strong>某计算机按字节编址，指令字长固定且只有两种指令格式。其中三地址指令29条，二地址指令107条，每个地址字段为6位。则指令字长至少应该是（  ）</p>
+  <p>A. 24位  B. 26位  C. 28位  D. 32位</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>分析扩展操作码原理</strong>：
+      <br/>短操作码不能是长操作码的前缀，通过扩展操作码实现多种指令格式。
+    </li>
+    <li><strong>计算操作码位数</strong>：
+      <br/>三地址指令：3个地址字段，每个6位，共18位地址
+      <br/>29条三地址指令，需要操作码至少能表示29种，所以操作码至少5位（2⁵=32≥29）
+      <br/>但还要给二地址指令留扩展窗口
+    </li>
+    <li><strong>用扩展操作码计算</strong>：
+      <br/>设操作码字段为n位
+      <br/>三地址指令：操作码n位，地址3×6=18位，指令字长 = n + 18
+      <br/>n位操作码可表示2ⁿ种，其中29种用于三地址，剩余(2ⁿ - 29)种用于扩展
+      <br/>每种扩展可产生2⁶条二地址指令（因为少一个地址字段，多出6位）
+      <br/>需要：(2ⁿ - 29) × 2⁶ ≥ 107
+      <br/>2ⁿ - 29 ≥ 107/64 = 1.67，即 2ⁿ ≥ 30.67，n ≥ 5
+      <br/>当n=5时：(32-29)×64 = 3×64 = 192 ≥ 107，满足！
+    </li>
+    <li><strong>计算指令字长</strong>：
+      <br/>指令字长 = 5 + 18 = <strong>23位</strong>
+      <br/>但按字节编址，指令字长必须是8的倍数，所以至少 <strong>24位</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>A（24位）</p>
+  <p><strong>解析：</strong>本题考查扩展操作码设计。核心思路：①先确定操作码位数满足指令数量要求；②考虑扩展操作码的编码窗口；③按字节编址要求指令字长为8的倍数。注意：即使计算得23位，也必须向上取整到24位。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>扩展操作码：短操作码留出编码窗口给长操作码扩展</li>
+    <li>扩展公式：(2ⁿ - 已用短指令数) × 2^(地址字段位数) ≥ 需要的长指令数</li>
+    <li>按字节编址时，指令字长应为8的倍数</li>
+    <li>地址字段减少1个，操作码扩展2^(地址位数)种</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2024年 第16题）</h4>
+  <p><strong>题目：</strong>某计算机采用大端方式，按字节编址。某指令中操作数的有效地址为2000H，该操作数采用基址寻址，基址寄存器内容为3000H，形式地址（偏移量）为D000H（补码表示，16位）。则该操作数的地址是（  ）</p>
+  <p>A. 00000000H  B. 00001000H  C. 0000F000H  D. F0000000H</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>分析基址寻址公式</strong>：
+      <br/>EA = (BR) + A，其中BR是基址寄存器，A是形式地址（偏移量）
+    </li>
+    <li><strong>计算偏移量的真值</strong>：
+      <br/>D000H = 1101 0000 0000 0000（16位补码）
+      <br/>最高位为1，是负数
+      <br/>真值 = -(0101 0000 0000 0000) = -5000H = -20480（十进制）
+    </li>
+    <li><strong>计算有效地址</strong>：
+      <br/>EA = 3000H + (-5000H) = 3000H - 5000H = -2000H
+      <br/>按32位补码：3000H - 5000H = 00003000H - 00005000H = FFFFF000H + 3000H = <strong>00000000H</strong>（取低32位）
+      <br/>或者：3000H + D000H = 00003000H + FFFFD000H（16位符号扩展为32位）= 00000000H
+    </li>
+  </ol>
+  <p><strong>答案：</strong>A（00000000H）</p>
+  <p><strong>解析：</strong>本题考查基址寻址和补码运算。关键陷阱：①D000H是16位补码，参与32位运算时要符号扩展为FFFFD000H；②基址寻址是(BR)+A，不是A-(BR)；③大端方式在本题中只影响数据存放，不影响地址计算。注意补码负数的符号扩展：16位负数扩展为32位时，高位补1。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>基址寻址：EA = (BR) + A，BR由OS设定，A为偏移量</li>
+    <li>16位补码扩展为32位：符号位扩展（正数补0，负数补1）</li>
+    <li>补码加法：按二进制加法，忽略最高位进位</li>
+    <li>大端方式：高位字节存放在低地址</li>
+  </ul>
+</div>
+<hr />
+<h2 id="5-cpu">第5章 中央处理器（CPU）</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch5_cpu.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch5_cpu"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_cpu_pipeline.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_cpu_pipeline"></div>
+<h3 id="814_1">【分值占比】约 8~14 分</h3>
+<h3 id="_21">【考频】⭐⭐⭐⭐⭐（最高频，大题重灾区）</h3>
+<h3 id="_22">【必背】</h3>
+<ul>
+<li>CPU的功能与结构：运算器、控制器</li>
+<li>指令执行过程：取指、译码、执行、访存、写回</li>
+<li>数据通路：总线方式、专用通路</li>
+<li>控制器：硬布线控制器 vs 微程序控制器</li>
+<li>微程序控制器：微指令格式、微地址形成</li>
+<li>指令流水线：流水线的分类、冒险（冲突）及处理</li>
+<li>流水线性能计算：吞吐率、加速比、效率</li>
+</ul>
+<h3 id="_23">【核心概念】</h3>
+<h4 id="51-cpu">5.1 CPU的功能与结构</h4>
+<p><strong>CPU功能</strong>：
+- 指令控制（程序顺序控制）
+- 操作控制（产生操作信号）
+- 时间控制（时序管理）
+- 数据加工（算术逻辑运算）
+- 中断处理</p>
+<p><strong>运算器组成</strong>：
+- ALU
+- 累加器ACC
+- 乘商寄存器MQ
+- 操作数寄存器X
+- 程序状态字寄存器PSW</p>
+<p><strong>控制器组成</strong>：
+- 程序计数器PC
+- 指令寄存器IR
+- 指令译码器
+- 时序系统
+- 微操作信号发生器</p>
+<h4 id="52">5.2 指令执行过程</h4>
+<p><strong>指令周期</strong>：CPU取出并执行一条指令所需的全部时间。</p>
+<p><strong>机器周期（CPU周期）</strong>：指令执行中每步操作所需的时间，通常以访存时间作为基准。</p>
+<p><strong>时钟周期</strong>：CPU操作的最基本单位。</p>
+<p><strong>关系</strong>：一个指令周期 = 若干个机器周期 = 若干个时钟周期</p>
+<p><strong>指令执行阶段</strong>：
+1. <strong>取指周期</strong>：PC → MAR → 读存储器 → MDR → IR，PC + 1
+2. <strong>间址周期</strong>（间接寻址时）：取有效地址
+3. <strong>执行周期</strong>：执行具体操作
+4. <strong>中断周期</strong>（中断发生时）：保存断点，转中断处理</p>
+<h4 id="53">5.3 数据通路</h4>
+<p><strong>数据通路</strong>：数据在功能部件之间传送的路径。</p>
+<p><strong>总线方式</strong>：
+- 单总线：所有部件共享一组总线，简单但冲突多
+- 双总线：分离数据和地址总线
+- 三总线：数据、地址、控制分离</p>
+<p><strong>专用通路</strong>：专用数据通路，速度快但硬件复杂。</p>
+<h4 id="54">5.4 控制器</h4>
+<p><strong>硬布线控制器</strong>：
+- 用组合逻辑电路直接产生控制信号
+- 速度快，适合RISC
+- 设计复杂，不灵活</p>
+<p><strong>微程序控制器</strong>：
+- 将每条指令的执行转化为一段微程序
+- 用控制存储器（CM）存储微指令
+- 设计简单，易修改，适合CISC
+- 速度相对慢</p>
+<p><strong>微程序控制器核心部件</strong>：
+- <strong>控制存储器（CM）</strong>：存放微程序，ROM实现
+- <strong>微指令寄存器（μIR）</strong>：存放当前微指令
+- <strong>微地址形成电路</strong>：形成下一条微地址</p>
+<p><strong>微指令格式</strong>：
+- <strong>水平型微指令</strong>：并行度高，微指令长
+- <strong>垂直型微指令</strong>：类似机器指令，短但并行度低</p>
+<p><strong>微命令编码方式</strong>：
+- 直接编码：每位对应一个微命令，简单但字长
+- 字段直接编码：互斥微命令放同一字段，加译码
+- 字段间接编码：一个字段含义受另一字段控制</p>
+<p><strong>微地址形成</strong>：
+- 由机器指令操作码形成入口地址
+- 由微指令下地址字段指出
+- 由标志位决定分支</p>
+<h4 id="55">5.5 指令流水线</h4>
+<p><strong>流水线基本原理</strong>：将指令执行分成多个阶段，多条指令重叠执行。</p>
+<p><strong>经典五段流水线</strong>：
+1. IF：取指令（Instruction Fetch）
+2. ID：指令译码/读寄存器（Instruction Decode）
+3. EX：执行/计算有效地址（Execute）
+4. MEM：访存（Memory Access）
+5. WB：写回寄存器（Write Back）</p>
+<p><strong>流水线性能指标</strong>：</p>
+<p><strong>吞吐率（TP）</strong>：单位时间内完成的任务数。
+- 最大吞吐率：$TP_{max} = rac{1}{\Delta t}$（理想情况）
+- 实际吞吐率：$TP = rac{n}{k\Delta t + (n-1)\Delta t} = rac{n}{(k+n-1)\Delta t}$</p>
+<p><strong>加速比（S）</strong>：
+$$S = rac{T_{非流水}}{T_{流水}} = rac{n \cdot k \cdot \Delta t}{(k+n-1)\Delta t} = rac{nk}{k+n-1}$$</p>
+<p><strong>效率（E）</strong>：
+$$E = rac{S}{k} = rac{n}{k+n-1}$$</p>
+<p><strong>流水线冒险（冲突）</strong>：</p>
+<ol>
+<li><strong>结构冒险（资源冲突）</strong>：多条指令争用同一硬件资源</li>
+<li>
+<p>解决：资源重复、流水线气泡、停顿</p>
+</li>
+<li>
+<p><strong>数据冒险（数据相关）</strong>：指令需要用到前面指令的结果</p>
+</li>
+<li><strong>RAW（写后读）</strong>：最常见，如 <code>ADD R1, R2, R3</code> 后 <code>SUB R4, R1, R5</code></li>
+<li><strong>WAR（读后写）</strong>：由乱序执行引起</li>
+<li><strong>WAW（写后写）</strong>：由乱序执行引起</li>
+<li>
+<p>解决：数据转发（旁路）、插入气泡、编译器调度</p>
+</li>
+<li>
+<p><strong>控制冒险（控制相关）</strong>：分支指令改变执行顺序</p>
+</li>
+<li>解决：预测分支（静态/动态）、延迟分支、刷新流水线</li>
+</ol>
+<p><strong>超标量流水线</strong>：每个时钟周期发射多条指令。
+<strong>超流水线</strong>：将流水段进一步细分，提高主频。
+<strong>超长指令字（VLIW）</strong>：编译器静态调度并行指令。</p>
+<h3 id="_24">【易错警示】</h3>
+<ul>
+<li>❌ 取指周期中PC + 1的"1"是指令字长，不是1个字节</li>
+<li>❌ 硬布线控制器速度快但难修改，微程序控制器相反</li>
+<li>❌ 控制存储器（CM）是ROM，对用户透明，存放微程序</li>
+<li>❌ 数据冒险中RAW是最常见的，转发可以解决大部分RAW</li>
+<li>❌ 流水线加速比有上限，理想情况下最大为流水段数k</li>
+<li>❌ 分支预测错误会导致流水线刷新，损失多个周期</li>
+<li>❌ 超流水线是增加流水段数，超标量是增加发射宽度</li>
+</ul>
+<h3 id="_25">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>17, 18, 45</td>
+<td>数据通路、微程序、CPU大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>17, 18, 45</td>
+<td>流水线冒险、控制器、CPU大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>17, 18, 45</td>
+<td>流水线性能、数据通路、CPU大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>17, 18, 45</td>
+<td>微程序控制器、流水线、CPU大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>17, 18, 45</td>
+<td>流水线冒险、硬布线、CPU大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>17, 18, 45</td>
+<td>指令周期、流水线、CPU大题</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2023年 第45题 - CPU大题）</h4>
+  <p><strong>题目：</strong>某计算机采用5段流水线：IF（取指）、ID（译码/读寄存器）、EX（执行）、MEM（访存）、WB（写回）。各段延迟均为100ps。现有如下代码序列：</p>
+  <pre><code>  I1: ADD R1, R2, R3    ; R1 = R2 + R3
+  I2: SUB R4, R1, R5    ; R4 = R1 - R5
+  I3: LW  R6, 0(R1)     ; R6 = M[R1+0]
+  I4: AND R7, R6, R8    ; R7 = R6 & R8</code></pre>
+  <p>请回答：</p>
+  <p>(1) 如果不采用任何转发（旁路）技术，需要插入多少个气泡（NOP）？</p>
+  <p>(2) 如果采用完整的转发技术，需要插入多少个气泡？</p>
+  <p>(3) 分别计算两种情况下执行这4条指令所需的总时钟周期数。</p>
+  <p><strong>解题步骤（图解流水线执行过程）：</strong></p>
+  <ol>
+    <li><strong>分析数据冒险</strong>：
+      <br/>I1→I2：RAW，R1在I1的WB段写回，I2在ID段读寄存器。不转发时I2的ID需要等I1的WB完成。
+      <br/>I1→I3：RAW，R1在I1的WB段写回，I3在ID段读寄存器。
+      <br/>I3→I4：RAW，R6在I3的MEM段从内存读出，I4在ID段读寄存器。即使有转发，MEM到ID也需要等待。
+    </li>
+    <li><strong>不采用转发时的流水线时空图</strong>：
+      <pre><code>时钟:  1   2   3   4   5   6   7   8   9   10  11  12
+I1:    IF  ID  EX  MEM WB
+I2:        IF  -   -   -   ID  EX  MEM WB      (等I1 WB)
+I3:            IF  -   -   -   -   ID  EX  MEM WB  (等I2,但I2也延迟了)
+I4:                IF  -   -   -   -   -   ID  EX  MEM WB</code></pre>
+      <br/>实际上需要仔细分析：I2在ID段需要R1，I1在WB段才写回R1。不转发时I2必须等I1完成WB。
+      <br/>I1: IF(1) ID(2) EX(3) MEM(4) WB(5)
+      <br/>I2: IF(2) ID(3-需要R1,但I1还没WB) → 停顿 → ID(6) EX(7) MEM(8) WB(9)
+      <br/>I3: IF(3) ID(4-需要R1) → 等I1 WB → ID(7) EX(8) MEM(9) WB(10)
+      <br/>I4: IF(4) ID(5-需要R6) → 等I3 MEM → ID(10) EX(11) MEM(12) WB(13)
+      <br/>需要插入 <strong>5个NOP</strong>（或气泡周期）
+    </li>
+    <li><strong>采用完整转发时的流水线时空图</strong>：
+      <pre><code>时钟:  1   2   3   4   5   6   7   8   9   10
+I1:    IF  ID  EX  MEM WB
+I2:        IF  ID  EX  MEM WB              (EX→EX转发)
+I3:            IF  ID  EX  MEM WB          (EX→EX转发)
+I4:                IF  ID  -   EX  MEM WB  (MEM→EX转发需要等MEM)</code></pre>
+      <br/>I1→I2：EX段结果可通过ALU转发到下一指令EX段，无需停顿
+      <br/>I1→I3：同上，EX→EX转发
+      <br/>I3→I4：LW指令在MEM段才得到数据，I4在EX段需要R6。MEM→EX转发需要I4的EX等I3的MEM。
+      <br/>I4的EX需要延迟到I3的MEM完成（时钟6），所以I4在时钟7才能EX。
+      <br/>需要插入 <strong>1个NOP</strong>（I4的EX段需要等I3的MEM完成）
+    </li>
+    <li><strong>计算总时钟周期</strong>：
+      <br/>不转发：13个时钟周期（从I1的IF到I4的WB）
+      <br/>完整转发：10个时钟周期
+    </li>
+  </ol>
+  <p><strong>答案：</strong>(1) 5个NOP；(2) 1个NOP；(3) 13周期，10周期</p>
+  <p><strong>解析：</strong>本题是经典的流水线数据冒险大题。核心要点：①识别RAW依赖关系；②理解转发（旁路）可以消除大部分RAW停顿，但Load-Use型冒险（Load后紧跟使用）即使转发也需要1个气泡；③画时空图是分析流水线问题的最佳方法。注意：ALU结果在EX段末产生，可转发到下一指令的EX段；Load数据在MEM段末产生，转发到下一指令的EX段需要停顿1周期。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>RAW（写后读）是最常见的数据冒险</li>
+    <li>转发（旁路）路径：EX→EX、MEM→EX、MEM→MEM</li>
+    <li>Load-Use型冒险：Load指令后紧跟使用其结果的指令，即使转发也需要1个气泡</li>
+    <li>流水线时空图：横轴时钟周期，纵轴指令，各段用字母标注</li>
+    <li>n条k段流水线，理想情况下需要k+(n-1)个周期</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2021年 第18题）</h4>
+  <p><strong>题目：</strong>某计算机的控制器采用微程序控制方式，微指令中的操作控制字段采用字段直接编码法，共有33个微命令，构成5个互斥类（即5个字段），分别包含7、3、12、5和6个微命令。则操作控制字段至少有（  ）位。</p>
+  <p>A. 5  B. 6  C. 15  D. 33</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>理解字段直接编码</strong>：
+      <br/>每个字段内微命令互斥（不能同时出现），需要译码。
+      <br/>n个微命令需要⌈log₂(n+1)⌉位（+1是因为要表示"无操作"）。
+    </li>
+    <li><strong>计算每个字段的位数</strong>：
+      <br/>字段1（7个微命令）：⌈log₂(7+1)⌉ = ⌈log₂8⌉ = <strong>3位</strong>
+      <br/>字段2（3个微命令）：⌈log₂(3+1)⌉ = ⌈log₂4⌉ = <strong>2位</strong>
+      <br/>字段3（12个微命令）：⌈log₂(12+1)⌉ = ⌈log₂13⌉ = <strong>4位</strong>（2⁴=16≥13）
+      <br/>字段4（5个微命令）：⌈log₂(5+1)⌉ = ⌈log₂6⌉ = <strong>3位</strong>（2³=8≥6）
+      <br/>字段5（6个微命令）：⌈log₂(6+1)⌉ = ⌈log₂7⌉ = <strong>3位</strong>（2³=8≥7）
+    </li>
+    <li><strong>计算总位数</strong>：
+      <br/>总位数 = 3 + 2 + 4 + 3 + 3 = <strong>15位</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>C（15位）</p>
+  <p><strong>解析：</strong>本题考查微指令的字段直接编码。关键公式：字段位数 = ⌈log₂(微命令数 + 1)⌉，其中+1表示"不发出任何微命令"的状态。注意不是⌈log₂n⌉，因为必须留出一个编码表示"无操作"。字段间接编码更复杂，本题未涉及。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>字段直接编码：互斥微命令放在同一字段，通过译码选择</li>
+    <li>字段位数 = ⌈log₂(微命令数 + 1)⌉（+1表示无操作）</li>
+    <li>直接编码：每位对应一个微命令，不需译码，但字长长</li>
+    <li>字段间接编码：一个字段的含义受另一个字段控制，更节省位数但更复杂</li>
+  </ul>
+</div>
+<hr />
+<hr />
+<h2 id="6">第6章 总线</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/co_ch6_bus.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="co_ch6_bus"></div>
+<h3 id="46">【分值占比】约 4~6 分</h3>
+<h3 id="_26">【考频】⭐⭐⭐（中等频率，概念题为主）</h3>
+<h3 id="_27">【必背】</h3>
+<ul>
+<li>总线的分类：片内总线、系统总线、通信总线</li>
+<li>总线性能指标：总线宽度、总线带宽、总线复用、信号线数等</li>
+<li>总线仲裁方式：集中式（链式查询、计数器定时查询、独立请求）vs 分布式</li>
+<li>总线定时方式：同步通信、异步通信（不互锁、半互锁、全互锁）</li>
+<li>总线带宽计算公式</li>
+</ul>
+<h3 id="_28">【核心概念】</h3>
+<h4 id="61">6.1 总线的基本概念</h4>
+<p><strong>总线</strong>：一组能为多个部件分时共享的公共信息传送线路。</p>
+<p><strong>总线的特性</strong>：
+- <strong>机械特性</strong>：物理连接方式（插头插座形状、尺寸、引脚数目等）
+- <strong>电气特性</strong>：信号传输方向、电平范围
+- <strong>功能特性</strong>：每根传输线的功能
+- <strong>时间特性</strong>：信号之间的时序关系</p>
+<h4 id="62">6.2 总线的分类</h4>
+<table>
+<thead>
+<tr>
+<th>分类依据</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>按数据格式</td>
+<td>并行总线</td>
+<td>多条数据线同时传输，速度快，适合短距离</td>
+</tr>
+<tr>
+<td></td>
+<td>串行总线</td>
+<td>一条数据线逐位传输，适合长距离</td>
+</tr>
+<tr>
+<td>按功能层次</td>
+<td>片内总线</td>
+<td>CPU芯片内部寄存器与ALU之间的连线</td>
+</tr>
+<tr>
+<td></td>
+<td>系统总线</td>
+<td>计算机系统内各功能部件（CPU、主存、I/O接口）之间</td>
+</tr>
+<tr>
+<td></td>
+<td>通信总线</td>
+<td>计算机系统之间或计算机与外部设备之间的通信</td>
+</tr>
+</tbody>
+</table>
+<p><strong>系统总线</strong>按传输信息的不同分为三类：
+- <strong>数据总线（DB）</strong>：双向传输，宽度与机器字长、存储字长有关
+- <strong>地址总线（AB）</strong>：单向传输（CPU发出），宽度与主存地址空间大小有关
+- <strong>控制总线（CB）</strong>：传输控制信号，有出有入</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：数据总线宽度 = 机器字长（通常）；地址总线宽度决定寻址空间大小（如32位地址线 → $2^{32}$ = 4GB寻址空间）</p>
+</blockquote>
+</blockquote>
+<p><strong>通信总线</strong>：
+- <strong>串行通信</strong>：USB、SATA、PCIe（物理层串行）
+- <strong>并行通信</strong>：PCI（传统）、IEEE 1284</p>
+<h4 id="63">6.3 总线的性能指标</h4>
+<table>
+<thead>
+<tr>
+<th>性能指标</th>
+<th>定义</th>
+<th>公式/说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总线宽度</strong></td>
+<td>数据总线的位数</td>
+<td>通常等于机器字长</td>
+</tr>
+<tr>
+<td><strong>总线带宽</strong></td>
+<td>单位时间内总线上可传输的数据量</td>
+<td>$带宽 = \frac{总线宽度}{8} \times 总线频率$（字节/秒）</td>
+</tr>
+<tr>
+<td><strong>总线工作频率</strong></td>
+<td>总线每秒传输的次数</td>
+<td>与总线周期互为倒数</td>
+</tr>
+<tr>
+<td><strong>总线复用</strong></td>
+<td>一条信号线分时传送不同信号</td>
+<td>如地址/数据复用，减少引脚数</td>
+</tr>
+<tr>
+<td><strong>信号线数</strong></td>
+<td>地址线、数据线、控制线的总和</td>
+<td>反映总线复杂度</td>
+</tr>
+<tr>
+<td><strong>总线周期</strong></td>
+<td>一次总线操作所需的时间</td>
+<td>通常由若干时钟周期组成</td>
+</tr>
+<tr>
+<td><strong>总线时钟频率</strong></td>
+<td>总线时钟信号的频率</td>
+<td>决定总线工作速度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总线带宽计算公式</strong>：
+$$总线带宽 = \frac{总线宽度}{8} \times 总线工作频率 \quad (B/s)$$</p>
+<p>若采用<strong>总线复用</strong>或<strong>突发传输</strong>，需按实际数据传输方式计算：
+- 突发（Burst）传输：一次地址传输后连续传输多个数据块</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：总线带宽 = 总线宽度 × 总线频率（位/秒）= 总线宽度/8 × 总线频率（字节/秒）</p>
+</blockquote>
+</blockquote>
+<p><strong>示例</strong>：某总线宽度64位，工作频率66MHz，则带宽 = 64/8 × 66M = 528 MB/s</p>
+<h4 id="64">6.4 总线仲裁</h4>
+<p>当多个主设备（如多个CPU或DMA控制器）同时请求使用总线时，需要仲裁机制决定哪个设备获得总线使用权。</p>
+<p><strong>集中式仲裁</strong>：由中央仲裁器统一控制</p>
+<table>
+<thead>
+<tr>
+<th>仲裁方式</th>
+<th>原理</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>链式查询（菊花链）</strong></td>
+<td>仲裁器发出的总线同意信号BG依次串行经过各设备</td>
+<td>简单，易扩展</td>
+<td>优先级固定，对电路故障敏感</td>
+</tr>
+<tr>
+<td><strong>计数器定时查询</strong></td>
+<td>仲裁器通过计数器输出设备地址，各设备比较</td>
+<td>优先级可改变</td>
+<td>需要$\log_2 n$根地址线</td>
+</tr>
+<tr>
+<td><strong>独立请求</strong></td>
+<td>每个设备有独立的BR和BG线</td>
+<td>响应快，优先级灵活</td>
+<td>控制线多（2n根）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>分布式仲裁</strong>：不需要中央仲裁器，各设备有自己的仲裁号和仲裁器，通过比较仲裁号竞争总线。</p>
+<h4 id="65">6.5 总线操作和定时</h4>
+<p><strong>总线传输周期</strong>：完成一次总线操作所需的时间，通常包括：
+1. 申请分配阶段：主设备申请总线
+2. 寻址阶段：主设备给出从设备地址
+3. 传数阶段：数据交换
+4. 结束阶段：撤销有关信号</p>
+<p><strong>同步定时方式</strong>：
+- 采用统一的时钟信号来同步数据传送
+- 优点：控制简单，传输速率较高
+- 缺点：各部件速度必须匹配，否则时钟频率受最慢部件限制</p>
+<p><strong>异步定时方式</strong>：
+- 不采用统一时钟，通过握手信号（请求/应答）协调
+- 根据握手信号的交互方式分为三种：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>过程</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>不互锁</strong></td>
+<td>主设备发出请求后经过一段时间自动撤销请求；从设备收到请求后经过一段时间自动撤销应答</td>
+<td>速度快，可靠性差</td>
+</tr>
+<tr>
+<td><strong>半互锁</strong></td>
+<td>主设备必须等从设备的应答信号到来后才撤销请求；从设备经过一段时间自动撤销应答</td>
+<td>可靠性提高</td>
+</tr>
+<tr>
+<td><strong>全互锁</strong></td>
+<td>主设备等应答后才撤销请求；从设备等请求撤销后才撤销应答</td>
+<td>最可靠，速度最慢</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：同步通信速度最快但灵活性差；异步通信全互锁最可靠但最慢；半互锁是折中方案。</p>
+</blockquote>
+</blockquote>
+<h4 id="66">6.6 常用总线标准</h4>
+<table>
+<thead>
+<tr>
+<th>总线标准</th>
+<th>类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ISA</strong></td>
+<td>系统总线</td>
+<td>16位，已淘汰</td>
+</tr>
+<tr>
+<td><strong>PCI</strong></td>
+<td>系统总线</td>
+<td>32/64位，并行，即插即用</td>
+</tr>
+<tr>
+<td><strong>PCIe</strong></td>
+<td>系统总线</td>
+<td>串行点对点，_lane_概念，带宽可扩展</td>
+</tr>
+<tr>
+<td><strong>AGP</strong></td>
+<td>图形总线</td>
+<td>专用于显卡，已淘汰</td>
+</tr>
+<tr>
+<td><strong>USB</strong></td>
+<td>通信总线</td>
+<td>串行，热插拔，树形拓扑</td>
+</tr>
+<tr>
+<td><strong>SATA</strong></td>
+<td>通信总线</td>
+<td>串行，专用于磁盘</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_29">【易错警示】</h3>
+<ul>
+<li>❌ 总线带宽计算时忘记除以8（把位当成字节）</li>
+<li>❌ 地址总线宽度决定寻址空间，数据总线宽度决定一次传输的数据量</li>
+<li>❌ 同步总线的时钟频率由最慢设备决定</li>
+<li>❌ 链式查询对电路故障最敏感（一个设备故障可能阻断后面的设备）</li>
+<li>❌ 半互锁方式可能导致请求信号长期有效（如果应答信号一直不来）</li>
+</ul>
+<h3 id="_30">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>19</td>
+<td>总线带宽计算</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>19</td>
+<td>总线仲裁方式</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>19</td>
+<td>总线定时方式</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>19</td>
+<td>总线带宽计算</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>19</td>
+<td>总线复用</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>19</td>
+<td>总线性能指标</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>📌 2024年真题精析 - DMA控制I/O方式（第22题）</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="DMA真题"></div>
+<p><strong>题目</strong>：DMA控制I/O方式下，设备的输入/输出由DMA控制器控制完成，此时，DMA控制器控制的数据传输通路位于（ ）。</p>
+<p><strong>答案</strong>：C. 设备接口和主存之间</p>
+<p><strong>解析</strong>：DMA的传送过程分为三个阶段：</p>
+<ol>
+<li><strong>预处理</strong>：CPU完成必要的准备工作，由DMA控制器向CPU发总线请求</li>
+<li><strong>数据传送</strong>：DMA控制器接管总线后，在<strong>设备接口和主存之间</strong>进行数据传送，此阶段由DMA控制器控制</li>
+<li><strong>后处理</strong>：传送结束后，DMA控制器向CPU发送中断信号，做结束处理</li>
+</ol>
+<p><strong>关键理解</strong>：DMA控制器直接在设备和主存之间传输数据，不需要经过CPU，这是DMA方式的核心优势！</p>
+</div>
+<hr />
+<h3>【典型例题解析】</h3>
+<div class="example">
+  <h4>例题1（2024年 第19题）</h4>
+  <p><strong>题目：</strong>某计算机总线频率为100MHz，总线宽度为64位，总线周期数为2。则该总线的带宽为（  ）</p>
+  <p>A. 400MB/s  B. 800MB/s  C. 1600MB/s  D. 3200MB/s</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>明确总线带宽公式</strong>：
+      <br/>总线带宽 = (总线宽度 / 8) × 总线频率 / 总线周期数
+      <br/>或：总线带宽 = 总线宽度 × 总线频率 / 8 / 总线周期数（单位：字节/秒）
+    </li>
+    <li><strong>代入数据计算</strong>：
+      <br/>总线宽度 = 64位 = 8字节
+      <br/>总线频率 = 100MHz = 100×10⁶ Hz
+      <br/>总线周期数 = 2（即每2个时钟周期传输一次数据）
+      <br/>带宽 = 8B × 100×10⁶ / 2 = 800×10⁶ / 2 = 400×10⁶ B/s = <strong>400MB/s</strong>
+    </li>
+  </ol>
+  <p><strong>答案：</strong>A（400MB/s）</p>
+  <p><strong>解析：</strong>本题考查总线带宽计算。常见错误：①忘记除以8，把位当字节算得3200MB/s；②忘记除以总线周期数2，算得800MB/s。正确公式：带宽(字节/秒) = (总线宽度/8) × (总线频率/总线周期数)。注意单位换算：1MB/s = 10⁶ B/s。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>总线带宽 = (总线宽度/8) × 总线工作频率（无周期数时）</li>
+    <li>有总线周期数时：带宽 = (总线宽度/8) × 总线频率 / 周期数</li>
+    <li>突发传输：一次地址传输后连续传输多个数据块，带宽更高</li>
+    <li>总线复用：地址线和数据线共用，减少引脚数</li>
+  </ul>
+</div>
+<div class="example">
+  <h4>例题2（2022年 第19题）</h4>
+  <p><strong>题目：</strong>在总线定时方式中，（  ）方式下主设备发出请求后必须等待从设备的应答信号到来后才撤销请求，而从设备经过一段时间自动撤销应答。</p>
+  <p>A. 不互锁  B. 半互锁  C. 全互锁  D. 同步通信</p>
+  <p><strong>解题步骤：</strong></p>
+  <ol>
+    <li><strong>分析各选项定义</strong>：
+      <br/>A. 不互锁：主设备发出请求后自动撤销，不等待应答
+      <br/>B. 半互锁：主设备等应答后才撤销请求；从设备自动撤销应答
+      <br/>C. 全互锁：主设备等应答后才撤销请求；从设备等请求撤销后才撤销应答
+      <br/>D. 同步通信：统一时钟信号，不存在请求/应答握手
+    </li>
+    <li><strong>匹配题目描述</strong>：
+      <br/>题目描述：主设备等应答后才撤销请求 + 从设备自动撤销应答
+      <br/>这正是<strong>半互锁</strong>的定义。
+    </li>
+  </ol>
+  <p><strong>答案：</strong>B（半互锁）</p>
+  <p><strong>解析：</strong>本题考查总线异步定时方式的三种互锁关系。记忆技巧：看"双方是否互相等待"。不互锁=双方都不等；半互锁=一方等另一方；全互锁=双方互相等。半互锁的特点是主设备等从设备应答后才撤销请求，但从设备不等待主设备撤销请求，而是自动撤销应答。这可能导致请求信号长期有效（如果从设备故障不撤销应答）。</p>
+  <p><strong>知识点总结：</strong></p>
+  <ul>
+    <li>不互锁：速度快，可靠性差</li>
+    <li>半互锁：主设备等应答，从设备自动撤销，可靠性中等</li>
+    <li>全互锁：双方互相等待，最可靠但最慢</li>
+    <li>同步通信：统一时钟，最快但灵活性差</li>
+  </ul>
+</div>
+
+
+<hr />
+<h2 id="zhenti-gallery">📚 历年真题原题（2014-2024）— 计算机组成原理</h2>
+<p>以下展示408历年真题原题图片。计组题目分布在每份试卷的第12-22题（选择题12-21题，大题43-44题）。</p>
+<div class="zhenti-gallery">
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2014年真题（共20页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p14.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p14.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p15.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p15.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p16.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p16.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p17.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p17.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p18.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p18.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p19.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p19.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p20.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p20.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2015年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2016年真题（共10页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2017年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2018年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2019年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2021年真题（共9页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2022年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2023年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2024年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p9.png">
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.addEventListener('scroll', function(){
+  const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  let current = '';
+  headings.forEach(h => { if(h.getBoundingClientRect().top <= 80) current = h.id; });
+  tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  document.querySelector('.back-to-top').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+</script>
+</body>
+</html>

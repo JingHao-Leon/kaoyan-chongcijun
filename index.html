@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="考研冲刺君：面向考研学生的数学一、英语一、408知识体系与备考计划。">
+  <title>考研冲刺君｜考研知识库</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .vocab-link{color:#4566e8;font-weight:700;cursor:pointer}.highlights-section{margin-top:8px}.highlight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.highlight-card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;text-decoration:none;transition:.2s}.highlight-card:hover{transform:translateY(-3px);border-color:#cbd3ff;box-shadow:0 14px 30px rgba(46,57,96,.08)}.highlight-card img{width:100%;height:142px;object-fit:cover;object-position:center;background:#f3f5fa}.highlight-body{padding:17px 18px 19px}.highlight-label{font-size:10px;font-weight:800}.label-math{color:#d17637}.label-english{color:#7251c6}.label-cs{color:#377bc0}.highlight-body h3{font-size:16px;margin:8px 0 6px}.highlight-body p{font-size:12px;line-height:1.75;color:var(--muted);margin:0 0 12px}.highlight-body b{font-size:11px;color:var(--blue)}.dark-mode .highlight-card{background:#171c2b;border-color:var(--line)}.dark-mode .highlight-card img{background:#20263a}@media(max-width:900px){.highlight-grid{grid-template-columns:1fr}}
+  </style>
+<script defer src="assets/navigation.js"></script></head>
+<body class="portal-page">
+  <header class="portal-nav">
+    <a href="index.html" class="portal-brand"><span class="brand-mark">冲</span><span>考研冲刺君</span><small>考研知识库</small></a>
+    <nav class="portal-links" aria-label="主导航">
+      <a class="active" href="index.html">首页</a>
+      <a href="#courses">知识体系</a>
+      <a href="#plan">备考计划</a>
+      <a href="#updates">每日更新</a>
+    </nav>
+    <div class="portal-actions"><button class="icon-button" aria-label="搜索">⌕</button><button class="theme-button" id="theme-toggle" aria-label="切换暗夜模式" title="切换暗夜模式">☾</button><button class="login-button" data-login>登录 / 注册</button></div>
+  </header>
+
+  <div class="portal-shell">
+    <aside class="portal-sidebar">
+      <div class="sidebar-kicker">2027 考研 · 清华目标</div>
+      <div class="progress-card"><div class="progress-top"><span>学习进度功能</span><strong>开发中</strong></div><div class="progress-bar"><i style="width:0"></i></div><p>当前版本仅提供公开学习资料浏览。</p><button class="ghost-button" data-login>查看功能说明 →</button></div>
+      <div class="side-section"><div class="side-label">我的备考地图</div><a href="#courses" class="side-link selected"><span>▦</span> 知识体系总览</a><a href="#highlights" class="side-link"><span>▤</span> 高频考点图解</a><a href="#plan" class="side-link"><span>◷</span> 三阶段备考计划</a><a href="english1.html#清华大学计算机复试专题" class="side-link"><span>◇</span> 清华计算机复试</a><a href="english1.html#历年英语一真题原文库" class="side-link"><span>▤</span> 历年真题原文</a><a href="#updates" class="side-link"><span>✦</span> 最新内容</a><a href="#member" class="side-link"><span>◇</span> 会员专属资料 <b>PRO</b></a></div>
+      <div class="side-section"><div class="side-label">科目导航</div><a href="math1.html" class="side-link"><span class="dot math"></span> 数学一</a><a href="math1.html#数学一知识点分类与真题地图" class="side-link"><span>▤</span> 数学分类地图</a><a href="english1.html" class="side-link"><span class="dot english"></span> 英语一</a><a href="ds.html" class="side-link"><span class="dot cs"></span> 408 数据结构</a><a href="co.html" class="side-link"><span class="dot cs"></span> 408 计组</a><a href="os.html" class="side-link"><span class="dot cs"></span> 408 操作系统</a><a href="cn.html" class="side-link"><span class="dot cs"></span> 408 计网</a><a href="408_choice.html" class="side-link"><span>▤</span> 408选择题解析</a><a href="#plan" class="side-link"><span class="dot plan"></span> 复习计划</a></div>
+      <div class="side-footer"><span>页面内容整理于</span><strong>2026.07.14</strong></div>
+    </aside>
+
+    <main class="portal-main">
+      <section class="welcome-row"><div><span class="eyebrow">你的上岸工作台</span><h1>把每一次学习，<em>变成上岸的确定性。</em></h1><p>一套为高目标考生整理的考研知识体系。按科目拆解、按阶段推进，今天开始稳稳拿分。</p></div><div class="target-card"><span>目标院校</span><strong>清华大学</strong><small>计算机科学与技术 · 总分目标 400+</small><button data-login>设置我的目标 →</button></div></section>
+
+      <section class="quick-stats"><div><strong>6</strong><span>核心科目</span></div><div><strong>69</strong><span>知识图解</span></div><div><strong>11 年</strong><span>真题资料</span></div><div><strong>400+</strong><span>冲刺目标分</span></div></section>
+
+      <section id="courses" class="content-section"><div class="section-heading"><div><span class="eyebrow">从框架开始</span><h2>知识体系</h2></div><a href="math1.html">查看全部 →</a></div><div class="course-grid">
+        <a class="course-card featured" href="math1.html"><div class="course-icon math-icon">∫</div><div class="course-copy"><div class="course-meta"><span>主科 · 150 分</span><b>基础阶段</b></div><h3>数学一</h3><p>高等数学、线性代数、概率论，建立完整的题型与方法地图。</p><div class="course-foot"><span>22 个章节</span><span class="course-progress"><i style="width:42%"></i></span><strong>42%</strong></div></div></a>
+        <a class="course-card" href="english1.html"><div class="course-icon english-icon">A</div><div class="course-copy"><div class="course-meta"><span>主科 · 100 分</span><b>持续更新</b></div><h3>英语一</h3><p>单词、阅读、翻译、写作，掌握稳定拿分的方法论。</p><div class="course-foot"><span>7 个板块 · <span class="vocab-link" onclick="event.preventDefault();event.stopPropagation();location.href='english5000.html'">5000词库</span></span><span class="course-progress"><i style="width:28%"></i></span><strong>28%</strong></div></div></a>
+        <a class="course-card" href="ds.html"><div class="course-icon cs-icon">⌘</div><div class="course-copy"><div class="course-meta"><span>专业课 · 150 分</span><b>重点突破</b></div><h3>408 专业课</h3><p>数据结构、计组、操作系统、计网，一张图掌握考点脉络。</p><div class="course-foot"><span>4 大模块</span><span class="course-progress"><i style="width:18%"></i></span><strong>18%</strong></div></div></a>
+      </div></section>
+
+      <section id="plan" class="content-section plan-section"><div class="section-heading"><div><span class="eyebrow">按节奏推进</span><h2>三阶段备考计划</h2></div><a href="#plan">打开完整计划 →</a></div><div class="timeline"><div class="timeline-item done"><span class="timeline-number">01</span><div><b>基础夯实期</b><small>03 — 06 月</small><p>过完一轮知识体系，做对基础题，建立自己的错题本。</p></div></div><div class="timeline-item current"><span class="timeline-number">02</span><div><b>强化突破期</b><small>07 — 09 月 · 当前阶段</small><p>专项刷题、真题训练，把知识点变成稳定的得分能力。</p></div></div><div class="timeline-item"><span class="timeline-number">03</span><div><b>冲刺模考期</b><small>10 — 12 月</small><p>套卷模拟、查漏补缺、考前背诵，完成最后一公里。</p></div></div></div></section>
+
+      <section id="updates" class="content-section updates-section"><div class="section-heading"><div><span class="eyebrow">内容整理记录</span><h2>最近整理</h2></div><span class="sync-status">资料范围见各页说明</span></div><div class="update-list"><a href="co.html#3"><span class="update-tag tag-blue">408</span><div><b>Cache 映射与虚拟存储综合题</b><p>补充知识图解 · 计算机组成原理</p></div><time>2026.07.14</time></a><a href="math1.html"><span class="update-tag tag-orange">数学</span><div><b>数学一综合题审题与建模通法</b><p>补充极限、积分、线代参数题与概率模板</p></div><time>2026.07.14</time></a><a href="english1.html"><span class="update-tag tag-purple">英语</span><div><b>英语 5000 词库与完形/阅读例题</b><p>新增可搜索词库、原创例题和逐题解析</p></div><time>2026.07.14</time></a><a href="english1.html"><span class="update-tag tag-purple">英语</span><div><b>考研英语一阅读六大题型</b><p>新增定位法练习 · 阅读理解</p></div><time>2026.07.12</time></a></div></section>
+
+      <section id="highlights" class="content-section highlights-section"><div class="section-heading"><div><span class="eyebrow">真题反复出现</span><h2>考前高频考点 · 图解版</h2></div><a href="math1.html">进入知识库 →</a></div><div class="highlight-grid">
+        <a class="highlight-card" href="math1.html"><img src="images/math_mvt_diagram.png" alt="微分中值定理图解"><div class="highlight-body"><span class="highlight-label label-math">数学一 · 高频</span><h3>微分中值定理怎么选？</h3><p>看到“存在一点使等式成立”，先判断题目给的是闭区间、开区间还是导数条件，再在罗尔、拉格朗日、柯西之间做选择。</p><b>查看图解与例题 →</b></div></a>
+        <a class="highlight-card" href="math1.html"><img src="images/math_chain_rule.png" alt="多元函数链式法则图解"><div class="highlight-body"><span class="highlight-label label-math">数学一 · 易错</span><h3>多元复合函数链式法则</h3><p>先画变量依赖关系，再沿每条路径相乘求和。图解能避免漏项，也能快速判断偏导数的层级。</p><b>查看图解与例题 →</b></div></a>
+        <a class="highlight-card" href="english1.html"><img src="images/english_reading_flow.png" alt="英语阅读解题流程图"><div class="highlight-body"><span class="highlight-label label-english">英语一 · 40 分</span><h3>阅读题：定位 → 同义替换</h3><p>先用题干关键词回原文定位，再比较选项和原文的逻辑关系。主旨题、细节题和推理题都能套用这条流程。</p><b>查看解题流程 →</b></div></a>
+        <a class="highlight-card" href="english1.html"><img src="images/english_writing_structure.png" alt="英语写作结构图解"><div class="highlight-body"><span class="highlight-label label-english">英语一 · 写作</span><h3>大作文三段式结构</h3><p>描述图画、解释寓意、给出评论或建议。先保证结构完整，再用主题词和连接句提高表达稳定性。</p><b>查看写作模板 →</b></div></a>
+        <a class="highlight-card" href="ds.html#4"><img src="images/ds_tree_traversal.png" alt="二叉树遍历图解"><div class="highlight-body"><span class="highlight-label label-cs">408 · 必考</span><h3>二叉树遍历与线索化</h3><p>前序、中序、后序的访问顺序是树题基础。遇到遍历序列重构，先找根，再递归切分左右子树。</p><b>查看算法图解 →</b></div></a>
+        <a class="highlight-card" href="co.html#3"><img src="images/co_cache_mapping.png" alt="Cache 映射图解"><div class="highlight-body"><span class="highlight-label label-cs">408 · 综合题</span><h3>Cache 映射与地址拆分</h3><p>地址拆成标记、组号、块内地址三部分，结合主存块号和 Cache 行号判断命中与替换。</p><b>查看计算步骤 →</b></div></a>
+      </div></section>
+
+      <section id="member" class="member-banner"><div><span class="eyebrow">后续功能规划</span><h2>让重要的资料，随时为你打开。</h2><p>错题本、每日任务和学习助手仍在规划中；当前公开页面的资料范围以各页说明为准。</p></div><button class="primary-button" data-login>查看功能说明 →</button></section>
+      <footer class="portal-footer"><span>© 2026 考研冲刺君</span><span>知识随时更新 · 目标始终清晰</span></footer>
+    </main>
+  </div>
+  <div class="modal-backdrop" id="login-modal" aria-hidden="true"><div class="login-modal" role="dialog" aria-modal="true"><button class="modal-close" data-close>×</button><span class="brand-mark">冲</span><h2>功能开发中</h2><p>当前版本不提供登录、进度保存或会员服务；请直接使用已公开的学习资料。</p><small>后续功能上线前会在页面中明确说明。</small></div></div>
+  <script>const root=document.documentElement,themeButton=document.getElementById('theme-toggle');const savedTheme=localStorage.getItem('qhd-theme');if(savedTheme==='dark'){root.classList.add('dark-mode');themeButton.textContent='☀';themeButton.title='切换明亮模式';themeButton.setAttribute('aria-label','切换明亮模式')}themeButton.addEventListener('click',()=>{const dark=root.classList.toggle('dark-mode');localStorage.setItem('qhd-theme',dark?'dark':'light');themeButton.textContent=dark?'☀':'☾';themeButton.title=dark?'切换明亮模式':'切换暗夜模式';themeButton.setAttribute('aria-label',dark?'切换明亮模式':'切换暗夜模式')});const modal=document.getElementById('login-modal');document.querySelectorAll('[data-login]').forEach(b=>b.addEventListener('click',()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false')}));document.querySelector('[data-close]').addEventListener('click',()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true')});modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');modal.setAttribute('aria-hidden','true')}});</script>
+</body>
+</html>

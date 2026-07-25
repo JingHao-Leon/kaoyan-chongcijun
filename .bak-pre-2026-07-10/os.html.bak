@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>408 操作系统 | 考研冲刺君</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left:'9865',right:'9865',display:true},{left:'$',right:'$',display:false}]});"></script>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand"><span class="logo">🏆</span><span>考研冲刺君</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="">首页</a></li>
+    <li><a href="math1.html" class="">数学一</a></li>
+    <li><a href="english1.html" class="">英语一</a></li>
+    <li><a href="ds.html" class="">数据结构</a></li>
+    <li><a href="co.html" class="">计组</a></li>
+    <li><a href="os.html" class="active">OS</a></li>
+    <li><a href="cn.html" class="">计网</a></li>
+  </ul>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">目录</div>
+    <ul class="toc-list">
+<li><a href="#3523" class="toc-h1">第三部分：操作系统（35分，约23%）</a></li>
+<li><a href="#1" class="toc-h2">第1章 操作系统概述</a></li>
+<li><a href="#_5" class="toc-h3">　必背</a></li>
+<li><a href="#_7" class="toc-h3">　核心概念</a></li>
+<li><a href="#_8" class="toc-h3">　易错警示</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#2" class="toc-h2">第2章 进程管理</a></li>
+<li><a href="#_10" class="toc-h3">　必背</a></li>
+<li><a href="#_11" class="toc-h3">　核心概念</a></li>
+<li><a href="#_12" class="toc-h3">　易错警示</a></li>
+<li><a href="#_13" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#3" class="toc-h2">第3章 内存管理</a></li>
+<li><a href="#_15" class="toc-h3">　必背</a></li>
+<li><a href="#_16" class="toc-h3">　核心概念</a></li>
+<li><a href="#_17" class="toc-h3">　易错警示</a></li>
+<li><a href="#_18" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#4" class="toc-h2">第4章 文件管理</a></li>
+<li><a href="#_20" class="toc-h3">　必背</a></li>
+<li><a href="#_21" class="toc-h3">　核心概念</a></li>
+<li><a href="#_22" class="toc-h3">　易错警示</a></li>
+<li><a href="#_23" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+<li><a href="#7" class="toc-h2">第5章 输入输出系统</a></li>
+<li><a href="#_1" class="toc-h3">　必背</a></li>
+<li><a href="#_3" class="toc-h3">　核心概念</a></li>
+<li><a href="#_4" class="toc-h3">　易错警示</a></li>
+<li><a href="#_examples" class="toc-h3">　例题解析</a></li>
+</ul>
+  </aside>
+  <main class="content"><h1 id="3523">第三部分：操作系统（35分，约23%）</h1>
+<hr />
+<h2 id="1">第1章 操作系统概述</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_ch1_overview.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_ch1_overview"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_kernel_user_mode.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_kernel_user_mode"></div><div style="text-align:center;margin:20px 0;"><img src="images/os_system_call.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_system_call"></div>
+<h3 id="24">【分值占比】约 2~4 分</h3>
+<h3 id="_5">【考频】⭐⭐（低频）</h3>
+<h3 id="_6">【必背】</h3>
+<ul>
+<li>操作系统的四大特征：并发、共享、虚拟、异步</li>
+<li>操作系统的功能：处理机管理、存储器管理、设备管理、文件管理</li>
+<li>操作系统接口：命令接口、程序接口（系统调用）、图形接口</li>
+<li>操作系统发展：批处理、分时、实时、网络、分布式</li>
+<li>内核态与用户态、中断与异常</li>
+</ul>
+<h3 id="_7">【核心概念】</h3>
+<h4 id="11">1.1 操作系统特征</h4>
+<p><strong>并发</strong>：两个或多个事件在同一时间间隔内发生（宏观同时，微观交替）。</p>
+<p><strong>共享</strong>：系统中的资源供多个进程共同使用。
+- 互斥共享（临界资源）
+- 同时访问</p>
+<p><strong>虚拟</strong>：将一个物理实体变为若干逻辑对应物。
+- 时分复用（虚拟处理机、虚拟设备）
+- 空分复用（虚拟存储器）</p>
+<p><strong>异步</strong>：进程的执行走走停停，不可预知速度，但结果确定。</p>
+<h4 id="12">1.2 中断与异常</h4>
+<p><strong>中断（外中断）</strong>：来自CPU执行指令以外的事件。
+- I/O中断
+- 时钟中断
+- 外部信号</p>
+<p><strong>异常（内中断/陷入）</strong>：来自CPU执行指令内部的事件。
+-  trap（有意为之，如系统调用）
+- fault（可恢复错误，如缺页）
+- abort（不可恢复错误）</p>
+<p><strong>处理过程</strong>：
+1. 关中断
+2. 保存断点和程序状态
+3. 识别中断源
+4. 转向中断服务程序
+5. 开中断、执行中断服务
+6. 关中断、恢复现场
+7. 开中断、返回</p>
+<h3 id="_8">【易错警示】</h3>
+<ul>
+<li>❌ 并发 ≠ 并行，并发是交替执行，并行是真正同时执行</li>
+<li>❌ 中断是外中断（异步），异常是内中断（同步）</li>
+<li>❌ 系统调用是主动触发的异常（trap），不是中断</li>
+<li>❌ 用户态到内核态的唯一途径是中断/异常/系统调用</li>
+</ul>
+<h3>【典型例题解析】</h3>
+<div class="example">
+<h4>例题1（2020年 第23题）—— 操作系统特征与系统调用</h4>
+<p><strong>题目描述：</strong>下列关于操作系统特征的叙述中，正确的是（ ）</p>
+<p>A. 并发性是指两个或多个事件在同一时刻发生</p>
+<p>B. 共享性是指系统中的资源可以被多个进程同时访问</p>
+<p>C. 虚拟性是指通过某种技术将一个物理实体变为若干个逻辑上的对应物</p>
+<p>D. 异步性是指进程的执行速度不可预知，因此执行结果也不可预知</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li><strong>分析选项A：</strong>并发性是指两个或多个事件在<strong>同一时间间隔内</strong>发生（宏观同时，微观交替），而同一时刻发生的是<strong>并行性</strong>。A错误。</li>
+<li><strong>分析选项B：</strong>共享性分为两种方式：互斥共享（临界资源，如打印机）和同时访问（如磁盘、可重入代码）。不是所有资源都可以被"同时访问"。B错误。</li>
+<li><strong>分析选项C：</strong>虚拟性正是通过时分复用或空分复用技术，将一个物理实体变为若干个逻辑上的对应物。例如：虚拟处理机（时分复用CPU）、虚拟存储器（空分复用内存）。C正确。</li>
+<li><strong>分析选项D：</strong>异步性是指进程的执行走走停停，速度不可预知，但<strong>执行结果是确定的</strong>（只要初始条件和输入相同）。D错误。</li>
+</ol>
+<p><strong>答案：C</strong></p>
+<p><strong>解析总结：</strong>操作系统的四大特征中，并发与并行是常考易混点：并发是交替执行（单核），并行是真正同时执行（多核）。虚拟性通过时分复用（虚拟处理机、虚拟设备）和空分复用（虚拟存储器）实现。异步性强调速度不可预知但结果确定。</p>
+<p><strong>相关知识点：</strong>操作系统四大特征（并发、共享、虚拟、异步）、并发vs并行、互斥共享vs同时访问、时分复用vs空分复用、系统调用（trap异常）。</p>
+</div>
+<div class="example">
+<h4>例题2（2022年 第23题）—— 系统调用与中断处理</h4>
+<p><strong>题目描述：</strong>下列关于系统调用的叙述中，正确的是（ ）</p>
+<p>A. 系统调用是用户程序直接调用操作系统函数的过程</p>
+<p>B. 系统调用是通过中断机制实现的</p>
+<p>C. 系统调用执行时，CPU从用户态切换到内核态是通过中断实现的</p>
+<p>D. 系统调用返回后，CPU从内核态切换到用户态是通过异常实现的</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li><strong>分析选项A：</strong>系统调用不是直接调用操作系统函数，而是通过陷入指令（trap）主动触发一个异常，由操作系统内核处理。用户程序不能直接调用内核函数。A错误。</li>
+<li><strong>分析选项B：</strong>系统调用是通过<strong>异常（trap/陷入）</strong>实现的，不是通过中断。中断是异步的外部事件，trap是同步的内部事件（有意为之）。B错误。</li>
+<li><strong>分析选项C：</strong>系统调用执行时，用户程序执行trap指令（如int 0x80或syscall），触发一个异常，CPU从用户态切换到内核态。这是通过<strong>异常机制</strong>实现的，不是中断。但某些教材将trap归类为内中断/软中断，因此表述存在争议。从严格意义上，C的表述不够准确，但相比其他选项更接近正确。</li>
+<li><strong>分析选项D：</strong>系统调用返回后，CPU从内核态切换到用户态是通过执行特权指令（如iret）实现的，这是正常的返回操作，不是通过异常。D错误。</li>
+</ol>
+<p><strong>答案：C</strong>（注：在408考试中，系统调用通常被描述为通过中断/异常机制实现状态切换，C是最符合考试标准的答案）</p>
+<p><strong>解析总结：</strong>系统调用是用户程序请求操作系统服务的接口，通过trap（有意异常）实现。执行trap指令时：① 保存现场 ② 切换至内核态 ③ 查系统调用表找到服务程序 ④ 执行服务 ⑤ 恢复现场返回。用户态到内核态的唯一途径是中断/异常/系统调用。</p>
+<p><strong>相关知识点：</strong>系统调用机制、trap异常、用户态vs内核态、中断/异常/系统调用的区别、中断处理过程。</p>
+</div>
+<hr />
+<h2 id="2">第2章 进程管理</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_ch2_process.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_ch2_process"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_process_sync.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_process_sync"></div><div style="text-align:center;margin:20px 0;"><img src="images/os_scheduling_comparison.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_scheduling_comparison"></div>
+<h3 id="814">【分值占比】约 8~14 分</h3>
+<h3 id="_9">【考频】⭐⭐⭐⭐⭐（最高频，大题重灾区）</h3>
+<h3 id="_10">【必背】</h3>
+<ul>
+<li>进程与线程的概念、区别、状态转换</li>
+<li>进程控制块（PCB）的内容</li>
+<li>进程同步：临界区、互斥、信号量机制</li>
+<li>经典同步问题：生产者-消费者、读者-写者、哲学家进餐、吸烟者</li>
+<li>进程通信：共享存储、消息传递、管道</li>
+<li>处理机调度算法：FCFS、SJF、优先级、RR、多级反馈队列</li>
+<li>死锁：条件、预防、避免、检测与解除、银行家算法</li>
+</ul>
+<h3 id="_11">【核心概念】</h3>
+<h4 id="21">2.1 进程与线程</h4>
+<p><strong>进程</strong>：程序的一次执行过程，是资源分配和调度的基本单位。</p>
+<p><strong>进程特征</strong>：
+- 动态性：创建→执行→消亡
+- 并发性：多个进程同时存在
+- 独立性：独立资源、独立调度
+- 异步性：执行速度不可预知
+- 结构性：PCB + 程序段 + 数据段</p>
+<p><strong>进程状态</strong>：</p>
+<pre><code>创建 → 就绪 ←→ 运行 → 终止
+         ↑______↓
+           阻塞（等待/睡眠）
+</code></pre>
+<ul>
+<li><strong>就绪</strong>：具备运行条件，等待CPU</li>
+<li><strong>运行</strong>：正在CPU上执行</li>
+<li><strong>阻塞</strong>：等待某事件（如I/O完成）</li>
+<li>挂起状态：进程被换出内存（了解）</li>
+</ul>
+<p><strong>进程控制块（PCB）</strong>：
+- 进程标识符PID
+- 处理机状态（通用寄存器、PSW）
+- 进程调度信息（状态、优先级）
+- 资源分配信息
+- 链接指针</p>
+<p><strong>线程</strong>：CPU调度的基本单位，进程内的执行单元。</p>
+<p><strong>线程分类</strong>：
+- 用户级线程：由线程库管理，内核不可见，切换快
+- 内核级线程：由内核管理，可利用多核，切换慢
+- 组合方式：两者结合</p>
+<p><strong>进程 vs 线程</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>进程</th>
+<th>线程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>资源分配</td>
+<td>拥有独立资源</td>
+<td>共享进程资源</td>
+</tr>
+<tr>
+<td>调度单位</td>
+<td>传统OS中既是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>切换开销</td>
+<td>大（需切换页表）</td>
+<td>小（共享地址空间）</td>
+</tr>
+<tr>
+<td>通信</td>
+<td>需IPC机制</td>
+<td>可直接读写共享变量</td>
+</tr>
+<tr>
+<td>创建开销</td>
+<td>大</td>
+<td>小</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>一个崩溃不影响其他</td>
+<td>一个崩溃可能整个进程崩溃</td>
+</tr>
+</tbody>
+</table>
+<h4 id="22">2.2 进程同步</h4>
+<p><strong>临界资源</strong>：一次仅允许一个进程访问的资源。</p>
+<p><strong>临界区</strong>：访问临界资源的代码段。</p>
+<p><strong>同步原则（互斥条件）</strong>：
+1. <strong>空闲让进</strong>：临界区空闲时，允许请求进入
+2. <strong>忙则等待</strong>：临界区被占用时，其他进程等待
+3. <strong>有限等待</strong>：不能无限等待
+4. <strong>让权等待</strong>：不能进入时应释放CPU（可选，信号量能实现）</p>
+<p>** Peterson算法**（软件方法）：</p>
+<pre><code class="language-c">// 两个进程P0, P1
+bool flag[2] = {false, false};
+int turn = 0;
+
+// Pi进入临界区
+flag[i] = true;
+turn = j;  // 让对方优先
+while (flag[j] &amp;&amp; turn == j);  // 等待
+// 临界区
+flag[i] = false;
+</code></pre>
+<p><strong>硬件方法</strong>：
+- 中断屏蔽：简单但限制CPU并发
+- 测试并设置（TSL/TestAndSet）
+- 交换指令（Swap/XCHG）</p>
+<p><strong>信号量机制</strong>（重点）：</p>
+<p>由Dijkstra提出，信号量S是一个整型变量。</p>
+<pre><code class="language-c">// P操作（wait/down/proberen）
+void P(Semaphore &amp;S) {
+    S.value--;
+    if (S.value &lt; 0) {
+        // 将进程加入S的等待队列
+        block(S.L);
+    }
+}
+
+// V操作（signal/up/verhogen）
+void V(Semaphore &amp;S) {
+    S.value++;
+    if (S.value &lt;= 0) {
+        // 从S的等待队列唤醒一个进程
+        wakeup(S.L);
+    }
+}
+</code></pre>
+<p><strong>信号量初值含义</strong>：
+- 互斥信号量：初值为1
+- 同步信号量：初值为资源数量</p>
+<h4 id="23">2.3 经典同步问题</h4>
+<p><strong>1. 生产者-消费者问题</strong>：</p>
+<pre><code class="language-c">Semaphore mutex = 1;    // 互斥访问缓冲区
+Semaphore empty = n;    // 空缓冲区数量
+Semaphore full = 0;     // 满缓冲区数量
+
+// 生产者
+void Producer() {
+    while (true) {
+        生产一个产品;
+        P(empty);   // 有空位吗？
+        P(mutex);   // 进入临界区
+        放入缓冲区;
+        V(mutex);   // 退出临界区
+        V(full);    // 满位+1
+    }
+}
+
+// 消费者
+void Consumer() {
+    while (true) {
+        P(full);    // 有产品吗？
+        P(mutex);   // 进入临界区
+        从缓冲区取出;
+        V(mutex);   // 退出临界区
+        V(empty);   // 空位+1
+        消费产品;
+    }
+}
+</code></pre>
+<p>⚠️ <strong>P操作顺序不能颠倒！</strong> 先P(empty)再P(mutex)，否则可能死锁。</p>
+<p><strong>2. 读者-写者问题</strong>：</p>
+<pre><code class="language-c">Semaphore rw = 1;       // 读写互斥
+Semaphore mutex = 1;    // 保护readcount
+int readcount = 0;      // 读者数量
+
+// 读者
+void Reader() {
+    P(mutex);
+    readcount++;
+    if (readcount == 1) P(rw);  // 第一个读者申请
+    V(mutex);
+    读数据;
+    P(mutex);
+    readcount--;
+    if (readcount == 0) V(rw);  // 最后一个读者释放
+    V(mutex);
+}
+
+// 写者
+void Writer() {
+    P(rw);
+    写数据;
+    V(rw);
+}
+</code></pre>
+<p><strong>3. 哲学家进餐问题</strong>：</p>
+<p>5个哲学家，5根筷子，每人需两根才能进餐。</p>
+<p>解决方案：
+- 最多允许4人同时拿起筷子
+- 先拿编号小的筷子
+- 只有当两根筷子都可用时才拿
+- 非对称解法：奇数先左后右，偶数先右后左</p>
+<h4 id="24_1">2.4 进程通信</h4>
+<p><strong>低级通信</strong>：PV操作，交换信息量少。</p>
+<p><strong>高级通信</strong>：
+1. <strong>共享存储</strong>：共享内存区域，需同步机制
+2. <strong>消息传递</strong>：
+   - 直接通信：send(P, message), receive(Q, message)
+   - 间接通信：通过信箱
+3. <strong>管道通信</strong>：pipe，单向字节流，FIFO
+4. <strong>套接字（Socket）</strong>：网络通信</p>
+<h4 id="25">2.5 处理机调度</h4>
+<p><strong>调度层次</strong>：
+- <strong>高级调度（作业调度）</strong>：从后备队列选作业进入内存
+- <strong>中级调度（内存调度）</strong>：进程换入换出
+- <strong>低级调度（进程调度）</strong>：从就绪队列选进程分配CPU</p>
+<p><strong>调度方式</strong>：
+- 非抢占式：进程自愿放弃CPU
+- 抢占式：可被强制剥夺（时间片到、优先级更高、有紧急任务）</p>
+<p><strong>调度算法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>思想</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FCFS</td>
+<td>先来先服务</td>
+<td>简单、公平</td>
+<td>对短作业不利（护航效应）</td>
+</tr>
+<tr>
+<td>SJF</td>
+<td>短作业优先</td>
+<td>平均等待时间最小</td>
+<td>需预测运行时间、可能饥饿</td>
+</tr>
+<tr>
+<td>优先级</td>
+<td>按优先级调度</td>
+<td>灵活</td>
+<td>可能饥饿</td>
+</tr>
+<tr>
+<td>RR</td>
+<td>时间片轮转</td>
+<td>响应快、公平</td>
+<td>时间片选取难</td>
+</tr>
+<tr>
+<td>HRRN</td>
+<td>高响应比优先</td>
+<td>折中</td>
+<td>需计算响应比</td>
+</tr>
+<tr>
+<td>多级反馈队列</td>
+<td>动态调整优先级</td>
+<td>兼顾长短作业</td>
+<td>复杂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>响应比</strong>：$R_p = rac{等待时间 + 要求服务时间}{要求服务时间} = 1 + rac{等待时间}{要求服务时间}$</p>
+<p><strong>周转时间</strong>：$T = 完成时间 - 到达时间$
+<strong>带权周转时间</strong>：$W = rac{T}{运行时间}$</p>
+<h4 id="26">2.6 死锁</h4>
+<p><strong>死锁定义</strong>：多个进程因竞争资源而互相等待，若无外力作用则永远等待。</p>
+<p><strong>死锁四个必要条件</strong>（同时满足）：
+1. <strong>互斥条件</strong>：资源互斥使用
+2. <strong>不剥夺条件</strong>：资源只能主动释放
+3. <strong>请求和保持条件</strong>：持有资源的同时请求新资源
+4. <strong>循环等待条件</strong>：存在进程-资源的循环等待链</p>
+<p><strong>死锁处理策略</strong>：</p>
+<ol>
+<li><strong>死锁预防</strong>：破坏四个必要条件之一</li>
+<li>破坏互斥：某些资源可共享（如SPOOLing）</li>
+<li>破坏不剥夺：申请不到时释放已占资源</li>
+<li>破坏请求和保持：一次性申请所有资源</li>
+<li>
+<p>破坏循环等待：资源按序申请</p>
+</li>
+<li>
+<p><strong>死锁避免</strong>：动态检查，不让系统进入不安全状态</p>
+</li>
+<li>
+<p><strong>银行家算法</strong></p>
+</li>
+<li>
+<p><strong>死锁检测与解除</strong>：允许死锁发生，检测后解除</p>
+</li>
+<li>资源分配图法</li>
+<li>解除：剥夺资源、终止进程</li>
+</ol>
+<p><strong>银行家算法</strong>：</p>
+<p>数据结构：
+- Available：可用资源向量
+- Max：最大需求矩阵
+- Allocation：已分配矩阵
+- Need：需求矩阵，$Need = Max - Allocation$</p>
+<p><strong>安全性算法</strong>：
+1. Work = Available，Finish = false
+2. 找满足 $Need_i \leq Work$ 且 $Finish[i] = false$ 的进程
+3. Work = Work + Allocation_i，Finish[i] = true
+4. 重复2-3，若所有Finish为true则安全</p>
+<p><strong>资源请求算法</strong>：
+1. 检查 $Request_i \leq Need_i$，否则出错
+2. 检查 $Request_i \leq Available$，否则等待
+3. 试分配：Available -= Request, Allocation += Request, Need -= Request
+4. 执行安全性算法，若安全则分配，否则恢复</p>
+<h3 id="_12">【易错警示】</h3>
+<ul>
+<li>❌ 信号量的P/V操作是原语，不可中断</li>
+<li>❌ P操作顺序很重要，生产者-消费者中必须先P(empty)再P(mutex)</li>
+<li>❌ 互斥信号量初值为1，同步信号量初值为资源数</li>
+<li>❌ 死锁四个条件必须同时满足，破坏任一即可预防</li>
+<li>❌ 银行家算法是避免死锁，不是预防死锁</li>
+<li>❌ 不安全状态不一定死锁，但死锁一定在不安全状态</li>
+<li>❌ 时间片轮转中，时间片太大→FCFS，太小→切换开销大</li>
+</ul>
+<h3 id="_13">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>23, 24, 45</td>
+<td>PV操作、调度算法、进程大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>23, 24, 45</td>
+<td>死锁、银行家算法、进程大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>23, 24, 45</td>
+<td>同步问题、调度、进程大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>23, 24, 45</td>
+<td>信号量、死锁预防、进程大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>23, 24, 45</td>
+<td>哲学家问题、调度算法、进程大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>23, 24, 45</td>
+<td>PV操作、银行家算法、进程大题</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>📌 2024年真题精析 - 进程终止操作（第24题）</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/img9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="进程终止真题"></div>
+<p><strong>题目</strong>：下列选项中，操作系统在终止进程时<strong>不一定执行</strong>的是（ ）。</p>
+<p><strong>答案</strong>：A. 终止子进程</p>
+<p><strong>解析</strong>：</p>
+<ul>
+<li>所有的进程资源（内存空间、进程控制块、设备、打开文件、I/O缓冲区等）在进程终止时<strong>都会被释放</strong></li>
+<li>有些系统不允许子进程在父进程已终止的情况下存在（级联终止），但不是所有操作系统都这么设计</li>
+<li>因此，<strong>终止子进程不一定会在终止进程时执行</strong>，取决于具体OS的实现</li>
+</ul>
+<p><strong>核心概念</strong>：级联终止（Cascading Termination）——父进程终止时，其所有子进程也应终止。但不是所有OS都支持级联终止！</p>
+</div>
+<h3>【典型例题解析】</h3>
+<div class="example">
+<h4>例题1（2019年 第23题）—— 中断与异常分类</h4>
+<p><strong>题目描述：</strong>下列关于中断和异常的叙述中，正确的是（ ）</p>
+<p>A. 中断和异常都是由正在执行的指令产生的</p>
+<p>B. 中断是由CPU外部事件引起的，异常是由CPU内部事件引起的</p>
+<p>C. 异常处理结束后返回到发生异常的指令继续执行，中断处理结束后返回到被中断指令的下一条指令</p>
+<p>D. 中断和异常都发生在一条指令执行结束后</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li><strong>分析选项A：</strong>中断是由CPU外部事件引起的（如I/O设备请求），不是由正在执行的指令产生的；异常是由CPU执行指令内部产生的（如除零、缺页）。因此A错误。</li>
+<li><strong>分析选项B：</strong>中断是外中断（外部事件），异常是内中断（内部事件）。这是中断和异常的本质区别。B正确。</li>
+<li><strong>分析选项C：</strong>异常分为三类：trap（有意为之，如系统调用，返回下一条指令）、fault（可恢复错误，如缺页，返回原指令重新执行）、abort（不可恢复错误，不返回）。因此"异常返回原指令继续执行"不完全正确。C错误。</li>
+<li><strong>分析选项D：</strong>中断发生在指令执行结束后（异步），但异常（如缺页）可能发生在指令执行过程中（同步）。D错误。</li>
+</ol>
+<p><strong>答案：B</strong></p>
+<p><strong>解析总结：</strong>中断是异步的、由外部事件引起；异常是同步的、由指令执行内部事件引起。中断处理结束后返回被中断指令的下一条指令；异常中的fault返回原指令重新执行，trap返回下一条指令。</p>
+<p><strong>相关知识点：</strong>中断与异常的区别、系统调用（trap）的处理流程、中断处理过程（关中断→保存断点→识别中断源→执行服务程序→恢复现场→开中断→返回）。</p>
+</div>
+<div class="example">
+<h4>例题2（2021年 第24题）—— 进程调度算法计算</h4>
+<p><strong>题目描述：</strong>某系统有4个进程P1、P2、P3、P4，它们的到达时间和运行时间如下表所示。采用非抢占式短作业优先（SJF）调度算法，请计算每个进程的周转时间、带权周转时间和平均周转时间。</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>到达时间</th>
+<th>运行时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>5</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解题步骤（图解过程）：</strong></p>
+<ol>
+<li>
+<p><strong>画时间轴分析：</strong></p>
+<p>【画图步骤说明】</p>
+<ul>
+<li>画一条水平时间轴，标记0到16的时间点</li>
+<li>在时间轴上方标注每个进程的到达时间（P1@0, P2@2, P3@4, P4@5）</li>
+<li>按SJF规则，在每次调度时选择已到达且运行时间最短的进程</li>
+<li>用不同颜色/线型表示每个进程的执行时间段</li>
+</ul>
+<p>具体调度过程：</p>
+<ul>
+<li>t=0：只有P1到达，开始执行P1（运行时间7）</li>
+<li>t=7：P1完成。已到达的进程：P2(到达2,剩余4)、P3(到达4,剩余1)、P4(到达5,剩余4)。选择最短的P3（运行时间1）</li>
+<li>t=8：P3完成。已到达的进程：P2(剩余4)、P4(剩余4)。两者运行时间相同，按FCFS选择P2</li>
+<li>t=12：P2完成。执行P4（运行时间4）</li>
+<li>t=16：P4完成</li>
+</ul>
+<p>调度顺序：P1 → P3 → P2 → P4</p>
+<p>甘特图：</p>
+<pre><code>时间：  0       7       8       12      16
+       |-------|-------|-------|-------|
+       |  P1   |  P3   |  P2   |  P4   |
+       |-------|-------|-------|-------|
+</code></pre>
+</li>
+<li>
+<p><strong>计算各进程的周转时间：</strong></p>
+<ul>
+<li>P1：完成时间7 - 到达时间0 = 7</li>
+<li>P2：完成时间12 - 到达时间2 = 10</li>
+<li>P3：完成时间8 - 到达时间4 = 4</li>
+<li>P4：完成时间16 - 到达时间5 = 11</li>
+</ul>
+</li>
+<li>
+<p><strong>计算带权周转时间（周转时间/运行时间）：</strong></p>
+<ul>
+<li>P1：7 / 7 = 1.0</li>
+<li>P2：10 / 4 = 2.5</li>
+<li>P3：4 / 1 = 4.0</li>
+<li>P4：11 / 4 = 2.75</li>
+</ul>
+</li>
+<li>
+<p><strong>计算平均值：</strong></p>
+<ul>
+<li>平均周转时间 = (7 + 10 + 4 + 11) / 4 = 32 / 4 = 8</li>
+<li>平均带权周转时间 = (1.0 + 2.5 + 4.0 + 2.75) / 4 = 10.25 / 4 = 2.5625</li>
+</ul>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>周转时间</th>
+<th>带权周转时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>7</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>10</td>
+<td>2.5</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>4</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>11</td>
+<td>2.75</td>
+</tr>
+</tbody>
+</table>
+<p>平均周转时间 = 8，平均带权周转时间 = 2.5625</p>
+<p><strong>解析总结：</strong>非抢占式SJF在每次调度时选择已到达且运行时间最短的进程。本题中P3虽然到达较晚（t=4），但由于其运行时间最短（1），在P1完成后（t=7）被优先调度。SJF的平均等待时间最小，但可能导致长作业饥饿。</p>
+<p><strong>相关知识点：</strong>进程调度算法（FCFS、SJF、优先级、RR、HRRN）、周转时间计算、带权周转时间、甘特图画法、抢占式vs非抢占式SJF。</p>
+</div>
+<div class="example">
+<h4>例题3（2023年 第45题）—— 银行家算法</h4>
+<p><strong>题目描述：</strong>某系统有5个进程P0~P4和3类资源A、B、C。资源总数为A=10, B=5, C=7。在某一时刻，资源分配情况如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>进程</th>
+<th>Max (A,B,C)</th>
+<th>Allocation (A,B,C)</th>
+<th>Need (A,B,C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>7, 5, 3</td>
+<td>0, 1, 0</td>
+<td>7, 4, 3</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>3, 2, 2</td>
+<td>2, 0, 0</td>
+<td>1, 2, 2</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9, 0, 2</td>
+<td>3, 0, 2</td>
+<td>6, 0, 0</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2, 2, 2</td>
+<td>2, 1, 1</td>
+<td>0, 1, 1</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>4, 3, 3</td>
+<td>0, 0, 2</td>
+<td>4, 3, 1</td>
+</tr>
+</tbody>
+</table>
+<p>请问：(1) 当前系统是否处于安全状态？若是，请给出一个安全序列。(2) 若P1请求资源(1, 0, 2)，能否分配？</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li>
+<p><strong>计算Available（可用资源）：</strong></p>
+<p>Available = 资源总数 - 已分配资源总和</p>
+<ul>
+<li>A: 10 - (0+2+3+2+0) = 3</li>
+<li>B: 5 - (1+0+0+1+0) = 3</li>
+<li>C: 7 - (0+0+2+1+2) = 2</li>
+</ul>
+<p>Available = (3, 3, 2)</p>
+</li>
+<li>
+<p><strong>执行安全性算法（找安全序列）：</strong></p>
+<p>Work = Available = (3, 3, 2)，Finish = [false, false, false, false, false]</p>
+<p>【图解过程】</p>
+<ul>
+<li>画一个表格，列：进程、Need、Work、Finish</li>
+<li>每次迭代找Need ≤ Work的进程，更新Work += Allocation</li>
+</ul>
+<p>第1轮：找Need ≤ (3,3,2)的进程</p>
+<ul>
+<li>P0: Need=(7,4,3) > (3,3,2) → 不满足</li>
+<li>P1: Need=(1,2,2) ≤ (3,3,2) → <strong>满足！</strong> Work = (3,3,2) + (2,0,0) = (5,3,2)，Finish[1]=true</li>
+</ul>
+<p>第2轮：Work = (5,3,2)</p>
+<ul>
+<li>P0: (7,4,3) > (5,3,2) → 不满足</li>
+<li>P2: (6,0,0) ≤ (5,3,2)? A: 6>5 → 不满足</li>
+<li>P3: (0,1,1) ≤ (5,3,2) → <strong>满足！</strong> Work = (5,3,2) + (2,1,1) = (7,4,3)，Finish[3]=true</li>
+</ul>
+<p>第3轮：Work = (7,4,3)</p>
+<ul>
+<li>P0: (7,4,3) ≤ (7,4,3) → <strong>满足！</strong> Work = (7,4,3) + (0,1,0) = (7,5,3)，Finish[0]=true</li>
+</ul>
+<p>第4轮：Work = (7,5,3)</p>
+<ul>
+<li>P2: (6,0,0) ≤ (7,5,3) → <strong>满足！</strong> Work = (7,5,3) + (3,0,2) = (10,5,5)，Finish[2]=true</li>
+</ul>
+<p>第5轮：Work = (10,5,5)</p>
+<ul>
+<li>P4: (4,3,1) ≤ (10,5,5) → <strong>满足！</strong> Work = (10,5,5) + (0,0,2) = (10,5,7)，Finish[4]=true</li>
+</ul>
+<p>所有Finish=true，系统<strong>处于安全状态</strong>。</p>
+<p>安全序列：<strong>P1 → P3 → P0 → P2 → P4</strong>（安全序列不唯一）</p>
+</li>
+<li>
+<p><strong>判断P1请求(1,0,2)能否分配：</strong></p>
+<ul>
+<li>检查Request1 ≤ Need1：(1,0,2) ≤ (1,2,2) → <strong>满足</strong></li>
+<li>检查Request1 ≤ Available：(1,0,2) ≤ (3,3,2) → <strong>满足</strong></li>
+</ul>
+<p>试分配：</p>
+<ul>
+<li>Available = (3,3,2) - (1,0,2) = (2,3,0)</li>
+<li>Allocation1 = (2,0,0) + (1,0,2) = (3,0,2)</li>
+<li>Need1 = (1,2,2) - (1,0,2) = (0,2,0)</li>
+</ul>
+<p>执行安全性算法（新Available=(2,3,0)）：</p>
+<ul>
+<li>P1: Need=(0,2,0) ≤ (2,3,0) → 满足，Work = (2,3,0)+(3,0,2)=(5,3,2)</li>
+<li>P3: Need=(0,1,1) ≤ (5,3,2) → 满足，Work = (5,3,2)+(2,1,1)=(7,4,3)</li>
+<li>P0: Need=(7,4,3) ≤ (7,4,3) → 满足，Work = (7,4,3)+(0,1,0)=(7,5,3)</li>
+<li>P2: Need=(6,0,0) ≤ (7,5,3) → 满足，Work = (7,5,3)+(3,0,2)=(10,5,5)</li>
+<li>P4: Need=(4,3,1) ≤ (10,5,5) → 满足</li>
+</ul>
+<p>存在安全序列，因此<strong>可以分配</strong>。</p>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<p>(1) 系统处于安全状态，安全序列之一：P1 → P3 → P0 → P2 → P4</p>
+<p>(2) P1请求(1,0,2)可以分配，分配后仍存在安全序列</p>
+<p><strong>解析总结：</strong>银行家算法通过安全性检查确保系统不会进入不安全状态。关键步骤：①计算Need=Max-Allocation；②计算Available；③安全性算法找安全序列；④资源请求时先检查Request≤Need和Request≤Available，再试分配并检查安全性。安全序列不唯一，找到一个即可。</p>
+<p><strong>相关知识点：</strong>银行家算法数据结构（Available, Max, Allocation, Need）、安全性算法、资源请求算法、安全状态vs不安全状态、死锁避免vs死锁预防。</p>
+</div>
+<hr />
+<h2 id="3">第3章 内存管理</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_ch3_memory.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_ch3_memory"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_virtual_memory.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_virtual_memory"></div><div style="text-align:center;margin:20px 0;"><img src="images/os_memory_hierarchy.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_memory_hierarchy"></div><div style="text-align:center;margin:20px 0;"><img src="images/os_deadlock_conditions.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_deadlock_conditions"></div>
+<h3 id="814_1">【分值占比】约 8~14 分</h3>
+<h3 id="_14">【考频】⭐⭐⭐⭐⭐（最高频，大题重灾区）</h3>
+<h3 id="_15">【必背】</h3>
+<ul>
+<li>内存管理的概念：逻辑地址 vs 物理地址</li>
+<li>连续分配：单一、固定、动态分区</li>
+<li>非连续分配：分页、分段、段页式</li>
+<li>分页存储：页表、地址变换、快表TLB</li>
+<li>分段存储：段表、地址变换、段的共享与保护</li>
+<li>虚拟内存：请求分页、页面置换算法</li>
+<li>页面置换算法：OPT、FIFO、LRU、CLOCK</li>
+<li>页面分配策略、工作集、抖动</li>
+</ul>
+<h3 id="_16">【核心概念】</h3>
+<h4 id="31">3.1 内存管理概述</h4>
+<p><strong>逻辑地址（虚拟地址）</strong>：程序中使用的地址。
+<strong>物理地址</strong>：内存中的实际地址。
+<strong>重定位</strong>：将逻辑地址转为物理地址。
+- 静态重定位：装入时转换
+- 动态重定位：运行时转换（基址寄存器）</p>
+<h4 id="32">3.2 连续分配</h4>
+<p><strong>单一连续分配</strong>：整个内存给一道程序。</p>
+<p><strong>固定分区分配</strong>：内存分成若干固定大小分区。</p>
+<p><strong>动态分区分配</strong>：按需分配，产生外部碎片。</p>
+<p><strong>动态分区分配算法</strong>：
+| 算法 | 思想 | 特点 |
+|------|------|------|
+| 首次适应（FF） | 从头找第一个够大的 | 低地址碎片多 |
+| 最佳适应（BF） | 找最小的够大的 | 碎片小但多 |
+| 最坏适应（WF） | 找最大的 | 碎片大但少 |
+| 邻近适应（NF） | 从上次结束位置找 | 均匀分布 |</p>
+<p><strong>紧凑（Compaction）</strong>：移动已分配分区，合并空闲区，解决外部碎片。</p>
+<h4 id="33">3.3 分页存储</h4>
+<p><strong>基本思想</strong>：将进程和内存都分成固定大小的页/页框。</p>
+<p><strong>地址结构</strong>：</p>
+<pre><code>| 页号 P | 页内偏移 W |
+</code></pre>
+<p><strong>页表</strong>：记录页号到页框号的映射。
+- 页表项：页框号 + 有效位 + 修改位 + 访问位 + 保护位</p>
+<p><strong>地址变换</strong>：
+1. 逻辑地址拆分：页号 + 页内偏移
+2. 查页表得页框号
+3. 物理地址 = 页框号 × 页大小 + 页内偏移</p>
+<p><strong>快表（TLB）</strong>：
+- 页表的高速缓存，存放最近使用的页表项
+- 全相联或组相联
+- TLB命中则无需访问内存中的页表</p>
+<p><strong>二级页表</strong>：
+- 页目录表 + 页表
+- 减少页表占用连续空间</p>
+<h4 id="34">3.4 分段存储</h4>
+<p><strong>基本思想</strong>：按程序逻辑分段，段长可变。</p>
+<p><strong>地址结构</strong>：</p>
+<pre><code>| 段号 S | 段内偏移 W |
+</code></pre>
+<p><strong>段表</strong>：段号 → 段基址 + 段长 + 状态</p>
+<p><strong>地址变换</strong>：
+1. 查段表得段基址和段长
+2. 检查段内偏移是否越界
+3. 物理地址 = 段基址 + 段内偏移</p>
+<p><strong>分页 vs 分段</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>分页</th>
+<th>分段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单位大小</td>
+<td>固定（页大小）</td>
+<td>可变（段长）</td>
+</tr>
+<tr>
+<td>用户可见性</td>
+<td>透明</td>
+<td>可见</td>
+</tr>
+<tr>
+<td>目的</td>
+<td>减少外部碎片</td>
+<td>逻辑独立</td>
+</tr>
+<tr>
+<td>共享</td>
+<td>不易</td>
+<td>容易（共享段）</td>
+</tr>
+<tr>
+<td>保护</td>
+<td>页级</td>
+<td>段级</td>
+</tr>
+</tbody>
+</table>
+<h4 id="35">3.5 段页式存储</h4>
+<p><strong>基本思想</strong>：先分段，段内再分页。</p>
+<p><strong>地址结构</strong>：</p>
+<pre><code>| 段号 S | 页号 P | 页内偏移 W |
+</code></pre>
+<p><strong>地址变换</strong>：
+1. 查段表得页表始址
+2. 查页表得页框号
+3. 物理地址 = 页框号 × 页大小 + 页内偏移</p>
+<p>需要三次访存（段表→页表→数据），TLB可减少次数。</p>
+<h4 id="36">3.6 虚拟内存</h4>
+<p><strong>基本思想</strong>：基于局部性原理，只将部分程序装入内存即可运行。</p>
+<p><strong>请求分页</strong>：
+- 基本分页 + 请求调页 + 页面置换
+- 页表增加：有效位（是否在内存）、修改位、访问位、外存地址</p>
+<p><strong>页面置换算法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>思想</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPT（最佳）</td>
+<td>淘汰最长时间不用的</td>
+<td>理论最优</td>
+<td>不可实现（需预知未来）</td>
+</tr>
+<tr>
+<td>FIFO</td>
+<td>先进先出</td>
+<td>简单</td>
+<td>Belady异常（分配页框多反而缺页多）</td>
+</tr>
+<tr>
+<td>LRU</td>
+<td>最近最久未用</td>
+<td>性能好</td>
+<td>实现复杂</td>
+</tr>
+<tr>
+<td>CLOCK（NRU）</td>
+<td>近似LRU，循环扫描</td>
+<td>开销小</td>
+<td>略逊于LRU</td>
+</tr>
+<tr>
+<td>改进型CLOCK</td>
+<td>考虑修改位</td>
+<td>减少I/O</td>
+<td>稍复杂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Belady异常</strong>：FIFO算法特有的现象，页框增加缺页率反而增加。</p>
+<p><strong>页面分配策略</strong>：
+- <strong>固定分配局部置换</strong>：每个进程页框数固定
+- <strong>可变分配全局置换</strong>：可从全局空闲页框分配
+- <strong>可变分配局部置换</strong>：只允许从本进程置换</p>
+<p><strong>工作集</strong>：某段时间间隔内进程访问的页面集合。
+- 工作集大小可指导分配给进程的页框数
+- 工作集窗口太大：浪费内存；太小：频繁缺页</p>
+<p><strong>抖动（Thrashing）</strong>：
+- 现象：刚换出的页很快又被访问，频繁换入换出
+- 原因：进程太多，每个进程页框太少，工作集不能全部驻留
+- 解决：减少并发度、增加内存、局部置换</p>
+<p><strong>缺页中断处理</strong>：
+1. 保护CPU现场
+2. 分析中断原因（缺页）
+3. 从外存调入所需页
+4. 若内存满，按置换算法淘汰一页
+5. 修改页表，恢复现场</p>
+<h3 id="_17">【易错警示】</h3>
+<ul>
+<li>❌ 分页没有外部碎片，但有内部碎片（平均半页）</li>
+<li>❌ 分段没有内部碎片，但有外部碎片</li>
+<li>❌ 页表本身也占用内存，多级页表可减少连续空间需求</li>
+<li>❌ TLB miss ≠ Page Fault，TLB miss可能页在主存只是TLB没缓存</li>
+<li>❌ FIFO有Belady异常，LRU和OPT没有</li>
+<li>❌ 请求分页中，页表项的修改位决定换出时是否写回磁盘</li>
+<li>❌ 虚拟地址空间大小由地址位数决定，不是由物理内存决定</li>
+<li>❌ 抖动是因为页框不足，不是CPU太慢</li>
+</ul>
+<h3 id="_18">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>25, 26, 46</td>
+<td>分页地址变换、页面置换、内存大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>25, 26, 46</td>
+<td>段页式、LRU、内存大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>25, 26, 46</td>
+<td>请求分页、CLOCK算法、内存大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>25, 26, 46</td>
+<td>虚拟内存、工作集、内存大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>25, 26, 46</td>
+<td>分页计算、缺页处理、内存大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>25, 26, 46</td>
+<td>分段、页面置换、内存大题</td>
+</tr>
+</tbody>
+</table>
+<h3>【典型例题解析】</h3>
+<div class="example">
+<h4>例题1（2020年 第25题）—— 页面置换算法执行过程</h4>
+<p><strong>题目描述：</strong>某请求分页系统采用LRU页面置换算法，分配给某进程的页框数为3。该进程访问页面的序列为：1, 2, 3, 4, 2, 1, 5, 2, 3, 4。假设初始时页框为空，请计算缺页次数和缺页率。</p>
+<p><strong>解题步骤（图解过程）：</strong></p>
+<ol>
+<li><strong>初始化：</strong>3个页框均为空，缺页次数 = 0。</li>
+<li>
+<p><strong>逐次访问并记录页框状态：</strong></p>
+<p>【画图步骤说明】</p>
+<ul>
+<li>画一个3行10列的表格，行代表3个页框，列代表10次页面访问</li>
+<li>每次访问时，如果页面已在页框中（命中），标记"√"</li>
+<li>如果页面不在页框中（缺页），按LRU规则置换最久未使用的页面，标记"×"</li>
+<li>在表格上方标注访问序列：1, 2, 3, 4, 2, 1, 5, 2, 3, 4</li>
+</ul>
+<p>具体执行过程：</p>
+<table>
+<thead>
+<tr>
+<th>访问</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>5</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>页框1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>页框2</td>
+<td>-</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>页框3</td>
+<td>-</td>
+<td>-</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>缺页</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>详细分析每次置换：</strong></p>
+<ul>
+<li>访问1：缺页，页框1装入1</li>
+<li>访问2：缺页，页框2装入2</li>
+<li>访问3：缺页，页框3装入3</li>
+<li>访问4：缺页，页框中1最久未用（3次访问前），置换1，装入4</li>
+<li>访问2：命中（页框2中有2）</li>
+<li>访问1：缺页，页框中3最久未用（2次访问前），置换3，装入1</li>
+<li>访问5：缺页，页框中4最久未用（3次访问前），置换4，装入5</li>
+<li>访问2：命中（页框2中有2）</li>
+<li>访问3：缺页，页框中1最久未用（3次访问前），置换1，装入3</li>
+<li>访问4：缺页，页框中5最久未用（3次访问前），置换5，装入4</li>
+</ul>
+</li>
+</ol>
+<p><strong>答案：</strong>缺页次数 = 8次，缺页率 = 8/10 = 80%</p>
+<p><strong>解析总结：</strong>LRU（最近最久未使用）算法选择最长时间没有被访问的页面进行置换。本题中页框数为3，访问序列长度为10，共发生8次缺页。注意：LRU不会发生Belady异常，即增加页框数不会导致缺页率增加。</p>
+<p><strong>相关知识点：</strong>LRU算法原理、缺页率计算、LRU与FIFO的区别（FIFO有Belady异常，LRU没有）、页面置换算法的实现方式（栈或计数器）。</p>
+</div>
+<div class="example">
+<h4>例题2（2021年 第46题）—— 分页地址变换计算</h4>
+<p><strong>题目描述：</strong>某计算机采用二级页表的分页存储管理方式，按字节编址，页大小为4KB，页表项大小为4字节。逻辑地址结构为：页目录号（10位）+ 页号（10位）+ 页内偏移（12位）。若某进程的逻辑地址为0x004A1234，请回答：</p>
+<p>(1) 该地址的页目录号、页号和页内偏移分别是多少（用十六进制表示）？</p>
+<p>(2) 页目录表和页表各有多少项？</p>
+<p>(3) 页目录表和页表各占用多少字节？</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li>
+<p><strong>分析地址结构：</strong></p>
+<ul>
+<li>页内偏移12位 → 页大小 = 2^12 = 4KB（与题目一致）</li>
+<li>页号10位 → 每个页表最多 2^10 = 1024 项</li>
+<li>页目录号10位 → 页目录表最多 2^10 = 1024 项</li>
+<li>逻辑地址共32位 = 10 + 10 + 12</li>
+</ul>
+</li>
+<li>
+<p><strong>拆分逻辑地址0x004A1234：</strong></p>
+<p>将0x004A1234转换为二进制：</p>
+<p>0x004A1234 = 0000 0000 0100 1010 0001 0010 0011 0100</p>
+<ul>
+<li>页目录号（高10位）：00 0000 0100 = 0x004</li>
+<li>页号（中间10位）：10 1000 0100 = 0x28C</li>
+<li>页内偏移（低12位）：10 0011 0100 = 0x234</li>
+</ul>
+</li>
+<li>
+<p><strong>计算页表项数：</strong></p>
+<ul>
+<li>页目录表项数 = 2^10 = 1024 项</li>
+<li>每个页表项数 = 2^10 = 1024 项</li>
+</ul>
+</li>
+<li>
+<p><strong>计算页表占用空间：</strong></p>
+<ul>
+<li>页目录表大小 = 1024 × 4B = 4096B = 4KB</li>
+<li>每个页表大小 = 1024 × 4B = 4096B = 4KB</li>
+</ul>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<p>(1) 页目录号 = 0x004，页号 = 0x28C，页内偏移 = 0x234</p>
+<p>(2) 页目录表和页表各有1024项</p>
+<p>(3) 页目录表和页表各占用4KB</p>
+<p><strong>解析总结：</strong>二级页表将32位逻辑地址分为三级：页目录号用于索引页目录表找到页表基址，页号用于索引页表找到页框号，页内偏移用于定位页内具体字节。每个页表/页目录最多1024项（10位），每项4字节，因此大小恰好为4KB（一页），方便内存管理。</p>
+<p><strong>相关知识点：</strong>分页地址变换、二级页表结构、逻辑地址拆分、页表大小计算、TLB的作用（快表命中可省略两次访存）。</p>
+</div>
+<hr />
+<hr />
+<h2 id="4">第4章 文件管理</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_ch4_file.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_ch4_file"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_file_system.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_file_system"></div>
+<h3 id="610_1">【分值占比】约 6~10 分</h3>
+<h3 id="_19">【考频】⭐⭐⭐⭐（高频，磁盘调度常考计算题）</h3>
+<h3 id="_20">【必背】</h3>
+<ul>
+<li>文件逻辑结构：有结构（顺序、索引、索引顺序）vs 无结构（流式文件）</li>
+<li>文件物理结构：连续分配、链接分配、索引分配</li>
+<li>目录结构：单级、两级、树形、无环图、通用图</li>
+<li>文件共享：硬链接 vs 软链接（符号链接）</li>
+<li>文件保护：访问控制、口令、密码</li>
+<li>磁盘调度算法：FCFS、SSTF、SCAN、C-SCAN、LOOK、C-LOOK</li>
+<li>磁盘空间管理：空闲表、空闲链表、位示图、成组链接法</li>
+<li>索引节点地址计算</li>
+</ul>
+<h3 id="_21">【核心概念】</h3>
+<h4 id="41">4.1 文件的基本概念</h4>
+<p><strong>文件</strong>：具有文件名的一组相关信息的集合，是文件系统的最大逻辑单位。</p>
+<p><strong>文件的属性</strong>：文件名、标识符、类型、位置、大小、保护、时间等。</p>
+<h4 id="42">4.2 文件逻辑结构</h4>
+<p><strong>无结构文件（流式文件）</strong>：
+- 将数据按顺序组织成记录并积累保存
+- 看作字节流，如文本文件、二进制文件
+- 长度以字节为单位</p>
+<p><strong>有结构文件</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>组织方式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>顺序文件</strong></td>
+<td>记录按关键字顺序排列</td>
+<td>顺序存取快，随机存取慢</td>
+<td>批量数据处理</td>
+</tr>
+<tr>
+<td><strong>索引文件</strong></td>
+<td>为每个记录建立索引表</td>
+<td>支持直接存取，索引表占空间</td>
+<td>随机访问频繁</td>
+</tr>
+<tr>
+<td><strong>索引顺序文件</strong></td>
+<td>顺序文件 + 索引表（为一组记录建索引）</td>
+<td>折中方案</td>
+<td>大型文件</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：顺序文件适合顺序存取，索引文件适合随机存取，索引顺序文件是两者的折中。</p>
+</blockquote>
+</blockquote>
+<h4 id="43">4.3 文件物理结构</h4>
+<p><strong>连续分配</strong>：
+- 每个文件占用连续的磁盘块
+- 目录项中记录起始块号和块数
+- 优点：顺序存取快，支持直接存取
+- 缺点：产生外部碎片，文件长度不易动态增长</p>
+<p><strong>链接分配</strong>：
+- 每个磁盘块中存放下一个块的指针
+- <strong>隐式链接</strong>：指针在块中，对用户透明
+- <strong>显式链接</strong>（FAT）：指针集中存放在文件分配表FAT中
+- 优点：无外部碎片，文件可动态增长
+- 缺点：只能顺序存取，指针占用空间，可靠性差（一个块损坏导致后续都丢失）</p>
+<p><strong>索引分配</strong>：
+- 每个文件有一个索引块，记录该文件所有数据块的块号
+- 优点：支持直接存取，无外部碎片
+- 缺点：索引块占用额外空间
+- <strong>多级索引</strong>：大文件需要多个索引块，采用间接索引方式</p>
+<table>
+<thead>
+<tr>
+<th>物理结构</th>
+<th>连续</th>
+<th>链接</th>
+<th>索引</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>顺序存取</td>
+<td>快</td>
+<td>中</td>
+<td>中</td>
+</tr>
+<tr>
+<td>随机存取</td>
+<td>快</td>
+<td>不支持</td>
+<td>快</td>
+</tr>
+<tr>
+<td>外部碎片</td>
+<td>有</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>内部碎片</td>
+<td>有（最后一个块）</td>
+<td>无</td>
+<td>有（最后一个块）</td>
+</tr>
+<tr>
+<td>文件增长</td>
+<td>困难</td>
+<td>容易</td>
+<td>容易</td>
+</tr>
+</tbody>
+</table>
+<h4 id="44">4.4 目录结构</h4>
+<table>
+<thead>
+<tr>
+<th>目录结构</th>
+<th>特点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单级目录</strong></td>
+<td>所有文件在同一目录</td>
+<td>命名冲突，查找慢</td>
+</tr>
+<tr>
+<td><strong>两级目录</strong></td>
+<td>主文件目录 + 用户文件目录</td>
+<td>不能共享，结构简单</td>
+</tr>
+<tr>
+<td><strong>树形目录</strong></td>
+<td>层次结构，绝对路径/相对路径</td>
+<td>不便共享</td>
+</tr>
+<tr>
+<td><strong>无环图目录</strong></td>
+<td>允许文件/目录有多个父目录（共享）</td>
+<td>管理复杂</td>
+</tr>
+<tr>
+<td><strong>通用图目录</strong></td>
+<td>允许目录之间有环</td>
+<td>实现复杂，需避免循环</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：树形目录是现代OS最常用的结构；无环图目录通过硬链接实现文件共享。</p>
+</blockquote>
+</blockquote>
+<h4 id="45">4.5 文件共享</h4>
+<p><strong>硬链接</strong>：
+- 多个目录项指向同一个索引节点（inode）
+- 共享同一个物理文件
+- 删除时只有链接计数减1，计数为0时才真正删除文件
+- 不能跨文件系统建立硬链接</p>
+<p><strong>软链接（符号链接）</strong>：
+- 创建一个新的文件，内容是被链接文件的路径名
+- 通过路径名间接访问原文件
+- 删除原文件后软链接失效（悬空指针）
+- 可以跨文件系统，甚至可以链接目录</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>硬链接</th>
+<th>软链接</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实现方式</td>
+<td>多个目录项指向同一inode</td>
+<td>新建文件存储原文件路径</td>
+</tr>
+<tr>
+<td>原文件删除</td>
+<td>仍能访问（计数减1）</td>
+<td>链接失效</td>
+</tr>
+<tr>
+<td>跨文件系统</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>链接目录</td>
+<td>通常不允许</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>额外空间</td>
+<td>几乎不占用</td>
+<td>占用少量空间存路径</td>
+</tr>
+</tbody>
+</table>
+<h4 id="46">4.6 文件保护</h4>
+<table>
+<thead>
+<tr>
+<th>保护方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>访问控制</strong></td>
+<td>基于用户身份设置访问权限（读、写、执行）</td>
+</tr>
+<tr>
+<td><strong>访问控制列表（ACL）</strong></td>
+<td>为每个文件/目录设置详细的用户权限列表</td>
+</tr>
+<tr>
+<td><strong>口令</strong></td>
+<td>用户访问文件前需输入口令</td>
+</tr>
+<tr>
+<td><strong>密码</strong></td>
+<td>对文件内容进行加密</td>
+</tr>
+</tbody>
+</table>
+<h4 id="47">4.7 磁盘管理</h4>
+<p><strong>磁盘调度算法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>全称</th>
+<th>策略</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FCFS</strong></td>
+<td>先来先服务</td>
+<td>按请求顺序服务</td>
+<td>公平、简单</td>
+<td>寻道时间长，效率低</td>
+</tr>
+<tr>
+<td><strong>SSTF</strong></td>
+<td>最短寻道时间优先</td>
+<td>选距离当前磁头最近的请求</td>
+<td>平均寻道时间短</td>
+<td>可能产生饥饿（远端请求长期等待）</td>
+</tr>
+<tr>
+<td><strong>SCAN</strong></td>
+<td>电梯算法</td>
+<td>磁头单向移动，服务途中请求，到端点后反向</td>
+<td>避免饥饿，效率高</td>
+<td>两端请求等待时间不均</td>
+</tr>
+<tr>
+<td><strong>C-SCAN</strong></td>
+<td>循环扫描</td>
+<td>磁头单向移动，到端点后快速回到起点继续</td>
+<td>等待时间更均匀</td>
+<td>返回时不服务</td>
+</tr>
+<tr>
+<td><strong>LOOK</strong></td>
+<td>扫描 LOOK</td>
+<td>SCAN的改进，不到端点，到最后一个请求就反向</td>
+<td>减少无用移动</td>
+<td>类似SCAN</td>
+</tr>
+<tr>
+<td><strong>C-LOOK</strong></td>
+<td>循环 LOOK</td>
+<td>C-SCAN的改进，到最后一个请求后快速回到最前</td>
+<td>效率更高</td>
+<td>返回时不服务</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：SCAN（电梯）算法是考试最常考的；SSTF可能饥饿；C-SCAN/C-LOOK等待时间最均匀。</p>
+</blockquote>
+</blockquote>
+<p><strong>磁盘空间管理</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>原理</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>空闲表法</strong></td>
+<td>用表记录所有空闲块</td>
+<td>适合连续分配，需合并相邻空闲区</td>
+</tr>
+<tr>
+<td><strong>空闲链表法</strong></td>
+<td>空闲块用指针链接</td>
+<td>简单，但分配和回收需多次I/O</td>
+</tr>
+<tr>
+<td><strong>位示图法</strong></td>
+<td>用二进制位表示块是否空闲</td>
+<td>易找到连续/单个空闲块，位示图可常驻内存</td>
+</tr>
+<tr>
+<td><strong>成组链接法</strong></td>
+<td>空闲块分组，每组用一块记录下一组块号</td>
+<td>UNIX采用，兼顾效率和空间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="48">4.8 真题常考：磁盘调度算法计算</h4>
+<p><strong>示例</strong>：当前磁头在53号磁道，请求序列为 98, 183, 37, 122, 14, 124, 65, 67。</p>
+<p><strong>FCFS</strong>：按请求顺序移动，总移动 = |98-53| + |183-98| + ... = 640</p>
+<p><strong>SSTF</strong>：每次选最近的，总移动 = 236</p>
+<p><strong>SCAN</strong>（假设向大方向）：53→65→67→98→122→124→183→199→37→14，总移动 = 382</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：做磁盘调度题时，务必注意磁头初始方向、磁道范围（0~199）！</p>
+</blockquote>
+</blockquote>
+<h4 id="49">4.9 索引节点地址计算</h4>
+<p><strong>直接地址 + 间接地址</strong>：
+- 假设索引节点中有10个直接地址项，1个一级间接、1个二级间接、1个三级间接
+- 磁盘块大小为4KB，地址项大小为4B
+- 每个块可存放的地址数 = 4KB / 4B = 1024个</p>
+<p><strong>最大文件大小计算</strong>：
+- 直接地址：10 × 4KB = 40KB
+- 一级间接：1024 × 4KB = 4MB
+- 二级间接：1024² × 4KB = 4GB
+- 三级间接：1024³ × 4KB = 4TB</p>
+<p><strong>访问某字节需要几次磁盘I/O</strong>：
+- 直接地址范围：1次（读数据块）
+- 一级间接范围：2次（读间接块 + 读数据块）
+- 二级间接范围：3次
+- 三级间接范围：4次</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：间接级别越多，最大文件越大，但访问所需I/O次数也越多！</p>
+</blockquote>
+</blockquote>
+<h3 id="_22">【易错警示】</h3>
+<ul>
+<li>❌ 链接分配只能顺序存取，不能随机存取（显式链接FAT可以随机存取）</li>
+<li>❌ 索引分配中，索引块本身也占用磁盘空间</li>
+<li>❌ 硬链接不能跨文件系统，软链接可以</li>
+<li>❌ 删除原文件后，硬链接仍能访问，软链接失效</li>
+<li>❌ SCAN算法到端点才反向，LOOK到最后一个请求就反向</li>
+<li>❌ 位示图中1表示已分配/空闲取决于系统约定（通常0空闲1占用）</li>
+<li>❌ 计算磁盘I/O次数时，不要忘记读索引块本身也要一次I/O</li>
+</ul>
+<h3 id="_23">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>27, 28, 46</td>
+<td>磁盘调度、索引节点、文件大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>27, 28, 46</td>
+<td>文件物理结构、磁盘调度、文件大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>27, 28, 46</td>
+<td>文件分配、FAT、文件大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>27, 28, 46</td>
+<td>磁盘空间管理、目录结构、文件大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>27, 28, 46</td>
+<td>索引分配、磁盘调度、文件大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>27, 28, 46</td>
+<td>链接分配、SCAN算法、文件大题</td>
+</tr>
+</tbody>
+</table>
+<h3>【典型例题解析】</h3>
+<div class="example">
+<h4>例题1（2020年 第27题）—— 磁盘调度算法计算</h4>
+<p><strong>题目描述：</strong>假设磁盘有200个磁道（编号0~199），磁头当前位于53号磁道，且向磁道号增加方向移动。请求队列：98, 183, 37, 122, 14, 124, 65, 67。请分别计算FCFS、SSTF、SCAN、C-SCAN算法的磁头移动总距离。</p>
+<p><strong>解题步骤（图解过程）：</strong></p>
+<ol>
+<li>
+<p><strong>FCFS（先来先服务）：</strong></p>
+<p>【画图步骤说明】</p>
+<ul>
+<li>画一条水平线表示磁道0~199</li>
+<li>按请求顺序标记磁头移动路径：53 → 98 → 183 → 37 → 122 → 14 → 124 → 65 → 67</li>
+<li>计算每段距离并累加</li>
+</ul>
+<p>移动路径：53 → 98 → 183 → 37 → 122 → 14 → 124 → 65 → 67</p>
+<p>计算：|98-53| + |183-98| + |37-183| + |122-37| + |14-122| + |124-14| + |65-124| + |67-65|</p>
+<p>= 45 + 85 + 146 + 85 + 108 + 110 + 59 + 2 = <strong>640</strong></p>
+</li>
+<li>
+<p><strong>SSTF（最短寻道时间优先）：</strong></p>
+<p>从53开始，每次选择距离最近的请求：</p>
+<p>53 → 65(12) → 67(2) → 37(30) → 14(23) → 98(84) → 122(24) → 124(2) → 183(59)</p>
+<p>总移动 = 12 + 2 + 30 + 23 + 84 + 24 + 2 + 59 = <strong>236</strong></p>
+<p>⚠️ 注意：SSTF可能产生饥饿，如本例中183号磁道请求被延迟到最后。</p>
+</li>
+<li>
+<p><strong>SCAN（电梯算法，向大方向）：</strong></p>
+<p>磁头向大方向移动，服务途中请求，到最大端（199）后反向：</p>
+<p>53 → 65 → 67 → 98 → 122 → 124 → 183 → 199 → 37 → 14</p>
+<p>总移动 = (199-53) + (199-14) = 146 + 185 = <strong>331</strong></p>
+<p>⚠️ 注意：SCAN算法到端点才反向，不是到最后一个请求就反向（那是LOOK算法）。</p>
+</li>
+<li>
+<p><strong>C-SCAN（循环扫描，向大方向）：</strong></p>
+<p>磁头向大方向移动，服务途中请求，到最大端（199）后快速回到最小端（0），继续向大方向移动：</p>
+<p>53 → 65 → 67 → 98 → 122 → 124 → 183 → 199 → 0 → 14 → 37</p>
+<p>总移动 = (199-53) + (199-0) + (37-0) = 146 + 199 + 37 = <strong>382</strong></p>
+<p>⚠️ 注意：C-SCAN返回时不服务任何请求，直接快速回到起点。</p>
+</li>
+</ol>
+<p><strong>答案：</strong>FCFS=640, SSTF=236, SCAN=331, C-SCAN=382</p>
+<p><strong>解析总结：</strong>SSTF平均寻道时间最短但可能饥饿；SCAN避免饥饿但两端请求等待时间不均；C-SCAN等待时间最均匀。实际系统中SCAN和C-SCAN最常用。注意区分SCAN（到端点反向）和LOOK（到最后请求反向）。</p>
+<p><strong>相关知识点：</strong>磁盘调度算法比较、磁头移动距离计算、SCAN vs LOOK的区别、C-SCAN的返回过程不服务请求。</p>
+</div>
+<div class="example">
+<h4>例题2（2019年 第28题）—— 索引节点地址计算</h4>
+<p><strong>题目描述：</strong>某文件系统的索引节点（inode）包含12个直接地址项、1个一级间接地址项、1个二级间接地址项和1个三级间接地址项。每个磁盘块大小为4KB，每个地址项占4字节。请问：</p>
+<p>(1) 该文件系统支持的最大文件大小是多少？</p>
+<p>(2) 访问一个位于二级间接地址范围内的字节，需要几次磁盘I/O？</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li>
+<p><strong>计算每个块可存放的地址数：</strong></p>
+<p>每个磁盘块4KB = 4096字节，每个地址项4字节</p>
+<p>每个块可存放地址数 = 4096 / 4 = 1024 个</p>
+</li>
+<li>
+<p><strong>计算各级地址可寻址的空间：</strong></p>
+<ul>
+<li>直接地址：12 × 4KB = 48KB</li>
+<li>一级间接：1024 × 4KB = 4MB</li>
+<li>二级间接：1024² × 4KB = 1024 × 4MB = 4GB</li>
+<li>三级间接：1024³ × 4KB = 1024 × 4GB = 4TB</li>
+</ul>
+</li>
+<li>
+<p><strong>计算最大文件大小：</strong></p>
+<p>最大文件 = 48KB + 4MB + 4GB + 4TB ≈ 4TB（三级间接占主导）</p>
+</li>
+<li>
+<p><strong>分析二级间接地址访问的I/O次数：</strong></p>
+<p>访问二级间接地址范围内的数据需要：</p>
+<ul>
+<li>第1次I/O：读inode（获取二级间接块地址）</li>
+<li>第2次I/O：读二级间接块（获取一级间接块地址）</li>
+<li>第3次I/O：读一级间接块（获取数据块地址）</li>
+<li>第4次I/O：读数据块（获取实际数据）</li>
+</ul>
+<p>共需要 <strong>4次</strong> 磁盘I/O（如果inode已在内存中，则为3次）</p>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<p>(1) 最大文件大小 = 12×4KB + 1024×4KB + 1024²×4KB + 1024³×4KB = 48KB + 4MB + 4GB + 4TB ≈ 4TB</p>
+<p>(2) 需要4次磁盘I/O（inode→二级间接块→一级间接块→数据块）</p>
+<p><strong>解析总结：</strong>索引节点采用多级间接地址来平衡文件大小和访问效率。直接地址访问最快（1次I/O），但容量有限；间接级别越高，容量越大但访问越慢。UNIX文件系统采用类似的混合索引结构（直接+一级+二级+三级间接）。</p>
+<p><strong>相关知识点：</strong>inode结构、直接/间接地址、磁盘块大小与地址项大小关系、I/O次数计算、UNIX文件系统的混合索引分配。</p>
+</div>
+<hr /><h2 id="7">第7章 输入输出系统</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_ch5_io.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_ch5_io"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/os_io_layers.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_io_layers"></div><div style="text-align:center;margin:20px 0;"><img src="images/os_disk_schedule.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="os_disk_schedule"></div>
+<h3 id="610">【分值占比】约 6~10 分</h3>
+<h3 id="dma">【考频】⭐⭐⭐⭐（高频，中断和DMA是重点）</h3>
+<h3 id="_1">【必背】</h3>
+<ul>
+<li>I/O接口的功能和基本结构</li>
+<li>I/O端口编址方式：统一编址 vs 独立编址</li>
+<li>I/O方式：程序查询、中断、DMA、通道</li>
+<li>中断系统：中断响应过程、中断向量、多重中断</li>
+<li>DMA方式：DMA控制器结构、DMA传送过程</li>
+<li>中断与DMA的区别（从CPU介入程度、响应时机等角度）</li>
+<li>中断和DMA时间占比的计算</li>
+</ul>
+<h3 id="_2">【核心概念】</h3>
+<h4 id="71-io">7.1 I/O系统的基本概念</h4>
+<p><strong>I/O系统</strong>：由I/O设备、I/O接口、I/O控制方式及相应软件组成。</p>
+<h4 id="72-io">7.2 I/O接口</h4>
+<p><strong>I/O接口（I/O控制器）</strong>：主机与I/O设备之间的交接界面，通过接口实现主机与设备之间的信息交换。</p>
+<p><strong>I/O接口的功能</strong>：
+1. <strong>选址功能</strong>：通过设备选择电路选中设备
+2. <strong>传送命令</strong>：接收并保存CPU发来的命令
+3. <strong>传送数据</strong>：缓冲数据，协调速度差异
+4. <strong>反映设备状态</strong>：忙、闲、出错等状态信号</p>
+<p><strong>I/O接口的基本结构</strong>：</p>
+<pre><code>┌─────────────────────────────────────┐
+│            I/O接口                  │
+│  ┌─────────┐      ┌─────────────┐   │
+│  │ 数据缓冲 │←────→│   设备      │   │
+│  │ 寄存器   │      │  数据线     │   │
+│  └─────────┘      └─────────────┘   │
+│  ┌─────────┐      ┌─────────────┐   │
+│  │ 状态/控制│←────→│   设备      │   │
+│  │ 寄存器   │      │ 控制/状态线 │   │
+│  └─────────┘      └─────────────┘   │
+│         ↑                           │
+│    系统总线（与CPU/主存连接）         │
+└─────────────────────────────────────┘
+</code></pre>
+<h4 id="73-io">7.3 I/O端口及其编址</h4>
+<p><strong>I/O端口</strong>：接口中可被CPU直接访问的寄存器，分为：
+- <strong>数据端口</strong>：读写数据
+- <strong>状态端口</strong>：反映设备状态（通常只读）
+- <strong>控制端口</strong>：存放控制命令（通常只写）</p>
+<p><strong>I/O端口编址方式</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>编址方式</th>
+<th>统一编址（存储器映射）</th>
+<th>独立编址（I/O映射）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>原理</strong></td>
+<td>I/O端口与存储器共享地址空间</td>
+<td>I/O端口有独立的地址空间</td>
+</tr>
+<tr>
+<td><strong>指令</strong></td>
+<td>使用访存指令访问I/O端口</td>
+<td>需要专门的I/O指令（IN/OUT）</td>
+</tr>
+<tr>
+<td><strong>地址范围</strong></td>
+<td>占用内存地址</td>
+<td>不占用内存地址</td>
+</tr>
+<tr>
+<td><strong>优点</strong></td>
+<td>指令丰富，编程灵活</td>
+<td>程序清晰，不占用内存空间</td>
+</tr>
+<tr>
+<td><strong>缺点</strong></td>
+<td>占用内存地址空间</td>
+<td>指令少，编程受限</td>
+</tr>
+<tr>
+<td><strong>代表</strong></td>
+<td>ARM、MIPS</td>
+<td>x86</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：408统考中x86架构采用独立编址，需要记住IN/OUT指令专用于I/O端口访问。</p>
+</blockquote>
+</blockquote>
+<h4 id="74-io">7.4 I/O方式</h4>
+<p><strong>1. 程序查询方式</strong>
+- CPU不断查询设备状态，直到设备就绪
+- 优点：硬件简单
+- 缺点：CPU效率极低，处于忙等状态</p>
+<p><strong>2. 程序中断方式</strong>
+- 设备就绪后向CPU发中断请求
+- CPU响应中断后执行中断服务程序完成数据传送
+- 适合中低速设备（如键盘、打印机）</p>
+<p><strong>3. DMA方式（直接存储器访问）</strong>
+- DMA控制器直接在内存与I/O设备之间传送数据
+- 无需CPU干预数据传送，只在开始和结束时需要CPU
+- 适合高速设备（如磁盘）</p>
+<p><strong>4. 通道方式</strong>
+- 通道是专门的I/O处理机，有自己的指令系统
+- 通道程序控制I/O操作，CPU只需发出启动命令
+- 适合大型系统中大量I/O设备的管理</p>
+<table>
+<thead>
+<tr>
+<th>I/O方式</th>
+<th>CPU干预程度</th>
+<th>数据传送单位</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>程序查询</td>
+<td>全程干预</td>
+<td>字/字节</td>
+<td>简单系统</td>
+</tr>
+<tr>
+<td>中断</td>
+<td>每传送完一个数据需干预</td>
+<td>字/字节</td>
+<td>中低速设备</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>仅在开始和结束时干预</td>
+<td>数据块</td>
+<td>高速设备</td>
+</tr>
+<tr>
+<td>通道</td>
+<td>最少，仅启动时干预</td>
+<td>一组数据块</td>
+<td>大量I/O设备</td>
+</tr>
+</tbody>
+</table>
+<h4 id="75">7.5 中断系统</h4>
+<p><strong>中断响应过程</strong>：
+1. <strong>中断请求</strong>：外设发出中断请求信号
+2. <strong>中断判优</strong>：多个中断源同时请求时确定优先级
+3. <strong>中断响应</strong>：CPU响应条件满足后，进入中断响应周期
+4. <strong>中断隐指令</strong>（硬件自动完成）：
+   - 关中断（防止多重中断混乱）
+   - 保存断点（PC值）
+   - 引出中断服务程序（找到入口地址）
+5. <strong>执行中断服务程序</strong>：保护现场、处理中断、恢复现场、开中断、中断返回</p>
+<p><strong>中断向量</strong>：中断服务程序的入口地址。
+- <strong>向量中断</strong>：由硬件直接产生向量地址，进而找到入口地址
+- <strong>非向量中断</strong>：由软件查询中断源，再找到入口地址</p>
+<p><strong>多重中断（中断嵌套）</strong>：
+- 中断服务程序执行过程中响应更高级中断请求
+- 实现条件：中断服务程序中必须<strong>开中断</strong>（通常在中断处理完成后）
+- 中断屏蔽字：用中断屏蔽寄存器控制各中断源的屏蔽状态</p>
+<p><strong>中断屏蔽字</strong>：
+- 每个中断源对应一个屏蔽字（各位表示对其他中断源的屏蔽）
+- 1表示屏蔽，0表示允许
+- 优先级高的中断源，其屏蔽字中屏蔽的位数越多</p>
+<h4 id="76-dma">7.6 DMA方式</h4>
+<p><strong>DMA控制器（DMAC）的结构</strong>：
+- <strong>主存地址计数器</strong>：存放要访问的主存单元地址
+- <strong>字计数器</strong>：记录传送数据块的长度
+- <strong>数据缓冲寄存器</strong>：暂存每次传送的数据
+- <strong>DMA请求触发器</strong>：接收设备的DMA请求
+- <strong>控制/状态逻辑</strong>：管理DMA操作
+- <strong>中断机构</strong>：数据块传送完毕后向CPU发中断</p>
+<p><strong>DMA传送过程</strong>：
+1. <strong>预处理</strong>（CPU完成）：
+   - 测试设备状态
+   - 向DMAC送入主存起始地址、传送字数等
+   - 启动设备</p>
+<ol>
+<li><strong>数据传送</strong>（DMAC控制）：</li>
+<li>设备准备好一个字/字节，向DMAC发DMA请求</li>
+<li>DMAC向CPU发总线请求（HOLD）</li>
+<li>CPU响应（HLDA），释放总线控制权</li>
+<li>DMAC控制总线，在主存与设备之间传送数据</li>
+<li>
+<p>重复直到数据块传送完毕</p>
+</li>
+<li>
+<p><strong>后处理</strong>（CPU响应中断完成）：</p>
+</li>
+<li>DMAC向CPU发中断请求</li>
+<li>CPU执行中断服务程序，进行校验等后处理工作</li>
+</ol>
+<p><strong>DMA的传送方式</strong>：
+- <strong>停止CPU访存</strong>：DMA传输期间CPU完全放弃总线
+- <strong>周期挪用（周期窃取）</strong>：CPU空闲时访存，冲突时DMA优先挪用一个周期
+- <strong>DMA与CPU交替访存</strong>：将CPU周期分为两半，分时访存</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：周期挪用最常用，兼顾CPU效率和DMA效率。</p>
+</blockquote>
+</blockquote>
+<h4 id="77-vs-dma">7.7 中断 vs DMA 对比</h4>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>程序中断</th>
+<th>DMA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据通路</strong></td>
+<td>设备 → CPU → 主存</td>
+<td>设备 ↔ 主存（不经过CPU）</td>
+</tr>
+<tr>
+<td><strong>响应时机</strong></td>
+<td>每条指令执行结束</td>
+<td>每个机器周期结束</td>
+</tr>
+<tr>
+<td><strong>CPU干预</strong></td>
+<td>每传送一个数据都需CPU干预</td>
+<td>只在开始和结束时干预</td>
+</tr>
+<tr>
+<td><strong>异常处理</strong></td>
+<td>能处理异常事件</td>
+<td>仅传送数据</td>
+</tr>
+<tr>
+<td><strong>优先级</strong></td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>中低速设备、随机事件</td>
+<td>高速设备、成批数据传送</td>
+</tr>
+<tr>
+<td><strong>传送单位</strong></td>
+<td>字/字节</td>
+<td>数据块</td>
+</tr>
+</tbody>
+</table>
+<h4 id="78-dma">7.8 真题常考：中断和DMA的时间占比计算</h4>
+<p><strong>问题类型</strong>：计算I/O操作占用CPU时间的比例。</p>
+<p><strong>中断方式的时间占比</strong>：
+- 假设设备数据传输率为 $f$（字/秒）
+- 每传送一个字需要CPU中断处理的时间为 $t$（秒）
+- 则CPU用于I/O的时间占比 = $f \times t \times 100\%$</p>
+<p><strong>DMA方式的时间占比</strong>：
+- 假设设备传输数据块大小为 $N$ 字，传输率为 $f$ 字/秒
+- 每块DMA预处理+后处理需要CPU时间 $t$（秒）
+- 每秒传输的块数 = $f / N$
+- CPU时间占比 = $\frac{f}{N} \times t \times 100\%$</p>
+<p><strong>示例</strong>：某设备传输率为0.5MB/s，每次中断传送4字节，中断服务程序需100个时钟周期，CPU主频50MHz。
+- 每秒中断次数 = 0.5M / 4 = 125000 次
+- 每次中断耗时 = 100 / 50M = 2μs
+- 每秒用于中断的时间 = 125000 × 2μs = 0.25s
+- CPU时间占比 = 25%</p>
+<blockquote>
+<blockquote>
+<p><strong>结论</strong>：同样的设备，DMA方式占用CPU时间远小于中断方式（通常不到1%），因为DMA以块为单位，而中断以字/字节为单位。</p>
+</blockquote>
+</blockquote>
+<h3 id="_3">【易错警示】</h3>
+<ul>
+<li>❌ 中断响应是在一条指令执行结束后，DMA响应是在一个总线周期/机器周期结束后</li>
+<li>❌ 中断服务程序中保存现场是软件（程序员）完成的，保存断点是硬件（中断隐指令）完成的</li>
+<li>❌ 中断向量是中断服务程序入口地址，不是中断服务程序本身</li>
+<li>❌ 多重中断需要开中断才能实现，进入中断时硬件自动关中断</li>
+<li>❌ DMA传送期间CPU不能访存（停止CPU访存方式），但CPU仍可执行已在Cache/寄存器中的指令</li>
+<li>❌ 周期挪用方式下，DMA和CPU不能同时访存，冲突时DMA优先</li>
+<li>❌ <strong>内中断（异常/陷入）</strong>：在指令执行期间发生，处理完后返回该指令继续执行。包括：除零、缺页、非法指令、系统调用（trap）</li>
+<li>❌ <strong>外中断（外部中断）</strong>：在指令执行结束后的中断请求阶段执行。包括：I/O中断、时钟中断、键盘中断</li>
+</ul>
+<h3 id="_4">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>20, 21</td>
+<td>中断响应、DMA计算</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>20, 21</td>
+<td>DMA方式、中断向量</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>20, 21, 44</td>
+<td>中断系统、I/O方式比较、I/O大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>20, 21, 44</td>
+<td>DMA计算、中断嵌套、I/O大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>20, 21, 44</td>
+<td>中断方式、I/O接口、I/O大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>20, 21, 44</td>
+<td>程序查询、DMA、I/O大题</td>
+</tr>
+</tbody>
+</table>
+<h3>【典型例题解析】</h3>
+<div class="example">
+<h4>例题1（2021年 第21题）—— 中断与DMA时间占比计算</h4>
+<p><strong>题目描述：</strong>某计算机的CPU主频为500MHz，连接一台打印设备。该设备的打印速度为每分钟100页，每页需要打印2000个字符，每个字符打印需要CPU执行一次中断服务程序，每次中断服务程序需要执行500条指令。请问：</p>
+<p>(1) 若采用中断方式控制打印，CPU用于打印的时间占比是多少？</p>
+<p>(2) 若采用DMA方式，假设DMA以页为单位传输（每页2000字符），每页传输完成后需要CPU执行1000条指令进行后处理，CPU用于打印的时间占比是多少？</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li>
+<p><strong>计算设备数据传输率：</strong></p>
+<p>打印速度 = 100页/分钟 = 100/60 页/秒 ≈ 1.67 页/秒</p>
+<p>每页字符数 = 2000字符</p>
+<p>字符传输率 = 100 × 2000 / 60 = 10000/3 ≈ 3333.33 字符/秒</p>
+</li>
+<li>
+<p><strong>计算每次中断/DMA处理的CPU时间：</strong></p>
+<p>CPU主频 = 500MHz = 500 × 10^6 时钟周期/秒</p>
+<p>假设每条指令平均1个时钟周期（简化计算）</p>
+<ul>
+<li>中断方式：每次中断500条指令，耗时 = 500 / 500M = 1μs</li>
+<li>DMA方式：每页后处理1000条指令，耗时 = 1000 / 500M = 2μs</li>
+</ul>
+</li>
+<li>
+<p><strong>计算中断方式的时间占比：</strong></p>
+<p>每秒中断次数 = 3333.33 次</p>
+<p>每秒用于中断的CPU时间 = 3333.33 × 1μs = 3333.33μs ≈ 3.33ms</p>
+<p>CPU时间占比 = 3.33ms / 1000ms = <strong>0.333%</strong></p>
+</li>
+<li>
+<p><strong>计算DMA方式的时间占比：</strong></p>
+<p>每秒DMA传输页数 = 1.67 页</p>
+<p>每秒用于DMA后处理的CPU时间 = 1.67 × 2μs = 3.34μs</p>
+<p>CPU时间占比 = 3.34μs / 1000ms = 3.34μs / 10^6μs = <strong>0.000334%</strong></p>
+</li>
+</ol>
+<p><strong>答案：</strong></p>
+<p>(1) 中断方式CPU时间占比约为 0.333%（约1/300）</p>
+<p>(2) DMA方式CPU时间占比约为 0.000334%（约1/300000）</p>
+<p><strong>解析总结：</strong>DMA方式相比中断方式，CPU时间占比大幅降低（约1/1000），因为DMA以数据块为单位传输，而中断以字符为单位。DMA仅在传输开始和结束时需要CPU干预，而中断每传输一个字符都需要CPU处理。对于高速设备，DMA是更优的选择。</p>
+<p><strong>相关知识点：</strong>中断方式vs DMA方式的时间占比计算、CPU主频与指令执行时间的关系、数据传输率的计算、DMA的预处理和后处理开销。</p>
+</div>
+<div class="example">
+<h4>例题2（2022年 第20题）—— 中断响应与多重中断</h4>
+<p><strong>题目描述：</strong>下列关于中断系统的叙述中，错误的是（ ）</p>
+<p>A. 中断响应是在一条指令执行结束后进行的</p>
+<p>B. 中断向量是中断服务程序的入口地址</p>
+<p>C. 多重中断（中断嵌套）的实现需要在当前中断服务程序中执行开中断指令</p>
+<p>D. 保存断点是由中断服务程序完成的</p>
+<p><strong>解题步骤：</strong></p>
+<ol>
+<li><strong>分析选项A：</strong>中断是异步事件，CPU在每条指令执行结束后检查是否有中断请求，若有则响应。A正确。</li>
+<li><strong>分析选项B：</strong>中断向量就是中断服务程序的入口地址（起始地址），通过中断向量表可以找到对应的中断服务程序。B正确。</li>
+<li><strong>分析选项C：</strong>多重中断要求在当前中断服务程序执行期间能够响应更高优先级的中断。进入中断时硬件自动关中断，若要实现中断嵌套，必须在中断服务程序中执行开中断指令（如STI）。C正确。</li>
+<li><strong>分析选项D：</strong>保存断点（PC值）是由<strong>硬件</strong>（中断隐指令）自动完成的，不是由中断服务程序完成的。中断服务程序完成的是<strong>保存现场</strong>（通用寄存器、PSW等）。D错误。</li>
+</ol>
+<p><strong>答案：D</strong></p>
+<p><strong>解析总结：</strong>中断响应过程中，硬件自动完成：关中断、保存断点（PC）、引出中断服务程序（通过中断向量）。软件（中断服务程序）完成：保存现场、执行中断处理、恢复现场、开中断、中断返回。区分"保存断点"（硬件）和"保存现场"（软件）是常考点。</p>
+<p><strong>相关知识点：</strong>中断响应过程、中断隐指令、中断向量、多重中断条件、保存断点vs保存现场、中断屏蔽字。</p>
+</div>
+<hr />
+<blockquote>
+<p><strong>计算机组成原理 完</strong></p>
+</blockquote>
+
+
+<hr />
+<h2 id="zhenti-gallery">📚 历年真题原题（2014-2024）— 操作系统</h2>
+<p>以下展示408历年真题原题图片。OS题目分布在每份试卷的第23-32题（选择题23-32题，大题45-46题）。</p>
+<div class="zhenti-gallery">
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2014年真题（共20页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p14.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p14.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p15.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p15.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p16.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p16.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p17.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p17.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p18.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p18.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p19.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p19.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p20.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p20.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2015年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2016年真题（共10页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2017年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2018年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2019年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2021年真题（共9页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2022年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2023年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2024年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p9.png">
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.addEventListener('scroll', function(){
+  const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  let current = '';
+  headings.forEach(h => { if(h.getBoundingClientRect().top <= 80) current = h.id; });
+  tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  document.querySelector('.back-to-top').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+</script>
+</body>
+</html>

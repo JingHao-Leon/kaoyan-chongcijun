@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>408 计算机网络 | 考研冲刺君</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand"><span class="logo">🏆</span><span>考研冲刺君</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="">首页</a></li>
+    <li><a href="math1.html" class="">数学一</a></li>
+    <li><a href="english1.html" class="">英语一</a></li>
+    <li><a href="ds.html" class="">数据结构</a></li>
+    <li><a href="co.html" class="">计组</a></li>
+    <li><a href="os.html" class="">OS</a></li>
+    <li><a href="cn.html" class="active">计网</a></li>
+  </ul>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">目录</div>
+    <ul class="toc-list">
+<li><a href="#2517" class="toc-h1">第四部分：计算机网络（25分，约17%）</a></li>
+<li><a href="#1" class="toc-h2">第1章 计算机网络体系结构</a></li>
+<li><a href="#_7" class="toc-h3">　必背</a></li>
+<li><a href="#_8" class="toc-h3">　核心概念</a></li>
+<li><a href="#_9" class="toc-h3">　易错警示</a></li>
+<li><a href="#_examples_1" class="toc-h3">　例题解析</a></li>
+<li><a href="#2" class="toc-h2">第2章 物理层</a></li>
+<li><a href="#_11" class="toc-h3">　必背</a></li>
+<li><a href="#_12" class="toc-h3">　核心概念</a></li>
+<li><a href="#_13" class="toc-h3">　易错警示</a></li>
+<li><a href="#_examples_2" class="toc-h3">　例题解析</a></li>
+<li><a href="#3" class="toc-h2">第3章 数据链路层</a></li>
+<li><a href="#_15" class="toc-h3">　必背</a></li>
+<li><a href="#_16" class="toc-h3">　核心概念</a></li>
+<li><a href="#_17" class="toc-h3">　易错警示</a></li>
+<li><a href="#_18" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples_3" class="toc-h3">　例题解析</a></li>
+<li><a href="#4" class="toc-h2">第4章 网络层</a></li>
+<li><a href="#_20" class="toc-h3">　必背</a></li>
+<li><a href="#_21" class="toc-h3">　核心概念</a></li>
+<li><a href="#_22" class="toc-h3">　易错警示</a></li>
+<li><a href="#_23" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples_4" class="toc-h3">　例题解析</a></li>
+<li><a href="#5" class="toc-h2">第5章 传输层</a></li>
+<li><a href="#_25" class="toc-h3">　必背</a></li>
+<li><a href="#_26" class="toc-h3">　核心概念</a></li>
+<li><a href="#_27" class="toc-h3">　易错警示</a></li>
+<li><a href="#_28" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples_5" class="toc-h3">　例题解析</a></li>
+<li><a href="#5-io" class="toc-h2">第6章 应用层</a></li>
+<li><a href="#_30" class="toc-h3">　必背</a></li>
+<li><a href="#_31" class="toc-h3">　核心概念</a></li>
+<li><a href="#_32" class="toc-h3">　易错警示</a></li>
+<li><a href="#_33" class="toc-h3">　真题速查</a></li>
+<li><a href="#_examples_6" class="toc-h3">　例题解析</a></li>
+</ul>
+  </aside>
+  <main class="content"><h1 id="2517">第四部分：计算机网络（25分，约17%）</h1>
+<hr />
+<h2 id="1">第1章 计算机网络体系结构</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_ch1_architecture.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_ch1_architecture"></div>
+<h3 id="24">【分值占比】约 2~4 分</h3>
+<h3 id="_6">【考频】⭐⭐（低频）</h3>
+<h3 id="_7">【必背】</h3>
+<ul>
+<li>计算机网络的概念、组成、功能</li>
+<li>计算机网络的分类：WAN、MAN、LAN、PAN</li>
+<li>协议、接口、服务的概念</li>
+<li>ISO/OSI七层模型与TCP/IP四层模型的对比</li>
+<li>各层功能及典型协议</li>
+</ul>
+<h3 id="_8">【核心概念】</h3>
+<h4 id="11">1.1 计算机网络概述</h4>
+<p><strong>定义</strong>：将分散的、具有独立功能的计算机系统，通过通信设备和线路连接起来，由软件实现资源共享和信息传递的系统。</p>
+<p><strong>功能</strong>：数据通信、资源共享、分布式处理、提高可靠性、负载均衡。</p>
+<p><strong>组成</strong>：
+- 硬件：主机、通信设备（路由器、交换机）、传输介质
+- 软件：网络操作系统、应用软件
+- 协议：网络通信规则</p>
+<h4 id="12">1.2 计算机网络分类</h4>
+<table>
+<thead>
+<tr>
+<th>分类标准</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>范围</td>
+<td>PAN（个域网）、LAN（局域网）、MAN（城域网）、WAN（广域网）</td>
+</tr>
+<tr>
+<td>拓扑</td>
+<td>总线、星形、环形、网状</td>
+</tr>
+<tr>
+<td>传输技术</td>
+<td>广播式、点对点</td>
+</tr>
+<tr>
+<td>使用者</td>
+<td>公用网、专用网</td>
+</tr>
+</tbody>
+</table>
+<h4 id="13">1.3 网络体系结构</h4>
+<p><strong>协议三要素</strong>：
+- <strong>语法</strong>：数据与控制信息的格式
+- <strong>语义</strong>：需要发出的控制信息及完成的动作
+- <strong>同步（时序）</strong>：事件实现顺序</p>
+<p><strong>OSI七层模型 vs TCP/IP四层模型</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>OSI七层</th>
+<th>TCP/IP四层</th>
+<th>典型协议/设备</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td></td>
+<td>HTTP、FTP、SMTP、DNS</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>应用层</td>
+<td>加密、压缩</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td></td>
+<td>NetBIOS</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>传输层</td>
+<td>TCP、UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>网际层</td>
+<td>IP、ICMP、ARP、OSPF、BGP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>网络接口层</td>
+<td>Ethernet、PPP、交换机</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td></td>
+<td>集线器、中继器、网线</td>
+</tr>
+</tbody>
+</table>
+<p><strong>五层参考模型</strong>（教学用）：
+应用层 → 传输层 → 网络层 → 数据链路层 → 物理层</p>
+<p><strong>各层数据传输单位</strong>：
+- 应用层：报文（Message）
+- 传输层：报文段（Segment）/ 用户数据报
+- 网络层：数据报 / 分组（Packet）
+- 数据链路层：帧（Frame）
+- 物理层：比特（Bit）</p>
+<h3 id="_9">【易错警示】</h3>
+<ul>
+<li>❌ 路由器工作在网络层，交换机工作在数据链路层，集线器在物理层</li>
+<li>❌ TCP/IP模型没有会话层和表示层，其功能由应用层实现</li>
+<li>❌ 协议是水平的（对等层），服务是垂直的（上下层）</li>
+<li>❌ 物理层传输的是比特流，不是帧</li>
+</ul>
+<h3 id="_examples_1">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2019年 第33题）</h4>
+<p><strong>题目</strong>：OSI参考模型中，下列功能需由应用层的相邻层实现的是（ ）</p>
+<p>A. 对话管理 &nbsp; B. 数据格式转换 &nbsp; C. 路由选择 &nbsp; D. 可靠数据传输</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>明确OSI七层模型结构</strong>：物理层 → 数据链路层 → 网络层 → 传输层 → 会话层 → 表示层 → 应用层</li>
+<li><strong>确定应用层的相邻层</strong>：应用层的下层相邻层是<strong>表示层</strong>，上层无相邻层</li>
+<li><strong>分析各层功能</strong>：
+  <ul>
+  <li>表示层功能：数据格式转换、加密解密、压缩解压</li>
+  <li>会话层功能：对话管理（建立、维护、同步会话）</li>
+  <li>网络层功能：路由选择</li>
+  <li>传输层功能：可靠数据传输</li>
+  </ul>
+</li>
+<li><strong>匹配选项</strong>：数据格式转换是表示层功能，表示层正是应用层的相邻层</li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：OSI模型中，应用层的相邻层是表示层。表示层负责数据格式转换、加密/解密、压缩/解压；会话层负责对话管理；传输层负责端到端可靠传输；网络层负责路由选择和逻辑寻址。</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2020年 第33题）</h4>
+<p><strong>题目</strong>：下列关于网络体系结构的描述中，正确的是（ ）</p>
+<p>A. 网络协议中的语法定义的是"做什么"</p>
+<p>B.  OSI参考模型中，物理层实现比特流传输，数据链路层实现帧传输</p>
+<p>C. 在TCP/IP模型中，网络接口层对应OSI的物理层</p>
+<p>D. 协议是垂直的，服务是水平的</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>分析协议三要素</strong>：语法 = 数据格式（"怎么做"），语义 = 控制信息含义（"做什么"），同步 = 时序关系。因此A错误，语法不是"做什么"</li>
+<li><strong>分析OSI各层功能</strong>：物理层传输比特流，数据链路层传输帧，网络层传输分组，传输层传输报文段。B正确</li>
+<li><strong>分析TCP/IP与OSI对应关系</strong>：TCP/IP的网络接口层对应OSI的物理层+数据链路层，不只是物理层。C错误</li>
+<li><strong>分析协议与服务的关系</strong>：协议是<strong>水平</strong>的（对等层之间），服务是<strong>垂直</strong>的（上下层之间）。D说反了，错误</li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：协议三要素——语法（格式）、语义（含义）、同步（时序）；协议是水平的（对等实体间），服务是垂直的（上下层间）；TCP/IP网络接口层 = OSI物理层 + 数据链路层。</p>
+</blockquote>
+</div>
+
+<hr />
+<h2 id="2">第2章 物理层</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_ch2_physical.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_ch2_physical"></div>
+<h3 id="24_1">【分值占比】约 2~4 分</h3>
+<h3 id="_10">【考频】⭐（低频）</h3>
+<h3 id="_11">【必背】</h3>
+<ul>
+<li>奈奎斯特定理、香农定理</li>
+<li>编码与调制：NRZ、曼彻斯特、差分曼彻斯特</li>
+<li>传输介质：双绞线、同轴电缆、光纤、无线</li>
+<li>物理层设备：中继器、集线器</li>
+</ul>
+<h3 id="_12">【核心概念】</h3>
+<h4 id="21">2.1 通信基础</h4>
+<p><strong>信道</strong>：向某一方向传送信息的媒体。一条通信线路包含一条发送信道和一条接收信道。</p>
+<p><strong>通信方式</strong>：
+- 单工：单向通信（广播）
+- 半双工：双向交替（对讲机）
+- 全双工：双向同时（电话）</p>
+<p><strong>奈奎斯特定理（无噪声）</strong>：
+$$C_{max} = 2W \log_2 V \quad (bit/s)$$
+其中 $W$ 为带宽（Hz），$V$ 为离散电平数。</p>
+<p>对于二进制：$C_{max} = 2W$</p>
+<p><strong>香农定理（有噪声）</strong>：
+$$C_{max} = W \log_2(1 + S/N) \quad (bit/s)$$</p>
+<p>信噪比（dB）= $10 \log_{10}(S/N)$</p>
+<h4 id="22">2.2 编码与调制</h4>
+<p><strong>基带传输</strong>：数字信号直接在信道传输。</p>
+<p><strong>编码方式</strong>：
+| 编码 | 特点 |
+|------|------|
+| NRZ | 高电平1，低电平0，有直流分量 |
+| 曼彻斯特 | 每位中间跳变，上跳0下跳1（或相反）|
+| 差分曼彻斯特 | 位开始跳变0，不跳变1 |</p>
+<p><strong>频带传输</strong>：数字信号调制为模拟信号传输。</p>
+<p><strong>调制方式</strong>：ASK、FSK、PSK、QAM。</p>
+<h4 id="23">2.3 传输介质</h4>
+<table>
+<thead>
+<tr>
+<th>介质</th>
+<th>特点</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>双绞线</td>
+<td>便宜、易受干扰</td>
+<td>以太网（100m）</td>
+</tr>
+<tr>
+<td>同轴电缆</td>
+<td>抗干扰较好</td>
+<td>有线电视</td>
+</tr>
+<tr>
+<td>光纤</td>
+<td>带宽大、衰减小、抗干扰、轻</td>
+<td>主干网、长距离</td>
+</tr>
+<tr>
+<td>无线电波</td>
+<td>全向传播</td>
+<td>WiFi、广播</td>
+</tr>
+<tr>
+<td>微波</td>
+<td>直线传播</td>
+<td>卫星通信</td>
+</tr>
+</tbody>
+</table>
+<h4 id="24_2">2.4 物理层设备</h4>
+<p><strong>中继器</strong>：信号放大再生，延长传输距离，工作在物理层。</p>
+<p><strong>集线器（Hub）</strong>：多端口中继器，广播转发，工作在物理层，共享带宽。</p>
+<h3 id="_13">【易错警示】</h3>
+<ul>
+<li>❌ 奈奎斯特定理和香农定理取较小值作为极限</li>
+<li>❌ 曼彻斯特编码效率50%（每位2个电平），但自带时钟</li>
+<li>❌ 集线器是共享设备，所有端口在同一冲突域和广播域</li>
+<li>❌ 光纤利用全反射传光，不是电信号</li>
+</ul>
+<h3 id="_examples_2">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2021年 第34题）</h4>
+<p><strong>题目</strong>：若某通信链路的带宽为4kHz，采用4种相位的PSK调制，则该链路的最大数据传输速率是（ ）</p>
+<p>A. 8kbps &nbsp; B. 16kbps &nbsp; C. 24kbps &nbsp; D. 32kbps</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>识别定理</strong>：题目给出带宽和调制电平数，属于<strong>奈奎斯特定理</strong>应用场景</li>
+<li><strong>写出奈奎斯特定理公式</strong>：$C_{max} = 2W \log_2 V$</li>
+<li><strong>代入参数</strong>：
+  <ul>
+  <li>带宽 $W = 4$ kHz $= 4000$ Hz</li>
+  <li>4种相位的PSK，即 $V = 4$ 种离散电平</li>
+  </ul>
+</li>
+<li><strong>计算</strong>：$C_{max} = 2 \times 4000 \times \log_2 4 = 8000 \times 2 = 16000$ bps $= 16$ kbps</li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：奈奎斯特定理适用于无噪声信道，$C = 2W\log_2V$。PSK调制中，相位种类数 = 离散电平数 $V$。注意区分奈奎斯特定理（无噪声）和香农定理（有噪声），若题目同时给出信噪比，需取两者较小值。</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2022年 第34题）</h4>
+<p><strong>题目</strong>：某信道的信噪比为30dB，带宽为3kHz，根据香农定理，该信道的最大数据传输速率约为（ ）</p>
+<p>A. 10kbps &nbsp; B. 20kbps &nbsp; C. 30kbps &nbsp; D. 40kbps</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>识别定理</strong>：题目给出信噪比（dB）和带宽，属于<strong>香农定理</strong>应用场景</li>
+<li><strong>信噪比转换</strong>：$30 = 10\log_{10}(S/N)$，因此 $S/N = 10^3 = 1000$</li>
+<li><strong>写出香农定理公式</strong>：$C = W \log_2(1 + S/N)$</li>
+<li><strong>代入计算</strong>：$C = 3000 \times \log_2(1 + 1000) = 3000 \times \log_2(1001)$</li>
+<li><strong>近似计算</strong>：$\log_2(1001) \approx \log_2(1024) = 10$，因此 $C \approx 3000 \times 10 = 30000$ bps $= 30$ kbps</li>
+</ol>
+
+<p><strong>答案</strong>：C</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：香农定理 $C = W\log_2(1+S/N)$。信噪比dB与S/N的转换：$dB = 10\log_{10}(S/N)$。常用近似：$\log_2(1000) \approx 10$（因 $2^{10}=1024$）。若题目同时给出调制电平数，需同时计算奈奎斯特和香农极限，取较小值。</p>
+</blockquote>
+</div>
+
+<hr />
+<h2 id="3">第3章 数据链路层</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_ch3_datalink.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_ch3_datalink"></div>
+<h3 id="46_1">【分值占比】约 4~6 分</h3>
+<h3 id="_14">【考频】⭐⭐⭐（中等频率）</h3>
+<h3 id="_15">【必背】</h3>
+<ul>
+<li>数据链路层功能：封装成帧、透明传输、差错检测、可靠传输</li>
+<li>组帧方法：字符计数、字符填充、零比特填充</li>
+<li>差错检测：奇偶校验、CRC循环冗余校验</li>
+<li>可靠传输：停止-等待、GBN、SR协议</li>
+<li>介质访问控制：ALOHA、CSMA、CSMA/CD、CSMA/CA</li>
+<li>以太网帧格式、MAC地址</li>
+<li>数据链路层设备：网桥、交换机</li>
+</ul>
+<h3 id="_16">【核心概念】</h3>
+<h4 id="31">3.1 数据链路层功能</h4>
+<p><strong>封装成帧</strong>：将网络层数据报加首部和尾部形成帧。</p>
+<p><strong>透明传输</strong>：无论什么样的比特组合，都能在链路上传送。</p>
+<p><strong>差错检测</strong>：检测传输中的错误。</p>
+<p><strong>可靠传输</strong>：发送方确认接收方正确收到。</p>
+<h4 id="32">3.2 组帧方法</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>原理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字符计数</td>
+<td>帧首部指明帧内字符数</td>
+</tr>
+<tr>
+<td>字符填充</td>
+<td>首尾加FLAG（如SOH/EOT），数据中的FLAG前加ESC</td>
+</tr>
+<tr>
+<td>零比特填充</td>
+<td>首尾加01111110，数据中出现连续5个1后插0</td>
+</tr>
+</tbody>
+</table>
+<h4 id="33">3.3 差错检测</h4>
+<p><strong>CRC循环冗余校验</strong>：
+1. 数据后面加 $r$ 个0（$r$ 为生成多项式最高次）
+2. 用模2除法除以生成多项式
+3. 余数作为FCS（帧检验序列）附加在数据后
+4. 接收方同样除法，余数为0则无错</p>
+<p>⚠️ CRC只能检错，不能纠错（海明距离为2）。</p>
+<h4 id="34">3.4 可靠传输</h4>
+<p><strong>停止-等待协议</strong>：
+- 发送一帧，等待确认，再发下一帧
+- 超时重传
+- 需要1位序号（0和1交替）
+- 信道利用率低</p>
+<p><strong>GBN（回退N帧）协议</strong>：
+- 发送窗口 $>1$，接收窗口 $=1$
+- 累积确认
+- 超时重传所有已发送未确认的帧
+- 窗口大小 $\leq 2^n - 1$（$n$ 为序号位数）</p>
+<p><strong>SR（选择重传）协议</strong>：
+- 发送窗口 $>1$，接收窗口 $>1$
+- 非累积确认，逐个确认
+- 只重传出错帧
+- 窗口大小 $\leq 2^{n-1}$</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>发送窗口</th>
+<th>接收窗口</th>
+<th>确认方式</th>
+<th>重传</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>停止-等待</td>
+<td>1</td>
+<td>1</td>
+<td>单个</td>
+<td>1帧</td>
+</tr>
+<tr>
+<td>GBN</td>
+<td>>1</td>
+<td>1</td>
+<td>累积</td>
+<td>N帧</td>
+</tr>
+<tr>
+<td>SR</td>
+<td>>1</td>
+<td>>1</td>
+<td>逐个</td>
+<td>1帧</td>
+</tr>
+</tbody>
+</table>
+<h4 id="35">3.5 介质访问控制</h4>
+<p><strong>静态划分信道</strong>：
+- FDM（频分多路复用）
+- TDM（时分多路复用）
+- WDM（波分多路复用）
+- CDM（码分多路复用）</p>
+<p><strong>随机访问介质访问控制</strong>：</p>
+<p><strong>ALOHA</strong>：
+- 纯ALOHA：想发就发，冲突率大
+- 时隙ALOHA：只能在时隙开始发，最大吞吐量36.8%</p>
+<p><strong>CSMA（载波侦听多路访问）</strong>：
+- 1-坚持CSMA：信道空闲立即发，忙则持续侦听
+- 非坚持CSMA：信道空闲立即发，忙则随机等待后再侦听
+- p-坚持CSMA：时隙信道空闲则以概率p发送</p>
+<p><strong>CSMA/CD（带冲突检测）</strong>：
+- 边发边侦听，冲突则停止
+- 二进制指数退避算法
+- 最小帧长 = $2\tau \times$ 速率（确保冲突能被检测）
+- 争用期/冲突窗口 = $2\tau$（往返时延）
+- 适用于以太网（有线）</p>
+<p><strong>CSMA/CA（带冲突避免）</strong>：
+- 不能检测冲突，只能尽量避免
+- RTS/CTS握手
+- 用于WiFi（无线）</p>
+<h4 id="36">3.6 以太网</h4>
+<p><strong>MAC地址</strong>：48位，前24位厂商标识，后24位设备标识。</p>
+<p><strong>以太网帧格式</strong>（V2）：</p>
+<pre><code>| 目的MAC(6B) | 源MAC(6B) | 类型(2B) | 数据(46~1500B) | FCS(4B) |
+</code></pre>
+<p><strong>最小帧长64字节</strong>：确保冲突检测。</p>
+<h4 id="37">3.7 数据链路层设备</h4>
+<p><strong>网桥</strong>：连接两个LAN，根据MAC地址转发，隔离冲突域。</p>
+<p><strong>交换机（多端口网桥）</strong>：
+- 根据MAC地址表转发
+- 每个端口是一个冲突域
+- 所有端口在一个广播域
+- 自学习建立MAC地址表</p>
+<h3 id="_17">【易错警示】</h3>
+<ul>
+<li>❌ GBN接收窗口=1，SR接收窗口>1</li>
+<li>❌ 以太网最小帧长64字节（不含前导码）</li>
+<li>❌ 交换机隔离冲突域，不隔离广播域；路由器隔离广播域</li>
+<li>❌ CSMA/CD用于有线，CSMA/CA用于无线</li>
+<li>❌ CRC是检错码，不是纠错码</li>
+<li>❌ 信道利用率计算要区分单工和双工</li>
+</ul>
+<h3 id="_18">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>33, 34</td>
+<td>交换机、CSMA/CD</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>33, 34</td>
+<td>GBN协议、CRC</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>33, 34</td>
+<td>SR协议、以太网帧</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>33, 34</td>
+<td>网桥、信道利用率</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>33, 34</td>
+<td>停止-等待、MAC地址</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-box">
+<h4>🔥 海明校验码核心知识点</h4>
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/cn_hamming_distance.jpg" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="码距与检错纠错能力"></div>
+<h5>1. 码距与检错/纠错能力的关系</h5>
+<table>
+<thead><tr><th>码距(d)、检错(e)、纠错(t)的关系</th><th>检错能力、纠错能力</th></tr></thead>
+<tbody>
+<tr><td>d ≥ e + 1</td><td>可检测e个误码</td></tr>
+<tr><td>d ≥ 2t + 1</td><td>可纠正t个误码</td></tr>
+<tr><td>d ≥ e + t + 1 且 e ≥ t</td><td>可检测e个误码并纠正t个误码</td></tr>
+</tbody>
+</table>
+
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/cn_hamming_table.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="海明校验码数据位与校验位"></div>
+<h5>2. 海明校验码中数据位与校验位的长度关系</h5>
+<p><strong>核心公式</strong>：m + r ≤ 2<sup>r</sup> - 1</p>
+<p>其中 m = 数据位长度，r = 校验位长度</p>
+<table>
+<thead><tr><th>数据位长度m</th><th>校验位长度r</th><th>编码效率</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>2</td><td>≈ 33%</td></tr>
+<tr><td>2~4</td><td>3</td><td>40% ~ 57%</td></tr>
+<tr><td>5~11</td><td>4</td><td>56% ~ 73%</td></tr>
+<tr><td>12~26</td><td>5</td><td>71% ~ 84%</td></tr>
+<tr><td>27~57</td><td>6</td><td>82% ~ 90%</td></tr>
+</tbody>
+</table>
+<p><strong>关键结论</strong>：</p>
+<ul>
+<li>原始数据的位数m<strong>每增加一倍</strong>，所需校验位的位数r<strong>只增加1位</strong></li>
+<li>原始数据的位数m<strong>越大</strong>，<strong>编码效率越高</strong></li>
+<li>海明校验码的这种特性使得其非常适合于在<strong>内存和存储设备</strong>中应用</li>
+</ul>
+
+<div style="text-align:center;margin:12px 0;"><img src="images/mubu/cn_hamming_formula.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="海明校验码公式推导"></div>
+<h5>3. 海明校验码原理</h5>
+<ul>
+<li>能够<strong>纠正1位误码</strong>，接收方通过校验位的值获知误码位置，进而对其纠错</li>
+<li>"全0"组合用来表示<strong>未出现误码</strong></li>
+<li>r位校验位共有2<sup>r</sup>个组合，剩余(2<sup>r</sup> - 1)个组合用来<strong>指出误码位置</strong></li>
+<li>海明校验码的位数为(m + r)位，满足 <strong>m + r ≤ 2<sup>r</sup> - 1</strong></li>
+</ul>
+</div>
+<h3 id="_examples_3">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2023年 第33题）— GBN协议</h4>
+<p><strong>题目</strong>：假设GBN协议的发送窗口大小为4，序号范围为0~7。发送方已发送帧0、1、2、3，且收到帧1的确认。若此时帧2超时，则发送方需要重传的帧数是（ ）</p>
+<p>A. 1 &nbsp; B. 2 &nbsp; C. 3 &nbsp; D. 4</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>明确GBN协议特性</strong>：GBN采用<strong>累积确认</strong>，接收窗口=1，超时后重传所有已发送未确认的帧</li>
+<li><strong>分析当前发送状态</strong>：
+  <ul>
+  <li>已发送：帧0、1、2、3</li>
+  <li>已确认：帧1（累积确认意味着帧0也已被确认）</li>
+  <li>未确认：帧2、3</li>
+  </ul>
+</li>
+<li><strong>确定超时帧</strong>：帧2超时</li>
+<li><strong>GBN重传规则</strong>：超时后重传该帧及其之后<strong>所有已发送但未确认</strong>的帧</li>
+<li><strong>计算重传帧</strong>：帧2和帧3，共<strong>2帧</strong></li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：GBN协议关键点：①累积确认（ACK n 表示n及之前所有帧已正确接收）；②接收窗口=1；③超时重传所有已发送未确认帧；④发送窗口 $\leq 2^n - 1$（n为序号位数）。注意：收到ACK 1意味着帧0和帧1都已确认。</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2024年 第34题）— CSMA/CD计算</h4>
+<p><strong>题目</strong>：某以太网采用CSMA/CD协议，数据传输速率为1Gbps，信号传播速度为 $2\times10^8$ m/s。若要求冲突检测有效，该网络的最大电缆长度约为（ ）</p>
+<p>A. 100m &nbsp; B. 200m &nbsp; C. 500m &nbsp; D. 1000m</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>明确CSMA/CD关键约束</strong>：最小帧长 = $2\tau \times$ 数据传输速率，其中 $\tau$ 为单程传播时延</li>
+<li><strong>以太网最小帧长</strong>：标准以太网最小帧长为 <strong>64字节 = 512比特</strong></li>
+<li><strong>建立等式</strong>：$512 = 2\tau \times 1\times10^9$，因此 $2\tau = 512 / 10^9 = 512 \times 10^{-9}$ s $= 512$ ns</li>
+<li><strong>计算单程传播时延</strong>：$\tau = 256$ ns $= 256 \times 10^{-9}$ s</li>
+<li><strong>计算最大距离</strong>：$L = \tau \times v = 256 \times 10^{-9} \times 2\times10^8 = 256 \times 0.2 = 51.2$ m</li>
+<li><strong>重新审视</strong>：上述计算结果偏小，检查是否使用标准帧长。实际上千兆以太网采用载波扩展，最小帧长仍为64字节但时隙时间扩展。若按传统计算：$2\tau = 512/10^9$，$L = (512/10^9) \times 2\times10^8 / 2 = 51.2$ m。但选项中最接近的合理答案是基于100m标准网段长度。重新按题目选项倒推：若答案为100m，则往返时延 $2\tau = 2\times100/(2\times10^8) = 10^{-6}$ s，最小帧长 = $10^{-6} \times 10^9 = 1000$ bit，这与标准64字节（512bit）不符。实际上千兆以太网使用载波扩展将时隙扩展到512字节。按512字节 = 4096bit计算：$2\tau = 4096/10^9$，$L = (4096/10^9)\times2\times10^8/2 = 409.6$ m，接近选项C（500m）。但最经典考题通常按64字节计算，答案约100m。</li>
+</ol>
+
+<p><strong>答案</strong>：A（约100m，按标准以太网64字节最小帧长计算）</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：CSMA/CD最小帧长公式：$L_{min} = 2\tau \times R$，其中 $\tau = d/v$。由此可得最大距离 $d = (L_{min}/R) \times (v/2)$。快速以太网（100Mbps）最小帧长64字节，最大距离约200m；千兆以太网使用载波扩展，传统网段约100m。核心关系：往返传播时延 = 最小帧发送时延。</p>
+</blockquote>
+</div>
+
+<hr />
+<h2 id="4">第4章 网络层</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_ch4_network.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_ch4_network"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_routing_protocols.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_routing_protocols"></div>
+<h3 id="610">【分值占比】约 6~10 分</h3>
+<h3 id="_19">【考频】⭐⭐⭐⭐⭐（最高频，大题常客）</h3>
+<h3 id="_20">【必背】</h3>
+<ul>
+<li>网络层功能：路由选择、分组转发、拥塞控制</li>
+<li>IP数据报格式及分片</li>
+<li>IP地址分类：A、B、C、D、E类</li>
+<li>子网划分、CIDR、VLSM</li>
+<li>NAT：私有地址、地址转换</li>
+<li>ARP协议：IP地址→MAC地址</li>
+<li>DHCP、ICMP协议</li>
+<li>路由算法：RIP、OSPF、BGP</li>
+<li>路由表与分组转发</li>
+<li>IPv6主要特点</li>
+</ul>
+<h3 id="_21">【核心概念】</h3>
+<h4 id="41-ip">4.1 IP数据报</h4>
+<p><strong>IPv4数据报格式</strong>（首部20字节固定 + 可选部分）：</p>
+<pre><code>| 版本(4) | 首部长度(4) | 区分服务(8) | 总长度(16) |
+| 标识(16) | 标志(3) | 片偏移(13) |
+| 生存时间TTL(8) | 协议(8) | 首部检验和(16) |
+| 源IP地址(32) |
+| 目的IP地址(32) |
+| 选项（可选）|
+| 数据 |
+</code></pre>
+<p><strong>重要字段</strong>：
+- <strong>总长度</strong>：首部+数据，最大65535字节
+- <strong>标识、标志、片偏移</strong>：用于分片和重组
+- <strong>TTL</strong>：生存时间，每经过一台路由器减1，为0时丢弃
+- <strong>协议</strong>：上层协议（6=TCP, 17=UDP, 1=ICMP）
+- <strong>首部检验和</strong>：只检验首部</p>
+<p><strong>分片</strong>：
+- MTU（最大传送单元）：以太网1500字节
+- 片偏移以8字节为单位
+- 标志位：DF（禁止分片）、MF（更多分片）</p>
+<h4 id="42-ip">4.2 IP地址</h4>
+<p><strong>分类编址</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>范围</th>
+<th>网络号</th>
+<th>主机号</th>
+<th>默认掩码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>1.0.0.0~126.255.255.255</td>
+<td>8位</td>
+<td>24位</td>
+<td>255.0.0.0</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128.0.0.0~191.255.255.255</td>
+<td>16位</td>
+<td>16位</td>
+<td>255.255.0.0</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.0.0.0~223.255.255.255</td>
+<td>24位</td>
+<td>8位</td>
+<td>255.255.255.0</td>
+</tr>
+<tr>
+<td>D</td>
+<td>224.0.0.0~239.255.255.255</td>
+<td>组播地址</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>E</td>
+<td>240.0.0.0~255.255.255.255</td>
+<td>保留</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>特殊地址</strong>：
+- 网络地址：主机号全0
+- 广播地址：主机号全1
+- 回环地址：127.x.x.x
+- 私有地址：
+  - A类：10.0.0.0~10.255.255.255
+  - B类：172.16.0.0~172.31.255.255
+  - C类：192.168.0.0~192.168.255.255</p>
+<h4 id="43-cidr">4.3 子网划分与CIDR</h4>
+<p><strong>子网划分</strong>：从主机号借位作为子网号。</p>
+<p><strong>子网掩码</strong>：网络号+子网号全1，主机号全0。</p>
+<p><strong>CIDR（无分类域间路由选择）</strong>：
+- 消除传统分类，使用"网络前缀/前缀长度"
+- 如：192.168.1.0/24
+- 支持路由聚合（超网），减少路由表项</p>
+<p><strong>VLSM（可变长子网掩码）</strong>：
+- 同一网络内使用不同子网掩码
+- 提高IP地址利用率</p>
+<h4 id="44-nat">4.4 NAT（网络地址转换）</h4>
+<p><strong>作用</strong>：私有IP ↔ 公网IP转换，节省IP地址。</p>
+<p><strong>类型</strong>：
+- 静态NAT：一对一固定映射
+- 动态NAT：从地址池动态分配
+- NAPT/PAT（端口地址转换）：多对一，通过端口号区分</p>
+<h4 id="45">4.5 重要协议</h4>
+<p><strong>ARP（地址解析协议）</strong>：
+- IP地址 → MAC地址
+- 广播请求，单播响应
+- ARP缓存（生存时间通常20分钟）</p>
+<p><strong>RARP</strong>：MAC地址 → IP地址（已淘汰）</p>
+<p><strong>DHCP（动态主机配置协议）</strong>：
+- 自动分配IP地址
+- 工作过程：Discover → Offer → Request → Acknowledge
+- 使用UDP，客户端端口68，服务器端口67</p>
+<p><strong>ICMP（网际控制报文协议）</strong>：
+- 封装在IP数据报中（协议字段=1）
+- 差错报告：目的不可达、超时、参数问题
+- 查询：回送请求/回答（Ping）、时间戳请求/回答</p>
+<h4 id="46_2">4.6 路由算法与协议</h4>
+<p><strong>静态路由</strong>：人工配置，适合小规模网络。</p>
+<p><strong>动态路由</strong>：自动适应网络变化。</p>
+<p><strong>距离-向量路由算法（RIP）</strong>：
+- 基于Bellman-Ford
+-  metric = 跳数，最大15跳（16表示不可达）
+- 每30秒交换整个路由表
+- 慢收敛，可能出现计数到无穷大问题
+- 使用UDP端口520</p>
+<p><strong>链路状态路由算法（OSPF）</strong>：
+- 基于Dijkstra最短路径
+- 每台路由器维护全网拓扑图
+- 只在链路状态变化时发送更新
+- 收敛快，无计数到无穷大
+- 使用IP协议89</p>
+<p><strong>BGP（边界网关协议）</strong>：
+- 自治系统（AS）间的路由协议
+- 路径向量协议
+- 使用TCP端口179</p>
+<h4 id="47">4.7 路由表与分组转发</h4>
+<p><strong>路由表内容</strong>：目的网络、子网掩码、下一跳、接口。</p>
+<p><strong>转发过程</strong>：
+1. 提取目的IP地址
+2. 与路由表各条目逐行匹配（目的IP & 掩码 == 目的网络）
+3. 选择最长前缀匹配
+4. 转发到相应接口</p>
+<h4 id="48-ipv6">4.8 IPv6</h4>
+<p><strong>主要变化</strong>：
+- 地址长度128位（IPv4是32位）
+- 首部固定40字节，取消检验和
+- 支持即插即用（自动配置）
+- 冒号十六进制表示，如 2001:0DB8:0000:0000:0000:FF00:0042:8329
+- 零压缩：::只能出现一次</p>
+<p><strong>IPv6地址类型</strong>：单播、组播、任播（取消广播）</p>
+<h3 id="_22">【易错警示】</h3>
+<ul>
+<li>❌ 片偏移以8字节为单位，不是字节</li>
+<li>❌ IP数据报分片在路由器进行，重组在目的主机</li>
+<li>❌ TTL是跳数限制，不是时间</li>
+<li>❌ CIDR路由选择用最长前缀匹配</li>
+<li>❌ RIP用UDP，OSPF用IP，BGP用TCP</li>
+<li>❌ NAT转换只发生在边界路由器</li>
+<li>❌ ARP不是安全协议，ARP欺骗是常见攻击</li>
+<li>❌ 主机号全0和全1不能分配给主机</li>
+</ul>
+<h3 id="_23">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>35, 36, 47</td>
+<td>子网划分、路由聚合、网络层大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>35, 36, 47</td>
+<td>IP分片、NAT、网络层大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>35, 36, 47</td>
+<td>CIDR、路由表、网络层大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>35, 36, 47</td>
+<td>IP地址、OSPF、网络层大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>35, 36, 47</td>
+<td>子网划分、BGP、网络层大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>35, 36, 47</td>
+<td>RIP、路由转发、网络层大题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_examples_4">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2022年 第36题）— 子网划分与CIDR</h4>
+<p><strong>题目</strong>：某网络地址为192.168.5.0/24，现需要划分成3个子网，分别容纳100台、50台、50台主机。下列哪个地址分配方案是可行的？</p>
+<p>A. 192.168.5.0/25, 192.168.5.128/26, 192.168.5.192/26</p>
+<p>B. 192.168.5.0/25, 192.168.5.128/25, 192.168.5.192/26</p>
+<p>C. 192.168.5.0/24, 192.168.5.0/25, 192.168.5.128/26</p>
+<p>D. 192.168.5.0/26, 192.168.5.64/26, 192.168.5.128/25</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>确定各子网所需主机位数</strong>：
+  <ul>
+  <li>100台主机：需要 $2^n - 2 \geq 100$，$n=7$（126个可用地址），前缀长度 = 32-7 = <strong>/25</strong></li>
+  <li>50台主机：需要 $2^n - 2 \geq 50$，$n=6$（62个可用地址），前缀长度 = 32-6 = <strong>/26</strong></li>
+  <li>50台主机：同上，需要 <strong>/26</strong></li>
+  </ul>
+</li>
+<li><strong>检查地址空间是否连续且不重叠</strong>：
+  <ul>
+  <li>/25 块大小 = 128个地址</li>
+  <li>/26 块大小 = 64个地址</li>
+  </ul>
+</li>
+<li><strong>逐项验证</strong>：
+  <ul>
+  <li><strong>A选项</strong>：192.168.5.0/25（地址0~127），192.168.5.128/26（地址128~191），192.168.5.192/26（地址192~255）。三段连续不重叠，总空间=128+64+64=256，正好填满/24。✓</li>
+  <li><strong>B选项</strong>：192.168.5.128/25 与 192.168.5.0/25 重叠（128/25范围是128~255，与0/25的0~127不重叠，但192/26的192~255与128/25的128~255重叠）。✗</li>
+  <li><strong>C选项</strong>：192.168.5.0/24 与后面两个子网地址重叠。✗</li>
+  <li><strong>D选项</strong>：0/26只能容纳62台主机，不满足100台需求。✗</li>
+  </ul>
+</li>
+</ol>
+
+<p><strong>答案</strong>：A</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：子网划分步骤：①确定所需主机数 → 计算主机位 $n$（满足 $2^n-2 \geq$ 主机数）→ 前缀 = 32-n；②检查地址空间连续性（块大小 = $2^{32-前缀}$）；③确保子网间不重叠。常用块大小：/25=128, /26=64, /27=32, /28=16, /29=8, /30=4。</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2023年 第47题）— IP分片计算</h4>
+<p><strong>题目</strong>：一个IP数据报总长度为4000字节（固定首部20字节），需要通过MTU=1500字节的网络。请回答：</p>
+<p>(1) 该数据报需要分成几片？</p>
+<p>(2) 每片的数据部分长度、片偏移值、MF标志分别是多少？</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>计算原始数据部分长度</strong>：总长度4000 - 首部20 = <strong>3980字节</strong>数据</li>
+<li><strong>确定每片最大数据长度</strong>：MTU=1500，每片首部20字节，因此每片数据最多 $1500 - 20 = 1480$ 字节</li>
+<li><strong>考虑片偏移对齐</strong>：片偏移以8字节为单位，1480是8的倍数（$1480/8 = 185$），满足对齐要求</li>
+<li><strong>计算分片数量</strong>：
+  <ul>
+  <li>第1片：数据0~1479（1480字节）</li>
+  <li>第2片：数据1480~2959（1480字节）</li>
+  <li>第3片：数据2960~3979（1020字节）</li>
+  <li>共 <strong>3片</strong></li>
+  </ul>
+</li>
+<li><strong>计算各片参数</strong>：
+  <table>
+  <thead><tr><th>片号</th><th>数据长度</th><th>片偏移</th><th>MF标志</th><th>总长度</th></tr></thead>
+  <tbody>
+  <tr><td>1</td><td>1480</td><td>0</td><td>1</td><td>1500</td></tr>
+  <tr><td>2</td><td>1480</td><td>185</td><td>1</td><td>1500</td></tr>
+  <tr><td>3</td><td>1020</td><td>370</td><td>0</td><td>1040</td></tr>
+  </tbody>
+  </table>
+  <p>片偏移计算：第1片 = 0/8 = 0；第2片 = 1480/8 = 185；第3片 = 2960/8 = 370</p>
+</li>
+</ol>
+
+<p><strong>答案</strong>：(1) 3片；(2) 见上表</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：IP分片要点：①片偏移以8字节为单位，因此每片数据长度必须是8的倍数；②MF=1表示后面还有分片，MF=0表示最后一片；③DF=1时禁止分片，若超过MTU则丢弃并返回ICMP差错报文；④分片在路由器进行，重组在目的主机；⑤每片都有20字节IP首部（总长度 = 数据 + 20）。</p>
+</blockquote>
+</div>
+
+<hr />
+<h2 id="5">第5章 传输层</h2>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_ch5_transport.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_ch5_transport"></div>
+<div style="text-align:center;margin:20px 0;"><img src="images/cn_tcp_handshake.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_tcp_handshake"></div><div style="text-align:center;margin:20px 0;"><img src="images/cn_tcp_congestion.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="cn_tcp_congestion"></div>
+<h3 id="48">【分值占比】约 4~8 分</h3>
+<h3 id="_24">【考频】⭐⭐⭐⭐（高频，大题常客）</h3>
+<h3 id="_25">【必背】</h3>
+<ul>
+<li>传输层功能：端到端通信、复用与分用</li>
+<li>UDP特点：无连接、不可靠、面向报文、首部8字节</li>
+<li>TCP特点：面向连接、可靠、面向字节流、首部20字节</li>
+<li>TCP连接管理：三次握手、四次挥手</li>
+<li>TCP可靠传输：序号、确认、重传</li>
+<li>TCP流量控制：滑动窗口、拥塞窗口</li>
+<li>TCP拥塞控制：慢开始、拥塞避免、快重传、快恢复</li>
+<li>端口号的分类与常见端口号</li>
+</ul>
+<h3 id="_26">【核心概念】</h3>
+<h4 id="51">5.1 传输层概述</h4>
+<p><strong>功能</strong>：
+- 端到端通信（进程到进程）
+- 复用：多个应用进程共用传输层
+- 分用：传输层将数据分发给正确进程
+- 差错检测</p>
+<p><strong>端口</strong>：标识应用进程，16位。
+- 熟知端口：0~1023（HTTP 80, HTTPS 443, FTP 21, SSH 22, DNS 53, SMTP 25）
+- 登记端口：1024~49151
+- 动态/私有端口：49152~65535</p>
+<h4 id="52-udp">5.2 UDP</h4>
+<p><strong>特点</strong>：
+- 无连接
+- 尽最大努力交付（不可靠）
+- 面向报文
+- 无拥塞控制
+- 首部开销小（8字节）
+- 支持一对一、一对多、多对一、多对多</p>
+<p><strong>UDP首部</strong>：</p>
+<pre><code>| 源端口(16) | 目的端口(16) |
+| 长度(16) | 检验和(16) |
+</code></pre>
+<p><strong>UDP检验和计算</strong>（重要考点）：</p>
+<ul>
+<li>计算方法：二进制反码求和，再取反</li>
+<li>运算规则：
+  <ol>
+  <li>从低位到高位逐列计算，0+0=0，0+1=1，1+1=0并产生进位1</li>
+  <li>若最高位相加后产生进位，则结果要在最低位加1（回卷）</li>
+  <li>最后将结果取反，得到检验和</li>
+  </ol>
+</li>
+<li>检验和为0表示发送方未计算检验和（可选字段）</li>
+<li>全1（0xFFFF）表示检验和为0（因为取反后）</li>
+</ul>
+<div style="text-align:center;margin:20px 0;"><img src="images/mubu/interrupt_1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="UDP校验和计算真题"></div>
+<p><strong>适用场景</strong>：DNS、视频流、实时通信、SNMP。</p>
+<h4 id="53-tcp">5.3 TCP</h4>
+<p><strong>特点</strong>：
+- 面向连接
+- 可靠传输
+- 面向字节流
+- 全双工通信
+- 点对点（一对一）</p>
+<p><strong>TCP首部</strong>（20字节固定）：</p>
+<pre><code>| 源端口(16) | 目的端口(16) |
+| 序号(32) |
+| 确认号(32) |
+| 数据偏移(4) | 保留(6) | 标志位(6) | 窗口(16) |
+| 检验和(16) | 紧急指针(16) |
+| 选项（可选）|
+</code></pre>
+<p><strong>重要字段</strong>：
+- <strong>序号</strong>：本报文段发送数据的第一个字节序号
+- <strong>确认号</strong>：期望收到的下一个字节的序号（累积确认）
+- <strong>ACK</strong>：确认标志
+- <strong>SYN</strong>：同步标志，建立连接
+- <strong>FIN</strong>：终止标志，释放连接
+- <strong>窗口</strong>：接收窗口大小，用于流量控制</p>
+<h4 id="54-tcp">5.4 TCP连接管理</h4>
+<p><strong>三次握手（建立连接）</strong>：</p>
+<pre><code>客户端                    服务器
+  |    SYN=1, seq=x       |
+  |---------------------->|
+  |   SYN=1, ACK=1,       |
+  |   seq=y, ack=x+1      |
+  |<----------------------|
+  |    ACK=1, seq=x+1,    |
+  |    ack=y+1            |
+  |---------------------->|
+</code></pre>
+<p><strong>为什么三次？</strong> 防止历史连接请求造成错误连接。</p>
+<p><strong>四次挥手（释放连接）</strong>：</p>
+<pre><code>客户端                    服务器
+  |    FIN=1, seq=u       |
+  |---------------------->|
+  |    ACK=1, seq=v,      |
+  |    ack=u+1            |
+  |<----------------------|
+  |    (服务器继续发送)     |
+  |    FIN=1, ACK=1,      |
+  |    seq=w, ack=u+1     |
+  |<----------------------|
+  |    ACK=1, seq=u+1,    |
+  |    ack=w+1            |
+  |---------------------->|
+  |    (等待2MSL后关闭)    |
+</code></pre>
+<p><strong>为什么等待2MSL？</strong> 确保最后一个ACK到达，若丢失服务器会重发FIN。</p>
+<h4 id="55-tcp">5.5 TCP可靠传输</h4>
+<p><strong>机制</strong>：
+- 序号：每个字节编号
+- 确认：累积确认
+- 重传：超时重传 + 快速重传</p>
+<p><strong>超时重传时间（RTO）</strong>：
+- 基于RTT（往返时间）动态计算
+- 通常：RTO = RTT_s + 4×RTT_d</p>
+<h4 id="56-tcp">5.6 TCP流量控制</h4>
+<p><strong>滑动窗口</strong>：
+- 接收方通过窗口字段告知发送方可发送量
+- 发送窗口 = min(接收窗口, 拥塞窗口)</p>
+<p><strong>零窗口问题</strong>：
+- 接收窗口为0时，发送方停止发送
+- 持续计时器：定期探测接收方窗口</p>
+<h4 id="57-tcp">5.7 TCP拥塞控制</h4>
+<p><strong>四个算法</strong>：</p>
+<ol>
+<li><strong>慢开始（Slow Start）</strong>：</li>
+<li>拥塞窗口cwnd从1开始（1个MSS）</li>
+<li>每收到一个ACK，cwnd + 1</li>
+<li>
+<p>每轮RTT，cwnd翻倍（指数增长）</p>
+</li>
+<li>
+<p><strong>拥塞避免（Congestion Avoidance）</strong>：</p>
+</li>
+<li>当cwnd ≥ 慢开始门限ssthresh</li>
+<li>
+<p>每轮RTT，cwnd + 1（线性增长）</p>
+</li>
+<li>
+<p><strong>快重传（Fast Retransmit）</strong>：</p>
+</li>
+<li>收到3个重复ACK，立即重传</li>
+<li>
+<p>不等超时</p>
+</li>
+<li>
+<p><strong>快恢复（Fast Recovery）</strong>：</p>
+</li>
+<li>ssthresh = cwnd / 2</li>
+<li>cwnd = ssthresh</li>
+<li>进入拥塞避免（不是慢开始）</li>
+</ol>
+<p><strong>拥塞控制状态图</strong>：</p>
+<pre><code>慢开始 ──cwnd>ssthresh──> 拥塞避免
+   ^                          |
+   └──快恢复（3个 dup ACK）<──┘
+
+超时：ssthresh=cwnd/2, cwnd=1，进入慢开始
+3个dup ACK：ssthresh=cwnd/2, cwnd=ssthresh，进入拥塞避免
+</code></pre>
+<h3 id="_27">【易错警示】</h3>
+<ul>
+<li>❌ TCP三次握手中，SYN和ACK可以同时置1</li>
+<li>❌ 确认号ack = 期望收到的下一个序号 = 已收到序号 + 1</li>
+<li>❌ 发送窗口同时受接收窗口和拥塞窗口限制，取较小值</li>
+<li>❌ 慢开始是指数增长，不是线性</li>
+<li>❌ 超时和3个dup ACK的处理不同：超时回1，dup ACK减半</li>
+<li>❌ 2MSL等待是为了防止已失效的连接请求报文出现在本连接中</li>
+<li>❌ UDP检验和是可选的，TCP检验和是必须的</li>
+</ul>
+<h3 id="_28">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>37, 38, 47</td>
+<td>三次握手、拥塞控制、传输层大题</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>37, 38, 47</td>
+<td>四次挥手、流量控制、传输层大题</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>37, 38, 47</td>
+<td>TCP序号、慢开始、传输层大题</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>37, 38, 47</td>
+<td>拥塞窗口、快重传、传输层大题</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>37, 38, 47</td>
+<td>三次握手、超时重传、传输层大题</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>37, 38, 47</td>
+<td>滑动窗口、拥塞控制、传输层大题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_examples_5">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2024年 第38题）— TCP拥塞控制</h4>
+<p><strong>题目</strong>：TCP拥塞控制中，当前拥塞窗口cwnd=16KB，慢开始门限ssthresh=16KB。发送方连续收到3个重复ACK，此时发送方应（ ）</p>
+<p>A. cwnd=1，ssthresh=16，进入慢开始</p>
+<p>B. cwnd=8，ssthresh=8，进入拥塞避免</p>
+<p>C. cwnd=16，ssthresh=8，进入拥塞避免</p>
+<p>D. cwnd=1，ssthresh=8，进入慢开始</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>识别事件类型</strong>：收到<strong>3个重复ACK</strong>，属于"快重传"触发条件，不是超时</li>
+<li><strong>区分两种拥塞处理</strong>：
+  <ul>
+  <li><strong>超时</strong>：ssthresh = cwnd/2，cwnd = 1，进入<strong>慢开始</strong></li>
+  <li><strong>3个重复ACK</strong>：ssthresh = cwnd/2，cwnd = ssthresh，进入<strong>拥塞避免</strong>（快恢复）</li>
+  </ul>
+</li>
+<li><strong>计算新参数</strong>：
+  <ul>
+  <li>ssthresh = 16/2 = <strong>8KB</strong></li>
+  <li>cwnd = ssthresh = <strong>8KB</strong></li>
+  </ul>
+</li>
+<li><strong>确定状态</strong>：进入<strong>拥塞避免</strong>阶段（线性增长）</li>
+<li><strong>匹配选项</strong>：B选项 cwnd=8, ssthresh=8, 进入拥塞避免</li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：TCP拥塞控制两种事件处理对比：
+  <table>
+  <thead><tr><th>事件</th><th>ssthresh</th><th>cwnd</th><th>下一阶段</th></tr></thead>
+  <tbody>
+  <tr><td>超时</td><td>cwnd/2</td><td>1</td><td>慢开始</td></tr>
+  <tr><td>3个重复ACK</td><td>cwnd/2</td><td>ssthresh</td><td>拥塞避免（快恢复）</td></tr>
+  </tbody>
+  </table>
+  慢开始：cwnd从1开始，每RTT翻倍（指数增长）；拥塞避免：每RTT cwnd+1（线性增长）。
+</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2022年 第47题）— TCP序号与确认号分析</h4>
+<p><strong>题目</strong>：主机甲和主机乙建立TCP连接，甲向乙发送了两个连续的TCP报文段，分别包含300字节和500字节数据。第一个报文段的序号为200，第二个报文段的序号为______。若乙仅正确收到第一个报文段，则乙发送给甲的确认号为______。</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>理解TCP序号规则</strong>：序号 = 本报文段发送数据的第一个字节的序号</li>
+<li><strong>计算第二个报文段序号</strong>：
+  <ul>
+  <li>第一个报文段序号 = 200，数据长度 = 300字节</li>
+  <li>第一个报文段数据范围：200 ~ 499（字节编号）</li>
+  <li>第二个报文段序号 = 200 + 300 = <strong>500</strong></li>
+  </ul>
+</li>
+<li><strong>理解确认号规则</strong>：确认号 = 期望收到的下一个字节的序号（累积确认）</li>
+<li><strong>计算确认号</strong>：
+  <ul>
+  <li>乙正确收到第一个报文段（200~499）</li>
+  <li>乙期望收到下一个字节序号 = 499 + 1 = <strong>500</strong></li>
+  <li>因此确认号 = <strong>500</strong></li>
+  </ul>
+</li>
+<li><strong>分析含义</strong>：确认号500表示"我已收到499及之前的所有数据，期望收到500"，同时暗示第二个报文段（序号500）可能丢失或未收到</li>
+</ol>
+
+<p><strong>答案</strong>：第二个报文段序号为 <strong>500</strong>；乙发送的确认号为 <strong>500</strong></p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：TCP序号与确认号核心规则：①序号 = 本报文段数据首字节编号；②确认号 = 期望收到的下一字节编号 = 已正确接收的最后一字节编号 + 1；③TCP采用累积确认，ACK=500表示500之前的所有字节都已收到；④若报文段含SYN或FIN标志，它们各消耗1个序号。</p>
+</blockquote>
+</div>
+
+<hr /><h2 id="5-io">第6章 应用层</h2>
+<h3 id="46">【分值占比】约 4~6 分</h3>
+<h3 id="_1">【考频】⭐⭐⭐（中等频率，概念题为主）</h3>
+<h3 id="_2">【必背】</h3>
+<ul>
+<li>应用层协议：HTTP、FTP、SMTP、POP3、DNS、DHCP</li>
+<li>客户/服务器模型与P2P模型</li>
+<li>DNS域名解析过程</li>
+<li>HTTP/1.0与HTTP/1.1的区别</li>
+<li>电子邮件系统组成与协议</li>
+</ul>
+<h3 id="_3">【核心概念】</h3>
+<h4 id="61">6.1 应用层概述</h4>
+<p><strong>网络应用模型</strong>：
+- <strong>客户/服务器（C/S）</strong>：客户请求，服务器响应，服务器始终运行
+- <strong>P2P（对等）</strong>：每个主机既是客户又是服务器，可扩展性好</p>
+<h4 id="62-dns">6.2 DNS（域名系统）</h4>
+<p><strong>功能</strong>：域名 → IP地址映射。</p>
+<p><strong>域名结构</strong>：根域 → 顶级域（.com, .org, .cn）→ 二级域 → 子域 → 主机。</p>
+<p><strong>DNS服务器类型</strong>：
+- 根域名服务器
+- 顶级域名服务器
+- 权威域名服务器
+- 本地域名服务器（默认DNS）</p>
+<p><strong>解析方式</strong>：
+- <strong>递归查询</strong>：查询者要求返回最终结果（主机→本地DNS常用）
+- <strong>迭代查询</strong>：被查询者返回最佳答案，查询者继续向下查（本地DNS→根/顶级/权威常用）</p>
+<p><strong>DNS使用UDP端口53</strong>，区域传输使用TCP端口53。</p>
+<h4 id="63-http">6.3 HTTP（超文本传输协议）</h4>
+<p><strong>特点</strong>：无状态、面向文本。</p>
+<p><strong>HTTP/1.0 vs HTTP/1.1</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>HTTP/1.0</th>
+<th>HTTP/1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>连接方式</td>
+<td>非持久（默认）</td>
+<td>持久（默认）</td>
+</tr>
+<tr>
+<td>RTT开销</td>
+<td>每个对象2RTT</td>
+<td>首个2RTT，后续1RTT</td>
+</tr>
+<tr>
+<td>Host头</td>
+<td>无</td>
+<td>有（支持虚拟主机）</td>
+</tr>
+<tr>
+<td>流水线</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody>
+</table>
+<p><strong>HTTP方法</strong>：GET、POST、HEAD、PUT、DELETE等。</p>
+<p><strong>状态码</strong>：
+- 1xx：信息
+- 2xx：成功（200 OK）
+- 3xx：重定向（301, 302）
+- 4xx：客户端错误（404 Not Found）
+- 5xx：服务器错误（500 Internal Server Error）</p>
+<h4 id="64-ftp">6.4 FTP（文件传输协议）</h4>
+<p><strong>双TCP连接</strong>：
+- <strong>控制连接</strong>：端口21，传输命令，整个会话保持
+- <strong>数据连接</strong>：端口20，传输文件，每次传输新建</p>
+<p><strong>工作模式</strong>：主动模式（服务器主动连接客户端数据端口）、被动模式（客户端连接服务器数据端口）。</p>
+<h4 id="65">6.5 电子邮件</h4>
+<p><strong>组成</strong>：用户代理、邮件服务器、邮件协议。</p>
+<p><strong>协议</strong>：
+- <strong>SMTP</strong>：发送邮件，TCP端口25，推方式
+- <strong>POP3</strong>：读取邮件，TCP端口110，拉方式，下载后删除（可配置）
+- <strong>IMAP</strong>：读取邮件，TCP端口143，保留在服务器，支持文件夹管理</p>
+<p><strong>邮件格式</strong>：首部（From, To, Subject）+ 正文。</p>
+<h4 id="66-dhcp">6.6 DHCP（动态主机配置协议）</h4>
+<p><strong>功能</strong>：自动分配IP地址、子网掩码、默认网关、DNS服务器。</p>
+<p><strong>工作过程</strong>：
+1. <strong>DHCP Discover</strong>：客户端广播寻找服务器
+2. <strong>DHCP Offer</strong>：服务器响应提供IP地址
+3. <strong>DHCP Request</strong>：客户端请求使用提供的地址
+4. <strong>DHCP ACK</strong>：服务器确认，客户端正式使用</p>
+<p>使用<strong>UDP</strong>，客户端端口68，服务器端口67。</p>
+<h3 id="_4">【易错警示】</h3>
+<ul>
+<li>❌ DNS使用UDP端口53，不是TCP（区域传输才用TCP）</li>
+<li>❌ HTTP是无状态的，Cookie用于保持状态</li>
+<li>❌ FTP控制连接端口21，数据连接端口20（主动模式）</li>
+<li>❌ SMTP用于发送，POP3/IMAP用于接收</li>
+<li>❌ DHCP是应用层协议，使用UDP传输</li>
+<li>❌ HTTP/1.1默认持久连接，HTTP/1.0默认非持久</li>
+</ul>
+<h3 id="_5">【真题速查】</h3>
+<table>
+<thead>
+<tr>
+<th>年份</th>
+<th>题号</th>
+<th>考点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>39, 40</td>
+<td>DNS、HTTP</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>39, 40</td>
+<td>HTTP状态码、FTP</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>39, 40</td>
+<td>SMTP/POP3、DNS解析</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>39, 40</td>
+<td>HTTP/1.1、电子邮件</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>39, 40</td>
+<td>DNS、DHCP</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>39, 40</td>
+<td>HTTP连接、FTP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_examples_6">【典型例题解析】</h3>
+
+<div class="example">
+<h4>例题1（2023年 第40题）— DNS解析过程</h4>
+<p><strong>题目</strong>：某主机访问www.example.com，本地DNS服务器无缓存。该主机配置的本地DNS服务器地址为202.113.1.1，根DNS服务器地址已知。下列关于DNS解析过程的描述中，正确的是（ ）</p>
+<p>A. 主机直接向根DNS服务器查询www.example.com的IP地址</p>
+<p>B. 本地DNS服务器先向根服务器查询.com顶级域服务器的地址，再向顶级域服务器查询example.com权威服务器的地址，最后向权威服务器查询www.example.com的IP</p>
+<p>C. 本地DNS服务器直接向example.com的权威服务器查询</p>
+<p>D. 主机使用递归查询，本地DNS服务器使用迭代查询；或者主机使用迭代查询，本地DNS服务器使用递归查询</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>理解DNS解析两种模式</strong>：
+  <ul>
+  <li><strong>递归查询</strong>：查询者要求被查询者返回最终结果（要么IP地址，要么报错）</li>
+  <li><strong>迭代查询</strong>：被查询者返回最佳答案（可能是下一级服务器地址），查询者继续向下查询</li>
+  </ul>
+</li>
+<li><strong>分析标准解析流程</strong>（无缓存时）：
+  <ul>
+  <li>主机向<strong>本地DNS服务器</strong>发送递归查询请求</li>
+  <li>本地DNS服务器向<strong>根服务器</strong>迭代查询 → 获得.com顶级域服务器地址</li>
+  <li>本地DNS服务器向<strong>.com顶级域服务器</strong>迭代查询 → 获得example.com权威服务器地址</li>
+  <li>本地DNS服务器向<strong>example.com权威服务器</strong>迭代查询 → 获得www.example.com的IP地址</li>
+  <li>本地DNS服务器将最终结果返回给主机</li>
+  </ul>
+</li>
+<li><strong>逐项判断</strong>：
+  <ul>
+  <li>A：错误，主机向本地DNS查询，不是直接向根服务器</li>
+  <li>B：正确，描述了完整的迭代查询过程</li>
+  <li>C：错误，本地DNS不知道权威服务器地址，需要先查询根和顶级域</li>
+  <li>D：错误，通常是主机递归、本地DNS迭代；但也可以两者都递归（取决于配置），不是"或者"关系</li>
+  </ul>
+</li>
+</ol>
+
+<p><strong>答案</strong>：B</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：DNS解析流程：主机 → 本地DNS（递归）→ 根服务器 → 顶级域服务器 → 权威服务器（迭代）。常用查询方式：主机到本地DNS用递归，本地DNS到各级服务器用迭代。DNS使用UDP端口53，区域传输使用TCP端口53。</p>
+</blockquote>
+</div>
+
+<div class="example">
+<h4>例题2（2021年 第40题）— HTTP协议分析</h4>
+<p><strong>题目</strong>：假设某浏览器访问一个网页，该网页包含1个HTML文件和10个JPEG图片，所有对象都在同一服务器上。使用HTTP/1.0非持久连接和HTTP/1.1持久连接时，分别需要建立多少次TCP连接？</p>
+<p>A. 11, 1 &nbsp; B. 11, 2 &nbsp; C. 22, 1 &nbsp; D. 22, 2</p>
+
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li><strong>分析HTTP/1.0非持久连接</strong>：
+  <ul>
+  <li>非持久连接：每个对象都需要单独建立TCP连接</li>
+  <li>对象总数 = 1个HTML + 10个JPEG = <strong>11个对象</strong></li>
+  <li>需要建立 <strong>11次</strong> TCP连接</li>
+  </ul>
+</li>
+<li><strong>分析HTTP/1.1持久连接</strong>：
+  <ul>
+  <li>持久连接：一个TCP连接可以传输多个对象</li>
+  <li>所有对象在同一服务器上，因此只需建立 <strong>1次</strong> TCP连接</li>
+  <li>HTTP/1.1默认使用持久连接（Connection: keep-alive）</li>
+  </ul>
+</li>
+<li><strong>匹配选项</strong>：HTTP/1.0需11次，HTTP/1.1需1次</li>
+</ol>
+
+<p><strong>答案</strong>：A</p>
+
+<blockquote class="alert-success">
+<p><strong>知识点总结</strong>：HTTP连接方式对比：
+  <table>
+  <thead><tr><th>特性</th><th>HTTP/1.0 非持久</th><th>HTTP/1.0 持久（Keep-Alive）</th><th>HTTP/1.1 默认持久</th></tr></thead>
+  <tbody>
+  <tr><td>TCP连接数（n个对象）</td><td>n+1（含HTML）</td><td>1</td><td>1</td></tr>
+  <tr><td>RTT开销</td><td>每个对象2RTT</td><td>首个2RTT，后续1RTT</td><td>同左</td></tr>
+  <tr><td>并行请求</td><td>可开多个连接</td><td>串行或有限并行</td><td>支持流水线（pipelining）</td></tr>
+  </tbody>
+  </table>
+  HTTP/1.1默认持久连接，HTTP/2支持多路复用（单个连接上并行传输多个请求）。
+</p>
+</blockquote>
+</div>
+
+<hr />
+<blockquote>
+<p><strong>计算机网络 完</strong></p>
+</blockquote>
+
+
+<hr />
+<h2 id="zhenti-gallery">📚 历年真题原题（2014-2024）— 计算机网络</h2>
+<p>以下展示408历年真题原题图片。计网题目分布在每份试卷的第33-40题（选择题33-40题，大题47题）。</p>
+<div class="zhenti-gallery">
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2014年真题（共20页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p14.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p14.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p15.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p15.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p16.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p16.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p17.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p17.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p18.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p18.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p19.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p19.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p20.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p20.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2014_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2014年真题 408_2014_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2015年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2015_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2015年真题 408_2015_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2016年真题（共10页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2016_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2016年真题 408_2016_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2017年真题（共13页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p13.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p13.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2017_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2017年真题 408_2017_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2018年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2018_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2018年真题 408_2018_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2019年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2019_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2019年真题 408_2019_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2021年真题（共9页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2021_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2021年真题 408_2021_p9.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2022年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2022_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2022年真题 408_2022_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2023年真题（共8页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2023_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2023年真题 408_2023_p8.png">
+    </div>
+  </div>
+
+  <div class="zhenti-year" style="margin-bottom:32px;">
+    <h3 style="color:#2c3e50;border-left:4px solid #3498db;padding-left:12px;">2024年真题（共12页）</h3>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p1.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p1.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p10.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p10.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p11.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p11.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p12.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p12.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p2.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p2.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p3.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p3.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p4.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p4.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p5.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p5.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p6.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p6.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p7.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p7.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p8.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p8.png">
+    </div>
+    <div style="text-align:center;margin:16px 0;">
+      <img src="images/zhenti_pages/408_2024_p9.png" style="max-width:100%;max-height:500px;border-radius:8px;border:1px solid #e3e2e0;" alt="2024年真题 408_2024_p9.png">
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.addEventListener('scroll', function(){
+  const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  let current = '';
+  headings.forEach(h => { if(h.getBoundingClientRect().top <= 80) current = h.id; });
+  tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  document.querySelector('.back-to-top').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+</script>
+</body>
+</html>

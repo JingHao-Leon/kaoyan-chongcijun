@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>考研冲刺君 | 考研知识体系全解</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand"><span class="logo">🏆</span><span>考研冲刺君</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">首页</a></li>
+    <li><a href="math1.html" class="">数学一</a></li>
+    <li><a href="english1.html" class="">英语一</a></li>
+    <li><a href="ds.html" class="">数据结构</a></li>
+    <li><a href="co.html" class="">计组</a></li>
+    <li><a href="os.html" class="">OS</a></li>
+    <li><a href="cn.html" class="">计网</a></li>
+  </ul>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">导航</div>
+    <ul class="toc-list">
+      <li><a href="#overview" class="toc-h2">项目概览</a></li>
+      <li><a href="#subjects" class="toc-h2">六科知识体系</a></li>
+      <li><a href="#schedule" class="toc-h2">备考规划</a></li>
+      <li><a href="#daily" class="toc-h2">时间安排</a></li>
+    </ul>
+  </aside>
+  <main class="content">
+
+<div class="hero" id="overview">
+  <h1>考研冲刺君</h1>
+  <p class="hero-subtitle">数学一 · 英语一 · 408计算机学科专业基础</p>
+  <p class="hero-subtitle">知识体系全解 · 真题驱动 · 冲刺清华</p>
+  <div class="hero-stats">
+    <div class="stat-item"><div class="stat-number">8,938</div><div class="stat-label">行知识体系</div></div>
+    <div class="stat-item"><div class="stat-number">69</div><div class="stat-label">张GPT Image 2配图</div></div>
+    <div class="stat-item"><div class="stat-number">400+</div><div class="stat-label">冲刺目标分</div></div>
+  </div>
+</div>
+
+<div style="text-align:center;margin:32px 0;">
+  <img src="images/timeline.png" style="max-width:100%;border-radius:8px;border:1px solid #e3e2e0;" alt="备考时间线">
+</div>
+
+<div class="section-divider"></div>
+
+<h2 id="subjects">六科知识体系</h2>
+
+<div class="card-grid">
+  <a href="math1.html" class="card">
+    <div class="card-icon">📐</div>
+    <div class="card-title">数学一</div>
+    <div class="card-desc">高等数学、线性代数、概率论。极限七大方法、中值定理、三大公式、矩阵对角化...</div>
+    <div class="card-meta"><span>150分</span><span>2,604行</span><span>22章</span></div>
+  </a>
+  <a href="english1.html" class="card">
+    <div class="card-icon">📝</div>
+    <div class="card-title">英语一</div>
+    <div class="card-desc">阅读六大题型、新题型、完形、翻译、写作模板、2000核心词汇...</div>
+    <div class="card-meta"><span>100分</span><span>1,875行</span><span>7大板块</span></div>
+  </a>
+  <a href="ds.html" class="card">
+    <div class="card-icon">🌲</div>
+    <div class="card-title">数据结构 (45分)</div>
+    <div class="card-desc">线性表、树与二叉树、图、查找、排序。算法代码模板、复杂度分析...</div>
+    <div class="card-meta"><span>45分</span><span>7章</span></div>
+  </a>
+  <a href="co.html" class="card">
+    <div class="card-icon">🔧</div>
+    <div class="card-title">计算机组成原理 (45分)</div>
+    <div class="card-desc">数据表示、存储系统、CPU、指令系统、流水线。Cache综合题...</div>
+    <div class="card-meta"><span>45分</span><span>6章</span></div>
+  </a>
+  <a href="os.html" class="card">
+    <div class="card-icon">⚙️</div>
+    <div class="card-title">操作系统 (35分)</div>
+    <div class="card-desc">进程管理、内存管理、文件系统、I/O。PV操作、页面置换...</div>
+    <div class="card-meta"><span>35分</span><span>5章</span></div>
+  </a>
+  <a href="cn.html" class="card">
+    <div class="card-icon">🌐</div>
+    <div class="card-title">计算机网络 (25分)</div>
+    <div class="card-desc">物理层、数据链路层、网络层、传输层、应用层。TCP/IP...</div>
+    <div class="card-meta"><span>25分</span><span>6章</span></div>
+  </a>
+</div>
+
+<div class="section-divider"></div>
+
+<h2 id="schedule">备考三阶段规划</h2>
+
+<h3>第一阶段：基础夯实期（3-6月）</h3>
+<table>
+  <tr><th>时间</th><th>数学一</th><th>英语一</th><th>408</th></tr>
+  <tr><td>3-4月</td><td>高数一轮</td><td>背单词+长难句</td><td>数据结构一轮</td></tr>
+  <tr><td>4-5月</td><td>线代+高数复习</td><td>早年阅读精读</td><td>计组</td></tr>
+  <tr><td>5-6月</td><td>概率论一轮</td><td>阅读精读</td><td>OS+计网</td></tr>
+</table>
+
+<h3>第二阶段：强化突破期（7-9月）</h3>
+<table>
+  <tr><th>时间</th><th>数学一</th><th>英语一</th><th>408</th></tr>
+  <tr><td>7月</td><td>高数强化+刷题</td><td>阅读专项突破</td><td>数据结构+计组强化</td></tr>
+  <tr><td>8月</td><td>线代+概率强化</td><td>完型+新题型+翻译</td><td>OS+计网强化</td></tr>
+  <tr><td>9月</td><td>真题套卷(05-15)</td><td>作文模板+真题二刷</td><td>408真题(09-15)</td></tr>
+</table>
+
+<h3>第三阶段：冲刺模考期（10-12月）</h3>
+<table>
+  <tr><th>时间</th><th>数学一</th><th>英语一</th><th>408</th></tr>
+  <tr><td>10月</td><td>真题二刷(16-24)</td><td>全真模拟</td><td>真题二刷+模拟</td></tr>
+  <tr><td>11月</td><td>模拟卷(李林6+4)</td><td>作文默写</td><td>模拟题+查漏补缺</td></tr>
+  <tr><td>12月</td><td>错题回顾+公式默写</td><td>考前保温</td><td>重点背诵+错题</td></tr>
+</table>
+
+<div class="section-divider"></div>
+
+<h2 id="daily">每日时间安排</h2>
+<table>
+  <tr><th>时间段</th><th>内容</th></tr>
+  <tr><td>8:00-10:00</td><td><strong>数学</strong>（黄金时间，头脑最清醒）</td></tr>
+  <tr><td>10:20-12:00</td><td><strong>408专业课</strong></td></tr>
+  <tr><td>14:00-15:30</td><td><strong>英语</strong>（适应考试时间）</td></tr>
+  <tr><td>15:50-17:30</td><td>数学/408 做题</td></tr>
+  <tr><td>19:00-21:00</td><td><strong>政治</strong></td></tr>
+  <tr><td>21:00-22:00</td><td>复盘 / 背单词 / 错题</td></tr>
+</table>
+
+<footer>
+  <p>🏆 考研冲刺君 · 一战必成硕</p>
+  <p style="margin-top:6px;">目标：清华大学计算机科学与技术</p>
+</footer>
+
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开源大模型技术架构 | 考研冲刺君</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .archi-card {
+    margin: 32px 0;
+    padding: 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .archi-card .archi-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 8px 0 12px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .archi-card .archi-meta .badge {
+    background: var(--bg-callout);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+  .archi-card .archi-img-wrap {
+    text-align: center;
+    margin: 16px 0;
+  }
+  .archi-card .archi-img-wrap img {
+    max-width: 100%;
+    max-height: 700px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .archi-card .archi-points {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: var(--bg-callout);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 3px;
+    font-size: 14px;
+    color: var(--text-body);
+  }
+  .archi-card .archi-points ul {
+    margin: 6px 0 0 20px;
+  }
+  .archi-card .archi-points li {
+    margin: 4px 0;
+  }
+  .archi-hero {
+    text-align: left;
+    padding: 60px 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .archi-hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .archi-hero p {
+    color: var(--text-gray);
+    font-size: 16px;
+  }
+  .archi-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .archi-stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-title);
+  }
+  .archi-stat-label {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+  .archi-loading {
+    text-align: center;
+    padding: 80px 24px;
+    color: var(--text-light);
+  }
+
+  .archi-tech {
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: #fafaf8;
+    border-left: 3px solid #37352f;
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-body);
+  }
+  .archi-tech h4.archi-tech-title {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-title);
+  }
+  .archi-tech p { margin: 8px 0; }
+  .archi-tech ul, .archi-tech ol { margin: 8px 0 8px 24px; }
+  .archi-tech li { margin: 4px 0; font-size: 14px; }
+  .archi-tech code {
+    font-family: 'SFMono-Regular', 'Fira Code', monospace;
+    font-size: 13px;
+    background: #f0efed;
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+  .archi-tech pre {
+    background: #f0efed;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    overflow-x: auto;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+  .archi-tech pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 12.5px;
+  }
+  .archi-tech table {
+    width: auto;
+    margin: 8px 0;
+    font-size: 13px;
+    border-collapse: collapse;
+  }
+  .archi-tech th, .archi-tech td {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+  }
+
+
+  .math-block {
+    text-align: center;
+    margin: 14px 0;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+  .math-block .katex { font-size: 1.05em; }
+  .archi-tech .math { color: var(--accent-red); }
+  pre.code-flow {
+    background: #f7f6f3;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-family: 'SFMono-Regular', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-body);
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body, {delimiters: [{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]});"></script>
+<script defer src="assets/navigation.js"></script></head>
+<body>
+<nav class="top-nav">
+  <a href="index.html" class="nav-brand"><span class="logo">🏆</span><span>考研冲刺君</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="">首页</a></li>
+    <li><a href="math1.html" class="">数学一</a></li>
+    <li><a href="english1.html" class="">英语一</a></li>
+    <li><a href="cs408.html" class="">408专业课</a></li>
+    <li><a href="ds.html" class="">数据结构</a></li>
+    <li><a href="co.html" class="">计组</a></li>
+    <li><a href="os.html" class="">OS</a></li>
+    <li><a href="cn.html" class="">计网</a></li>
+    <li><a href="llm_architectures.html" class="active">LLM 架构</a></li>
+  </ul>
+</nav>
+
+<div class="main-layout">
+  <aside class="sidebar">
+    <div class="sidebar-title">目录</div>
+    <ul class="toc-list">
+      <li><a href="#archi-overview" class="toc-h1">LLM 技术架构总览</a></li>
+      <li><a href="#archi-1" class="toc-h2">图 1 — MLA 注意力</a></li>
+      <li><a href="#archi-2" class="toc-h2">图 2 — DeepSeek MoE</a></li>
+      <li><a href="#archi-3" class="toc-h2">图 3 — GRPO 训练</a></li>
+      <li><a href="#archi-4" class="toc-h2">图 4 — FP8 混合精度</a></li>
+      <li><a href="#archi-5" class="toc-h2">图 5 — 混合推理双模</a></li>
+      <li><a href="#archi-6" class="toc-h2">图 6 — 早期融合多模态</a></li>
+      <li><a href="#archi-7" class="toc-h2">图 7 — iRoPE 超长上下文</a></li>
+      <li><a href="#archi-8" class="toc-h2">图 8 — SCAN 严肃问诊</a></li>
+      <li><a href="#archi-9" class="toc-h2">图 9 — Hunyuan DiT</a></li>
+      <li><a href="#archi-10" class="toc-h2">图 10 — Qwen3 三阶段预训练</a></li>
+      <li><a href="#archi-11" class="toc-h2">图 11 — Llama 4 MoE</a></li>
+      <li><a href="#archi-12" class="toc-h2">图 12 — Phi-4 中期融合</a></li>
+    </ul>
+  </aside>
+  <main class="content">
+    <div class="archi-hero" id="archi-overview">
+      <h1>开源大模型技术架构</h1>
+      <p>12 项核心技术架构示意图 · 极简白底蓝图风格 · Higgsfield image2 medium 1k 1:1 生成</p>
+      <div class="archi-stats">
+        <div><div class="archi-stat-num">12</div><div class="archi-stat-label">张架构图</div></div>
+        <div><div class="archi-stat-num">12+</div><div class="archi-stat-label">家厂商</div></div>
+        <div><div class="archi-stat-num">$36\mathrm{T}$+</div><div class="archi-stat-label">总训练 tokens</div></div>
+        <div><div class="archi-stat-num">10M</div><div class="archi-stat-label">最长上下文</div></div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- 图 1 — MLA -->
+    <div class="archi-card" id="archi-1">
+      <h2>图 1 / 12 — MLA（多头潜注意力）</h2>
+      <div class="archi-meta">
+        <span class="badge">Multi-Head Latent Attention</span>
+        <span class="badge">DeepSeek V2 / V3 / R1</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/01_MLA_注意力机制.png" alt="MLA 多头潜注意力机制">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>通过低秩 KV 联合压缩，把完整的 Key-Value 矩阵压缩为潜向量（latent vector），推理时只缓存潜向量，显著降低 KV Cache 占用。
+        <ul>
+          <li>左侧：传统 MHA 完整 K/V Cache（大矩形）</li>
+          <li>右侧：MLA 压缩后的潜向量（小矩形）</li>
+          <li>低秩分解矩阵 C_KV</li>
+          <li>缓存大小对比标注 "10x ↓"</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>标准 Transformer 推理时，每生成一个新 token 都要为所有历史 token 维护完整的 Key 和 Value 矩阵（KV Cache）。以 7B 模型、4K 上下文为例，KV Cache 占用约 1.5GB；扩展到 128K 上下文，显存占用飙升至 48GB，成为长文本推理的核心瓶颈。</p>
+<p><strong>核心原理：</strong>MLA（Multi-Head Latent Attention）通过<strong>低秩联合压缩</strong>将 KV 矩阵压缩为一个小维度的潜向量 <code>c_t^{KV} ∈ R^{d_c}</code>，推理时只缓存潜向量而非完整 K/V。公式：<span class="math">$c_t^{\mathrm{KV}} = W^{\mathrm{DKV}} \cdot h_t$</span>，其中 <span class="math">$d_c \ll d_n \times L_n$</span>（通常 <span class="math">$d_c = d_n / 4$</span>）。需要 K/V 时，通过上投影 <span class="math">$W^{\mathrm{UK}},\ W^{\mathrm{UV}}$</span> 恢复。</p>
+<p><strong>关键工程优化：</strong>为兼容 RoPE 位置编码，MLA 把 <code>W^{UK}</code> 吸收到 <code>W^Q</code> 里（解耦 RoPE），避免每次恢复 K 时重新计算位置编码。这种"吸收-合并"技巧让 MLA 在保留位置信息的同时，把 KV Cache 压缩到<strong>每 token 仅 $\sim 2.25\,\mathrm{KB}$</strong>（相比 MHA 的 $40\mathrm{KB}$，<strong>减少 $\sim 93.3\%$</strong>）。</p>
+<p><strong>与同类方案对比：</strong>MQA（Multi-Query Attention）让所有 head 共享一组 KV，GQA（Grouped Query）分组共享 — 这些都是"压缩 head 数量"。MLA 是"压缩每个 head 的维度"，理论上可与 GQA 结合，在缓存大小和模型质量间取更优平衡。DeepSeek V2/V3/R1 全部采用 MLA。</p></div>
+    </div>
+
+    <!-- 图 2 — DeepSeek MoE -->
+    <div class="archi-card" id="archi-2">
+      <h2>图 2 / 12 — DeepSeek MoE 架构</h2>
+      <div class="archi-meta">
+        <span class="badge">DeepSeekMoE</span>
+        <span class="badge">DeepSeek</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/02_DeepSeekMoE.png" alt="DeepSeek MoE 架构">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>MoE 路由时区分"共享专家"（每个 token 必激活）和"路由专家"（门控网络动态选），通过无辅助损失负载均衡避免路由崩溃。
+        <ul>
+          <li>输入 token 序列 → 门控网络 Gating Network</li>
+          <li>共享专家 (Shared Expert) 固定激活</li>
+          <li>路由专家 (Routed Expert) 池，细粒度、数量多</li>
+          <li>Top-k 选择 + 偏置项调整</li>
+          <li>输出聚合</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>传统 MoE（Mixture of Experts）虽然能让模型参数规模扩大而不显著增加 FLOPs，但存在两大顽疾：<strong>路由崩溃</strong>（少数专家被反复选中，其他专家"饿死"）和<strong>负载不均</strong>（GPU 利用率参差不齐）。传统解法是加辅助损失（auxiliary loss）平衡负载，但会损害模型性能。</p>
+<p><strong>核心原理：</strong>DeepSeekMoE 采用<strong>细粒度专家 + 共享专家分离</strong>架构：</p>
+<ul>
+<li><strong>共享专家</strong>（1-2 个）：每个 token 必经过，处理通用知识（语法、常识）。</li>
+<li><strong>路由专家</strong>（数量多，如 $64-256$ 个）：门控网络动态选 top-$k$（如 $6-8$ 个），处理特定领域知识。</li>
+</ul>
+<p>路由公式：<span class="math">$s_i = \sigma\big(\sigma(W_g \cdot h_t) \cdot e_i + b_i\big)$</span>，其中 <code>b_i</code> 是<strong>动态偏置项</strong>，无辅助损失负载均衡的关键。</p>
+<p><strong>无辅助损失平衡机制：</strong>训练时动态监控每个专家的负载批次比例：<strong>负载过高</strong>的专家 <span class="math">$b_i \leftarrow b_i - \gamma$</span>（减少被选中概率），<strong>负载过低</strong>的专家 <span class="math">$b_i \leftarrow b_i + \gamma$</span>。这种"软调控"避免了辅助损失对主目标函数的污染，实验显示模型质量反而更高。</p>
+<p><strong>效果：</strong>DeepSeek-V3 ($671\mathrm{B}$ 总参 / $37\mathrm{B}$ 激活) 在多项基准上超越 Llama-3.1-405B（$5.4\times$ 激活参数），训练成本仅 $1/10$。</p></div>
+    </div>
+
+    <!-- 图 3 — GRPO -->
+    <div class="archi-card" id="archi-3">
+      <h2>图 3 / 12 — GRPO 训练流程</h2>
+      <div class="archi-meta">
+        <span class="badge">Group Relative Policy Optimization</span>
+        <span class="badge">DeepSeek（替代 PPO）</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/03_GRPO训练.png" alt="GRPO 训练流程">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>对一组输出采样，组内相对奖励比较，无需维护显式价值网络，显存占用和训练速度都优化。
+        <ul>
+          <li>策略模型采样 N 个输出（并行展示）</li>
+          <li>奖励计算模块</li>
+          <li>组内归一化（均值/标准差）</li>
+          <li>优势函数计算</li>
+          <li>策略更新</li>
+          <li>虚线框对比：PPO 的 Value Network（被省略）</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>PPO（Proximal Policy Optimization）是 RLHF 主流算法，但需维护 4 个模型（policy / reference / value / reward），其中 <strong>value network（critic）</strong>与 policy 等大，占用大量显存和计算。DeepSeek-R1 用 GRPO 替代 PPO 训练推理模型。</p>
+<p><strong>核心原理：</strong>GRPO（Group Relative Policy Optimization）抛弃 critic，用<strong>组内相对奖励</strong>作为优势函数。对同一 prompt 采样 N 个输出 {o₁, ..., o_N}，计算每个的奖励 rᵢ，归一化优势：</p>
+<p class="math-block">$$A_i = \frac{r_i - \mathrm{mean}(\{r_1, \dots, r_N\})}{\mathrm{std}(\{r_1, \dots, r_N\})}$$</p>
+<p>策略目标：</p>
+<p class="math-block">$$J = \mathbb{E}\!\left[\tfrac{1}{N} \sum_i \min\big(\rho_i \cdot A_i,\ \mathrm{clip}(\rho_i, 1-\epsilon, 1+\epsilon) \cdot A_i\big)\right] - \beta \cdot \mathrm{KL}(\pi_\theta \| \pi_{\mathrm{ref}})$$</p>
+其中 <span class="math">$\rho_i = \dfrac{\pi_\theta(o_i \mid \mathrm{prompt})}{\pi_{\theta_{\mathrm{old}}}(o_i \mid \mathrm{prompt})}$</span> 是新旧策略比。</p>
+<p><strong>关键优势：</strong></p>
+<ul>
+<li>无需 critic 网络，<strong>显存降低 $\sim 40\%$</strong>，训练速度提升 $\sim 30\%$。</li>
+<li>组内对比避免奖励归一化难题，对稀疏奖励（如数学题对/错）更鲁棒。</li>
+<li>DeepSeek-R1 训练中证明了 GRPO 能激发模型的"aha moment"（顿悟时刻），自然涌现长链推理能力。</li>
+</ul></div>
+    </div>
+
+    <!-- 图 4 — FP8 -->
+    <div class="archi-card" id="archi-4">
+      <h2>图 4 / 12 — FP8 混合精度训练框架</h2>
+      <div class="archi-meta">
+        <span class="badge">FP8 Hybrid Precision</span>
+        <span class="badge">DeepSeek V3 + 多家跟进</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/04_FP8混合精度.png" alt="FP8 混合精度训练框架">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>细粒度量化（1×128 激活 / 128×128 权重）+ 在线量化 + FP32 高精度累加 + 低精度通信，大幅降低显存与训练时间。
+        <ul>
+          <li>FP8 权重（128×128 块）</li>
+          <li>FP8 激活（1×128 块）</li>
+          <li>在线量化（动态 scale）</li>
+          <li>FP32 累加器</li>
+          <li>FP8 Tensor Core GEMM</li>
+          <li>BF16 优化器状态</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>大模型训练传统用 BF16/FP16（16 位浮点）。训练 1T 参数模型需要数月 GPU 时间，硬件成本上亿美元。FP8（8 位浮点）将数据位宽减半，理论上能<strong>提速 提速 $50\%$ + 省显存 $40\%$</strong>，但精度损失是核心挑战。</p>
+<p><strong>FP8 两种格式：</strong></p>
+<ul>
+<li><strong>E4M3</strong>（1 符号位 + 4 指数 + 3 尾数）：前向传播，动态范围小但精度高。</li>
+<li><strong>E5M2</strong>（1 符号位 + 5 指数 + 2 尾数）：反向传播，动态范围大但精度低。</li>
+</ul>
+<p><strong>细粒度量化策略：</strong>DeepSeek-V3 的核心创新 — <strong>按块独立 scale factor</strong>，避免单一 scale 抹平所有数值差异：</p>
+<ul>
+<li><strong>权重</strong>：每 128×128 元素块一个 scale（沿输出通道维聚合）。</li>
+<li><strong>激活</strong>：每 1×128 元素块一个 scale（沿 token 维聚合）。</li>
+</ul>
+<p><strong>其他关键点：</strong></p>
+<ul>
+<li><strong>FP32 高精度累加器</strong>：FP8 GEMM 累加用 FP32 Tensor Core，避免精度崩塌。</li>
+<li><strong>在线量化（dynamic）</strong>：每个 micro-batch 重新计算 scale，匹配当前数据分布。</li>
+<li><strong>Loss Scaling</strong>：防止 FP8 梯度下溢出。</li>
+</ul>
+<p><strong>效果：</strong>DeepSeek-V3 ($671\mathrm{B}$) 完整训练仅 $2788\mathrm{K}$ H800 GPU hours，成本 ~$550$ 万美元，是同等规模 LLM 训练成本的 $1/10$。</p></div>
+    </div>
+
+    <!-- 图 5 — 混合推理 -->
+    <div class="archi-card" id="archi-5">
+      <h2>图 5 / 12 — 混合推理（思考/非思考双模）</h2>
+      <div class="archi-meta">
+        <span class="badge">Hybrid Reasoning</span>
+        <span class="badge">Qwen3 / Claude 3.7 / Gemini 2.5 Flash</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/05_混合推理双模.png" alt="混合推理双模">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>同一个模型集成两种推理模式 — 思考模式（深度多步推理）用于复杂问题，非思考模式（快速响应）用于简单问题，可按 API 参数或 token 切换。
+        <ul>
+          <li>单一模型入口</li>
+          <li>双路径分流（思考 / 非思考）</li>
+          <li><code>/think</code> <code>/no_think</code> 切换 token</li>
+          <li>思考模式的思维链（多步骤）</li>
+          <li>算力成本对比：思考模式 6x</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>不同任务复杂度差异巨大：</p>
+<ul>
+<li>简单问答（"北京首都？"）：理想响应 <strong>50ms / 10 tokens</strong>。</li>
+<li>复杂推理（"证明哥德巴赫猜想"）：需要数百步思考，<strong>30s+ / 5000+ tokens</strong>。</li>
+</ul>
+<p>传统方案要么用同一个模型（要么"过度思考"浪费算力，要么"思考不足"答错题），要么部署两套模型（成本翻倍）。</p>
+<p><strong>核心原理：</strong>混合推理 = <strong>单一模型 + 两种推理路径</strong>，由特殊 token 切换：</p>
+<pre><code>用户输入 → 模型
+  ├─ 包含 /think token  → 思考模式（Chain-of-Thought 推理链）
+  └─ 包含 /no_think token → 非思考模式（直接回答）</code></pre>
+<p><strong>训练方法：</strong>在 SFT 数据中混合两种风格的回答（带或不带思考链），用 special token 标识。RLHF 阶段进一步强化"何时思考、何时直接回答"的选择能力。Qwen3 提供 <code>enable_thinking</code> API 参数简化调用。</p>
+<p><strong>实际效果：</strong></p>
+<ul>
+<li>思考模式：慢但深，<strong>token 消耗 6x</strong>，用于数学、代码、复杂逻辑。</li>
+<li>非思考模式：快且准，<strong>token 消耗 1x</strong>，用于闲聊、查询、简单分类。</li>
+<li>用户/系统可根据任务难度自动切换，单次调用成本降低 30-50%。</li>
+</ul>
+<p><strong>代表模型：</strong>Qwen3、Claude 3.7 Sonnet（Extended Thinking）、Gemini 2.5 Flash。</p></div>
+    </div>
+
+    <!-- 图 6 — MetaCLIP Early Fusion -->
+    <div class="archi-card" id="archi-6">
+      <h2>图 6 / 12 — MetaCLIP 早期融合多模态</h2>
+      <div class="archi-meta">
+        <span class="badge">Early Fusion Multimodal</span>
+        <span class="badge">Llama 4 / 阿里 Qwen3-Omni</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/06_早期融合多模态.png" alt="MetaCLIP 早期融合多模态">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>视觉编码器（MetaCLIP 优化）把图像转为 token，与文本 token 早期融合，统一送入 Transformer 主干，支持图像/视频原生输入。
+        <ul>
+          <li>文本 / 图像 / 视频 三种输入</li>
+          <li>MetaCLIP 视觉编码器</li>
+          <li>Token 早期融合层</li>
+          <li>统一 Transformer MoE 主干</li>
+          <li>200+ 语言，30T+ 训练 tokens</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>传统多模态架构（如 CLIP + LLM）分两步：先独立编码视觉和文本，再在高层融合。这种<strong>晚期融合</strong>丢失了细粒度跨模态对齐（如"图中的哪只猫对应文本里的'它'？"），且对视频/音频等时序模态支持弱。</p>
+<p><strong>核心原理：</strong>早期融合把视觉/听觉/文本在<strong>token 级别</strong>就拼接，统一送入同一个 Transformer 主干。每个模态先用各自的轻量编码器转为 token：</p>
+<pre class="code-flow">图像 → MetaCLIP 视觉编码器 → [v₁, v₂, ..., v_N]  (N 个 patch tokens)
+文本 → Tokenizer              → [t₁, t₂, ..., t_M]
+视频 → 逐帧 MetaCLIP + 时序建模 → [frame_1_tokens, ..., frame_K_tokens]
+     ↓
+拼接：[v₁, ..., v_N, t₁, ..., t_M, frame_1_tokens, ...]
+     ↓
+统一 Transformer (MoE) 主干 → 跨模态自注意力</pre>
+<p><strong>MetaCLIP 优势：</strong>Meta 内部用 30T+ image-text pair 数据 + 更精细的<strong>数据筛选算法</strong>（基于平衡分布的子集选择）训练，相比 OpenAI CLIP 召回率提升 $\sim 10\%$，对噪声和小众概念更鲁棒。</p>
+<p><strong>支持范围：</strong>200+ 种语言输入；图像 + 视频帧 + 音频可选；统一 token 化让模型能"原生"处理混合输入，无需额外对齐层。</p>
+<p><strong>代表模型：</strong>Llama 4（Scout / Maverick）、阿里 Qwen3-Omni。</p></div>
+    </div>
+
+    <!-- 图 7 — iRoPE -->
+    <div class="archi-card" id="archi-7">
+      <h2>图 7 / 12 — iRoPE 超长上下文</h2>
+      <div class="archi-meta">
+        <span class="badge">iRoPE (interpolated RoPE)</span>
+        <span class="badge">Llama 4 Scout（支持 10M tokens）</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/07_iRoPE超长上下文.png" alt="iRoPE 超长上下文">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>在 RoPE 基础上做推理时温度缩放，实现 1000 万 token 上下文窗口，远超主流 128K-256K。
+        <ul>
+          <li>位置编码 RoPE 基础</li>
+          <li>iRoPE 插值 + 温度缩放</li>
+          <li>上下文长度递进：128K → 256K → 1M → 10M</li>
+          <li>10M tokens 超长上下文条形图</li>
+          <li>应用场景：长文档、大型代码库推理</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>RoPE（Rotary Position Embedding）是 2021 年提出的旋转位置编码，训练时 RoPE 学到的相对位置模式只能外推 ~2x 训练长度。例如训练 128K 想推理 $1\mathrm{M}$ 上下文，位置编码会"溢出"训练分布，注意力分数爆炸，性能急剧下降。</p>
+<p><strong>核心原理：</strong>iRoPE = <strong>位置插值（PI）+ 推理时温度缩放</strong>。</p>
+<p><strong>位置插值：</strong>把超出训练长度的位置 ID 线性映射回训练范围：</p>
+<p class="math-block">$$m' = m \times \frac{L_{\mathrm{train}}}{L_{\mathrm{infer}}}$$</p>
+<p style="text-align:center;font-size:12px;color:var(--text-light);margin:4px 0 0;">↑ 原始位置 &nbsp;&nbsp;&nbsp; ↑ 训练长度 &nbsp;&nbsp;&nbsp; ↑ 推理长度</p>
+<p>例如训练 128K 推理 10M，<code>m' = m × 128K/10M = m / 78</code>，等效把位置"压缩"到训练范围内。</p>
+<p><strong>温度缩放：</strong>RoPE 注意力分数的"温度"由查询/键的位置旋转角决定，iRoPE 动态调整这个温度：</p>
+<ul>
+<li>长上下文：降低温度 → 注意力更"尖锐"，聚焦相关 token。</li>
+<li>短上下文：保持原温度 → 维持原始性能。</li>
+</ul>
+<p><strong>效果：</strong>Llama 4 Scout 支持 <strong>10M tokens 上下文窗口</strong>（约 $1500$ 万字 / $30$ 本长篇小说），在长文档问答、大型代码库推理任务上达到 SOTA。</p>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>整本书分析（法律、医疗文献）</li>
+<li>大型 monorepo 代码审查</li>
+<li>长视频/音频理解</li>
+<li>多日对话记忆</li>
+</ul></div>
+    </div>
+
+    <!-- 图 8 — SCAN -->
+    <div class="archi-card" id="archi-8">
+      <h2>图 8 / 12 — SCAN 严肃问诊范式</h2>
+      <div class="archi-meta">
+        <span class="badge">SCAN Clinical Inquiry Framework</span>
+        <span class="badge">百川智能 Baichuan-M3</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/08_SCAN严肃问诊.png" alt="SCAN 严肃问诊范式">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>Safety Stratification / Clarity Matters / Association & Inquiry / Normative Protocol — 把临床问诊思维过程系统化"白盒化"，支持端到端严肃问诊。
+        <ul>
+          <li>4 阶段流程：Safety → Clarity → Association → Normative</li>
+          <li>SPAR 训练算法回路</li>
+          <li>动态 Verifier System</li>
+          <li>SCAN-bench 评测：150+ 真实医生参与，GPT-5.2 已被超越</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>医疗问诊对 LLM 提出特殊要求：</p>
+<ul>
+<li>不能漏掉高风险症状（误诊代价高）</li>
+<li>不能"幻觉"诊断（需循证）</li>
+<li>多轮交互能力（澄清、追问、关联）</li>
+<li>标准化输出（对接医院信息系统）</li>
+</ul>
+<p>传统 LLM 是"一锤子"问答，缺乏临床问诊的<strong>系统性思维链</strong>。</p>
+<p><strong>核心原理：</strong>SCAN（百川-M3 提出）= 4 阶段<strong>白盒化</strong>问诊流程：</p>
+<ol>
+<li><strong>Safety Stratification（风险分层）：</strong>先评估患者风险等级（紧急/普通/慢性），分流诊疗深度。</li>
+<li><strong>Clarity Matters（信息消歧）：</strong>对模糊主诉（"胃疼"）主动追问（位置、性质、时长、伴随症状）。</li>
+<li><strong>Association & Inquiry（关联追问）：</strong>基于初步判断主动检查相关系统（如"胃疼" + "反酸" → 排查胃食管反流）。</li>
+<li><strong>Normative Protocol（标准化输出）：</strong>按 ICD-11 / SNOMED-CT 等医学本体输出结构化诊断。</li>
+</ol>
+<p><strong>训练机制：</strong></p>
+<ul>
+<li><strong>SPAR</strong>（Stable Policy for Active Reasoning）：稳定策略主动推理算法，避免训练不稳定。</li>
+<li><strong>动态 Verifier System：</strong>实时校验推理链一致性，捕获"幻觉"。</li>
+</ul>
+<p><strong>评测：</strong>SCAN-bench 邀请 $150+$ 真实三甲医院医生参与盲评，Baichuan-M3 在多项指标上<strong>超过 GPT-5.2</strong>，是国内首个在严肃医疗场景超越顶级闭源模型的开源 LLM。</p>
+<p><strong>代表模型：</strong>百川智能 Baichuan-M3（2025 年发布）。</p></div>
+    </div>
+
+    <!-- 图 9 — Hunyuan DiT -->
+    <div class="archi-card" id="archi-9">
+      <h2>图 9 / 12 — Hunyuan DiT 文生图架构</h2>
+      <div class="archi-meta">
+        <span class="badge">Scalable Diffusion Models with Transformers</span>
+        <span class="badge">腾讯混元</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/09_Hunyuan_DiT.png" alt="Hunyuan DiT 文生图架构">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>用 Transformer 替代传统 UNet 做扩散模型，适配新一代文本编码器，统一全注意力机制，3D VAE 提升细节。
+        <ul>
+          <li>中英双语文本编码器（next-gen）</li>
+          <li>DiT Transformer 主干（统一全注意力）</li>
+          <li>3D VAE 编解码</li>
+          <li>图像 / 视频输出</li>
+          <li>$1.5\mathrm{B}$ 参数 / 首个中文原生开源 DiT / FlashVDM 加速</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>Stable Diffusion 用 UNet + Cross-Attention 做扩散，但 UNet 有几个局限：</p>
+<ul>
+<li>归纳偏置（卷积）限制了对长程依赖建模</li>
+<li>扩展到视频需 3D 卷积，计算贵</li>
+<li>不同分辨率要重训或切片</li>
+</ul>
+<p>DiT（Diffusion Transformer，2022 年）用 Transformer 替代 UNet，成为新一代扩散模型主流。</p>
+<p><strong>核心原理：</strong>Hunyuan DiT 是腾讯混元的开源 DiT 方案：</p>
+<ul>
+<li><strong>文本编码器：</strong>next-gen 多语言 T5 编码器（支持中英文双语），提取语义特征。</li>
+<li><strong>DiT 主干：</strong>纯 Transformer blocks，统一全注意力机制（每个 token 看所有 token），比 UNet 的局部卷积更适合捕捉全局结构。</li>
+<li><strong>3D VAE 编解码：</strong>视频时空压缩，将视频帧在 (T, H, W) 三维同时压缩，大幅降低 token 数量。</li>
+</ul>
+<p><strong>中文原生优化：</strong>针对中文 prompt 训练，避免英文 DiT 的"中文 prompt 退化"问题。理解"水墨画"、"国风"等中文独有概念。</p>
+<p><strong>FlashVDM 加速：</strong>3D VAE 推理加速技术，把视频生成延迟从分钟级降至秒级。</p>
+<p><strong>效果：</strong>$1.5\mathrm{B}$ 参数（紧凑），但支持文生图 + 文生视频（$5$ 秒短视频），是<strong>首个中文原生开源 DiT</strong>。</p>
+<p><strong>代表模型：</strong>腾讯混元 DiT（2024-2025 多次更新）。</p></div>
+    </div>
+
+    <!-- 图 10 — Qwen3 三阶段预训练 -->
+    <div class="archi-card" id="archi-10">
+      <h2>图 10 / 12 — Qwen3 三阶段预训练</h2>
+      <div class="archi-meta">
+        <span class="badge">Three-Stage Pre-training</span>
+        <span class="badge">阿里 Qwen3</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/10_Qwen3三阶段预训练.png" alt="Qwen3 三阶段预训练">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>S1 基础语言 30T@4K → S2 STEM/代码知识密集 5T → S3 长上下文 32K，数据量 $36\mathrm{T}$ 总规模，119 种语言。
+        <ul>
+          <li>S1 → S2 → S3 三阶段流程</li>
+          <li>数据量 30T / 5T / 长上下文</li>
+          <li>上下文长度递进 4K → 32K</li>
+          <li>后训练 4 阶段 SFT+RL 衔接</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>单一阶段大规模预训练难以兼顾：</p>
+<ul>
+<li><strong>基础语言能力</strong>（语法、词汇、基础推理）</li>
+<li><strong>专业知识</strong>（数学、代码、科学）</li>
+<li><strong>长上下文理解</strong>（数万 token 文档）</li>
+</ul>
+<p>三阶段管线通过<strong>数据配比 + 训练目标</strong>分而治之。</p>
+<p><strong>三阶段详解：</strong></p>
+<ol>
+<li><strong>S1 基础语言</strong>：30T tokens @ 4K 上下文，覆盖网页、书籍、对话等通用数据。学习语言基本能力，建立世界知识基线。占总训练量 80%+。</li>
+<li><strong>S2 STEM/代码密集</strong>：5T tokens 高质量精选数据（数学题解、代码仓库、论文、教科书）。学习专业知识与推理能力。</li>
+<li><strong>S3 长上下文扩展</strong>：32K 上下文，RoPE 位置插值训练，让模型能处理长文档。</li>
+</ol>
+<p><strong>总数据规模：</strong>$36\mathrm{T}$ tokens，覆盖 <strong>119 种语言</strong>（含中英日韩法德西阿俄等主流）。</p>
+<p><strong>后训练衔接：</strong>4 阶段 SFT+RL 管线</p>
+<ul>
+<li>SFT（监督微调）→ 偏好学习 → RLHF → 安全对齐</li>
+</ul>
+<p><strong>效果：</strong>Qwen3 在中文、英文、代码、数学多榜单上 SOTA，且对<strong>小模型（如 Qwen3-0.6B）效果显著提升</strong>，开源后下载量数千万。</p>
+<p><strong>代表模型：</strong>阿里 Qwen3 系列（0.6B / 1.7B / 4B / 8B / 14B / 32B / 235B）。</p></div>
+    </div>
+
+    <!-- 图 11 — Llama 4 MoE -->
+    <div class="archi-card" id="archi-11">
+      <h2>图 11 / 12 — Llama 4 MoE 多模态架构</h2>
+      <div class="archi-meta">
+        <span class="badge">Llama 4 Scout / Maverick MoE</span>
+        <span class="badge">Meta</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/11_Llama4_MoE.png" alt="Llama 4 MoE 多模态架构">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>$109\mathrm{B}$/$400\mathrm{B}$ 总参 + 16/$128$ 专家 + $17\mathrm{B}$ 激活 + MetaCLIP 视觉 + iRoPE 超长上下文，首个开源多模态 MoE 主流大模型。
+        <ul>
+          <li>Scout: $109\mathrm{B}$ 总参 / $17\mathrm{B}$ 激活 / $16$ 专家 / $10\mathrm{M}$ 上下文</li>
+          <li>Maverick: $400\mathrm{B}$ 总参 / $17\mathrm{B}$ 激活 / $128$ 专家 / $256\mathrm{K}$ 上下文</li>
+          <li>MetaCLIP 视觉编码器</li>
+          <li>iRoPE 位置编码</li>
+          <li>早期融合多模态 + FP8 训练</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>2025 年 4 月 Meta 发布 Llama 4 系列 — <strong>首个开源多模态 MoE 主流大模型</strong>，把"开源 vs 闭源"的差距大幅缩小。</p>
+<p><strong>两个变体：</strong></p>
+<table>
+<thead><tr><th>变体</th><th>总参数</th><th>激活参数</th><th>专家数</th><th>上下文</th><th>定位</th></tr></thead>
+<tbody>
+<tr><td><strong>Scout</strong></td><td>$109\mathrm{B}$</td><td>$17\mathrm{B}$</td><td>16</td><td>10M</td><td>长文档 / 代码库</td></tr>
+<tr><td><strong>Maverick</strong></td><td>$400\mathrm{B}$</td><td>$17\mathrm{B}$</td><td>128</td><td>256K</td><td>多模态 / 通用</td></tr>
+</tbody>
+</table>
+<p><strong>共同架构组件：</strong></p>
+<ul>
+<li><strong>MetaCLIP 视觉编码器：</strong>原生图像/视频 token 化。</li>
+<li><strong>iRoPE 位置编码：</strong>长上下文支持（Scout 10M）。</li>
+<li><strong>早期融合多模态：</strong>视觉 token 与文本 token 直接拼接。</li>
+<li><strong>FP8 训练：</strong>大幅降低训练成本。</li>
+</ul>
+<p><strong>为什么 $17\mathrm{B}$ 激活参数？</strong>Llama 4 的 $17\mathrm{B}$ 激活意味着每个 token 实际只激活 $17\mathrm{B}$ 参数计算 — <strong>单卡 H100 即可推理</strong>，这是"小激活 + 大总参"的极致优化，参考 Mixtral 8x7B（13B 激活）的设计哲学。</p>
+<p><strong>战略意义：</strong>Llama 4 开源后，Meta 重新拿回开源 LLM 旗手地位。第三方可在 Scout 上 fine-tune（$109\mathrm{B}$ 总参/$17\mathrm{B}$ 激活，单卡可行），在 Maverick 上享受 $400\mathrm{B}$ 模型能力。这是<strong>开源 LLM 的里程碑</strong>。</p></div>
+    </div>
+
+    <!-- 图 12 — Phi-4 中期融合 -->
+    <div class="archi-card" id="archi-12">
+      <h2>图 12 / 12 — Phi-4 中期融合多模态</h2>
+      <div class="archi-meta">
+        <span class="badge">Mid-Fusion Multimodal</span>
+        <span class="badge">微软 Phi-4-reasoning-vision-$15\mathrm{B}$</span>
+      </div>
+      <div class="archi-img-wrap">
+        <img src="images/llm-archi/12_Phi4_中期融合.png" alt="Phi-4 中期融合多模态">
+      </div>
+      <div class="archi-points">
+        <strong>核心要点：</strong>SigLIP-2 动态分辨率视觉编码器 + Phi-4-Reasoning 语言主干 + 中期融合（只部分层支持多模态），仅 $200\mathrm{B}$ token 训出顶级 $15\mathrm{B}$ 多模态模型。
+        <ul>
+          <li>SigLIP-2 动态分辨率视觉编码</li>
+          <li>中期融合层（部分层多模态）</li>
+          <li>Phi-4-Reasoning 文本主干</li>
+          <li><code>/think</code> 推理开关</li>
+          <li>$200\mathrm{B}$ 训练数据（比同行少 10x）</li>
+          <li>80% 非推理 + 20% 推理数据</li>
+          <li>GUI 元素定位 → 适合 computer-use agent</li>
+        </ul>
+      </div>
+      <div class="archi-tech"><h4 class="archi-tech-title">技术深度解读</h4>
+<p><strong>问题背景：</strong>多模态融合的两种极端：</p>
+<ul>
+<li><strong>早期融合</strong>（Llama 4）：每张图都过完整 Transformer，计算贵。</li>
+<li><strong>晚期融合</strong>（CLIP+LLM）：只高层融合，跨模态信息丢失。</li>
+</ul>
+<p>微软 Phi-4-reasoning-vision-$15\mathrm{B}$ 提出<strong>中期融合</strong>折中方案。</p>
+<p><strong>核心原理：</strong>只中间 N 层（不是全部层）融合视觉信息：</p>
+<pre class="code-flow">图像 → SigLIP-2 Naflex 视觉编码（动态分辨率）
+     ↓
+视觉 token projection（投影到文本 token 空间）
+     ↓
+文本 Transformer（N=40 层）
+   ├─ 前 K 层：纯文本推理
+   ├─ 中 K 层：注入视觉 token（融合）
+   └─ 后 K 层：纯文本推理
+     ↓
+输出（推理 or 直接回答，/think token 切换）</pre>
+<p><strong>SigLIP-2 Naflex 优势：</strong>支持<strong>任意分辨率、任意宽高比</strong>（如 4:3、16:9、21:9、超宽横幅）— 传统 ViT 要切片或填充导致失真，Naflex 用 NaFlex 注意力处理任意形状图像，保留原始几何信息。</p>
+<p><strong>极致数据效率：</strong></p>
+<ul>
+<li>仅 <strong>$200\mathrm{B}$ tokens</strong> 训练（比 Llama 4 的 $22\mathrm{T}$ 少 $100\times$，比 Qwen3 的 $36\mathrm{T}$ 少 $180\times$）</li>
+<li>数据配比：<strong>$80\%$ 非推理 + $20\%$ 推理</strong>，让模型既保留广泛知识又有推理能力</li>
+</ul>
+<p><strong>应用：</strong>特别适合 <strong>computer-use agent</strong>（GUI 元素定位、屏幕理解、自动化操作），因为它能精确理解图像中元素位置（GUI 坐标定位）。</p>
+<p><strong>代表模型：</strong>微软 Phi-4-reasoning-vision-$15\mathrm{B}$（2025 年）。</p></div>
+    </div>
+
+    <footer>
+      <p>🏆 考研冲刺君 · LLM 技术架构专题</p>
+      <p style="margin-top:6px;">图片生成工具：Higgsfield image2 · medium · 1k · 1:1 · 来源：<a href="https://higgsfield.ai" target="_blank">higgsfield.ai</a></p>
+    </footer>
+
+  </main>
+</div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+document.addEventListener('scroll', function(){
+  const headings = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  let current = '';
+  headings.forEach(h => { if(h.getBoundingClientRect().top <= 80) current = h.id; });
+  tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+  document.querySelector('.back-to-top').style.display = window.scrollY > 500 ? 'flex' : 'none';
+});
+</script>
+</body>
+</html>
