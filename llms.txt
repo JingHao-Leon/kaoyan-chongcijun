@@ -1,0 +1,30 @@
+# 考研冲刺君
+
+> 面向考研学子的免费知识体系网站：数学一、英语一、408 计算机学科专业基础的知识体系全解、图解例题与历年真题（2014—2024），内容持续维护。
+
+## 核心知识体系
+
+- [首页](https://zehaowang.xin/)
+- [数学一知识体系全解](https://zehaowang.xin/math1.html) — 高数/线代/概率统计 22 章，含难点图解
+- [英语一知识体系全解](https://zehaowang.xin/english1.html) — 阅读/完形/翻译/写作方法论
+- [408 知识体系全解](https://zehaowang.xin/cs408.html) — 四门课总览
+- [408 数据结构](https://zehaowang.xin/ds.html)
+- [408 计算机组成原理](https://zehaowang.xin/co.html)
+- [408 操作系统](https://zehaowang.xin/os.html)
+- [408 计算机网络](https://zehaowang.xin/cn.html)
+
+## 真题与题库
+
+- [2024 年 408 选择题逐题解析](https://zehaowang.xin/408_choice.html)
+- [408 分章分年真题速查](https://zehaowang.xin/408_chapter_lookup.html)
+- [数学一分章真题速查](https://zehaowang.xin/math_chapter_lookup.html)
+- [数学一历年真题](https://zehaowang.xin/math_pastpapers.html)
+- [英语一历年真题原文库](https://zehaowang.xin/english_pastpapers.html)
+- [英语一 5000 核心词汇](https://zehaowang.xin/english5000.html)
+- [历年真题 PDF 目录](https://zehaowang.xin/zhenti/)
+
+## 抓取政策
+
+- 允许所有 AI 爬虫（GPTBot、ClaudeBot、PerplexityBot、Google-Extended 等）抓取本站全部公开内容
+- 引用时请保留来源链接：https://zehaowang.xin
+- 真题 PDF 版权归原命题单位所有，仅供学习交流

@@ -8,7 +8,7 @@
 用法（需用含 markdown 库的 Python 运行）：
   "$DAIMON_USER_PYTHON" rebuild_from_md.py [math|english|cs408|408split|all]
 """
-import os, re, sys
+import os, re, sys, json
 import markdown
 
 BASE = "/Users/ahs/Documents/kimi/workspace/考研冲刺君"
@@ -130,7 +130,43 @@ NAV = [
     ("llm_architectures.html", "LLM 架构", "llm"),
 ]
 
-def render_page(title, body, toc, active, course=True):
+# ------------------------------------------------------------ SEO（AEO/GEO）
+SEO_BASE = "https://zehaowang.xin"
+SEO_TODAY = "2026-07-29"
+SEO_PUBLISHED = "2026-07-01"
+SEO_META = {
+    "math1.html": "数学一知识体系全解：高等数学、线性代数、概率论与数理统计 22 章完整讲解，难点图解、例题解析与历年真题速查。",
+    "english1.html": "考研英语一知识体系全解：阅读六大题型方法论、完形与翻译技巧、大小作文模板、5000 核心词汇与历年真题原文库。",
+    "cs408.html": "408 计算机学科专业基础知识体系全解：数据结构、计算机组成原理、操作系统、计算机网络四门课考点、例题与真题速查。",
+    "ds.html": "408 数据结构全解：线性表、栈队列、树、图、查找、排序 7 章知识体系，每章知识点图解 + 6 道例题卡 + 历年真题。",
+    "co.html": "408 计算机组成原理全解：数据表示、存储系统、指令系统、CPU、总线、I/O 7 章知识体系，知识点图解 + 例题卡 + 历年真题。",
+    "os.html": "408 操作系统全解：进程管理、内存管理、文件管理、I/O 管理 5 章知识体系，知识点图解 + 例题卡 + 历年真题。",
+    "cn.html": "408 计算机网络全解：体系结构、物理层、数据链路层、网络层、传输层、应用层 6 章知识体系，知识点图解 + 例题卡 + 历年真题。",
+}
+
+def seo_head(out_name, title):
+    desc = SEO_META.get(out_name)
+    if not desc:
+        return ""
+    ld = json.dumps([{
+        "@context": "https://schema.org", "@type": "Article", "headline": title,
+        "description": desc, "inLanguage": "zh-CN",
+        "mainEntityOfPage": f"{SEO_BASE}/{out_name}",
+        "datePublished": SEO_PUBLISHED, "dateModified": SEO_TODAY,
+        "author": {"@type": "Organization", "name": "考研冲刺君", "url": SEO_BASE},
+        "publisher": {"@type": "Organization", "name": "考研冲刺君", "url": SEO_BASE},
+    }], ensure_ascii=False)
+    return (f'<meta name="description" content="{desc}">\n'
+            f'<link rel="canonical" href="{SEO_BASE}/{out_name}">\n'
+            f'<link rel="alternate" type="application/rss+xml" title="考研冲刺君更新" href="feed.xml">\n'
+            f'<meta property="article:modified_time" content="{SEO_TODAY}T00:00:00+08:00">\n'
+            f'<script type="application/ld+json">{ld}</script>')
+
+SEO_DATE_NOTE = ('<p class="update-note" style="margin-top:28px;padding-top:12px;'
+                 'border-top:1px dashed #d0d4dc;color:#8a8f98;font-size:12.5px;">'
+                 '最后更新：2026-07-29 · 考研冲刺君团队整理 · 内容持续维护</p>')
+
+def render_page(title, body, toc, active, course=True, out_name=""):
     nav_links = "\n".join(
         f'    <li><a href="{href}" class="{"active" if key == active else ""}">{label}</a></li>'
         for href, label, key in NAV
@@ -145,6 +181,7 @@ def render_page(title, body, toc, active, course=True):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} | 考研冲刺君</title>
+{seo_head(out_name, title)}
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -174,6 +211,7 @@ def render_page(title, body, toc, active, course=True):
   </aside>
   <main class="content">
 {body}
+{SEO_DATE_NOTE if seo_head(out_name, title) else ""}
   </main>
 </div>
 
@@ -209,7 +247,7 @@ def build(md_text, out_name, title, active, course=True, carry_images=True, prep
         toc = f'<li><a href="#top" class="toc-h1">{prepend_h1}</a></li>\n      ' + toc
     body = repair_anchors(body, tokens)
     body, n_img = reinsert_images(body, images)
-    html = render_page(title, body, toc, active, course)
+    html = render_page(title, body, toc, active, course, out_name=out_name)
     with open(old, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"[build] {out_name}: {len(html)//1024} KB, 回迁配图 {n_img}/{len(images)} 张")
