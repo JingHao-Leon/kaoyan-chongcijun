@@ -148,14 +148,14 @@ def seo_head(out_name, title):
     desc = SEO_META.get(out_name)
     if not desc:
         return ""
-    ld = json.dumps([{
+    ld = json.dumps({
         "@context": "https://schema.org", "@type": "Article", "headline": title,
         "description": desc, "inLanguage": "zh-CN",
         "mainEntityOfPage": f"{SEO_BASE}/{out_name}",
         "datePublished": SEO_PUBLISHED, "dateModified": SEO_TODAY,
         "author": {"@type": "Organization", "name": "考研冲刺君", "url": SEO_BASE},
         "publisher": {"@type": "Organization", "name": "考研冲刺君", "url": SEO_BASE},
-    }], ensure_ascii=False)
+    }, ensure_ascii=False)
     return (f'<meta name="description" content="{desc}">\n'
             f'<link rel="canonical" href="{SEO_BASE}/{out_name}">\n'
             f'<link rel="alternate" type="application/rss+xml" title="考研冲刺君更新" href="feed.xml">\n'
