@@ -2,7 +2,9 @@
 
 面向考研学子的免费知识体系网站：数学一、英语一、408 计算机学科专业基础，知识体系全解 + 图解例题 + 历年真题。
 
-**在线访问**：https://jinghao-leon.github.io/kaoyan-chongcijun/
+**在线访问（主站，ICP 备案）**：https://zehaowang.xin
+
+**备用地址（GitHub Pages）**：https://jinghao-leon.github.io/kaoyan-chongcijun/
 
 ## 内容一览
 
