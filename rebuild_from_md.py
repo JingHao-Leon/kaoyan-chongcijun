@@ -131,7 +131,7 @@ NAV = [
 ]
 
 # ------------------------------------------------------------ SEO（AEO/GEO）
-SEO_BASE = "https://zehaowang.xin"
+SEO_BASE = "https://www.zehaowang.xin"
 SEO_TODAY = "2026-07-29"
 SEO_PUBLISHED = "2026-07-01"
 SEO_META = {
