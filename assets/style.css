@@ -614,3 +614,40 @@ body.portal-page {
   .course-grid, .quick-stats { grid-template-columns: 1fr; }
   .portal-links { display: none; }
 }
+
+/* ================= GEO 组件：面包屑 / 速览摘要 / FAQ ================= */
+.geo-breadcrumb { font-size: 12.5px; color: #8b949e; margin: 0 0 14px; padding: 0; }
+.geo-breadcrumb a { color: #58a6ff; text-decoration: none; }
+.geo-breadcrumb a:hover { text-decoration: underline; }
+.geo-breadcrumb .sep { margin: 0 6px; color: #6e7681; }
+body.portal-page .geo-breadcrumb { color: #6b7280; }
+body.portal-page .geo-breadcrumb a { color: #3f63f2; }
+
+.geo-summary {
+  background: linear-gradient(135deg, rgba(88,166,255,.08), rgba(122,77,232,.06));
+  border: 1px solid rgba(88,166,255,.35);
+  border-left: 4px solid #58a6ff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 0 0 22px;
+}
+.geo-summary .gs-title { font-size: 13px; font-weight: 800; color: #58a6ff; letter-spacing: .05em; margin-bottom: 6px; }
+.geo-summary p { margin: 0; font-size: 14.5px; line-height: 1.85; }
+body.portal-page .geo-summary { background: #f0f4ff; border-color: #c9d6ff; border-left-color: #3f63f2; }
+body.portal-page .geo-summary .gs-title { color: #3f63f2; }
+
+.geo-faq { margin: 30px 0 10px; }
+.geo-faq > h2 { font-size: 20px; margin-bottom: 12px; }
+.geo-faq details {
+  background: rgba(88,166,255,.05);
+  border: 1px solid rgba(88,166,255,.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+}
+.geo-faq summary { cursor: pointer; font-weight: 700; font-size: 15px; list-style: none; }
+.geo-faq summary::before { content: "Q﹕"; color: #58a6ff; font-weight: 800; margin-right: 6px; }
+.geo-faq details p { margin: 8px 0 2px; font-size: 14px; line-height: 1.85; }
+.geo-faq details p::before { content: "A﹕"; color: #3fb950; font-weight: 800; margin-right: 6px; }
+body.portal-page .geo-faq details { background: #fff; border-color: #e6e8f0; }
+body.portal-page .geo-faq summary::before { color: #3f63f2; }

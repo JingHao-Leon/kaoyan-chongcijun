@@ -23,6 +23,8 @@
 <script defer src="assets/navigation.js"></script><script defer src="assets/chapter-mode.js"></script><script defer src="assets/interactive-labs.js"></script><style>.chapter-408-papers{margin:12px 0 22px;border:1px solid #d9e0f5;border-radius:10px;background:#f8faff;padding:10px 14px}.chapter-408-papers>p{color:#687083;font-size:13px}.chapter-408-papers ul{margin:8px 0;padding-left:22px}.chapter-408-papers a{color:#3857d7;font-weight:700}.chapter-408-papers details{border-top:1px solid #dfe5f2;padding:10px 0}.chapter-408-papers summary{cursor:pointer;font-weight:700;color:#263a8d}.chapter-408-papers img{display:block;max-width:820px;width:100%;margin:10px 0;border:1px solid #e2e5ee;border-radius:8px}.chapter-408-papers pre{white-space:pre-wrap;background:#fff;border:1px solid #e2e5ee;border-radius:8px;padding:12px;max-height:360px;overflow:auto}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "408 操作系统", "description": "408 操作系统全解：进程管理、内存管理、文件管理、I/O 管理 5 章知识体系，知识点图解 + 例题卡 + 历年真题。", "inLanguage": "zh-CN", "mainEntityOfPage": "https://www.zehaowang.xin/os.html", "datePublished": "2026-07-01", "dateModified": "2026-07-29", "author": {"@type": "Organization", "name": "考研冲刺君", "url": "https://www.zehaowang.xin"}, "publisher": {"@type": "Organization", "name": "考研冲刺君", "url": "https://www.zehaowang.xin", "logo": {"@type": "ImageObject", "url": "https://www.zehaowang.xin/favicon.svg"}}}</script>
 <link rel="alternate" type="application/rss+xml" title="考研冲刺君更新" href="feed.xml">
 <meta property="article:modified_time" content="2026-07-29T00:00:00+08:00">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://www.zehaowang.xin/index.html"}, {"@type": "ListItem", "position": 2, "name": "408 专业课", "item": "https://www.zehaowang.xin/cs408.html"}, {"@type": "ListItem", "position": 3, "name": "操作系统"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "PV 操作题怎么写不丢分？", "acceptedAnswer": {"@type": "Answer", "text": "记住口诀\"先同步后互斥\"：先列出谁生产、谁消费、谁互斥，为每类资源设信号量（互斥=1、同步=资源数），P 操作先查资源再抢锁，V 操作顺序无关。生产者-消费者、读者-写者、哲学家进餐三个模板必须能默写。"}}]}</script>
 </head>
 <body>
 <nav class="top-nav">
@@ -85,6 +87,8 @@
     </ul>
   </aside>
   <main class="content">
+<nav class="geo-breadcrumb" aria-label="面包屑"><a href="index.html">首页</a><span class="sep">›</span><a href="cs408.html">408 专业课</a><span class="sep">›</span><span>操作系统</span></nav>
+<div class="geo-summary"><div class="gs-title">速览</div><p>本页是 408 操作系统（35 分）5 章全解：概述、进程管理、内存管理、文件管理、I/O 管理。PV 操作、银行家算法、页面置换、磁盘调度等大题高频点配有流程图解，章末含例题卡与真题面板。</p></div>
 <h1 id="top">408 操作系统</h1>
 <hr />
 <h2 id="1">第1章 操作系统概述</h2>
@@ -2593,7 +2597,10 @@ $$ p \le \frac{10}{8\times 10^{6} - 100} \approx 1.25\times 10^{-6} $$</p>
 <blockquote>
 <p><strong>操作系统 完</strong></p>
 </blockquote>
-  <p class="update-note" style="margin-top:28px;padding-top:12px;border-top:1px dashed #d0d4dc;color:#8a8f98;font-size:12.5px;">最后更新：2026-07-29 · 考研冲刺君团队整理 · 内容持续维护</p>
+  <section class="geo-faq"><h2>常见问题</h2>
+<details><summary>PV 操作题怎么写不丢分？</summary><p>记住口诀"先同步后互斥"：先列出谁生产、谁消费、谁互斥，为每类资源设信号量（互斥=1、同步=资源数），P 操作先查资源再抢锁，V 操作顺序无关。生产者-消费者、读者-写者、哲学家进餐三个模板必须能默写。</p></details>
+</section>
+<p class="update-note" style="margin-top:28px;padding-top:12px;border-top:1px dashed #d0d4dc;color:#8a8f98;font-size:12.5px;">最后更新：2026-07-29 · 考研冲刺君团队整理 · 内容持续维护</p>
   </main>
 </div>
 
