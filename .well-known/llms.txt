@@ -13,6 +13,13 @@
 - [408 操作系统](https://www.zehaowang.xin/os.html)
 - [408 计算机网络](https://www.zehaowang.xin/cn.html)
 
+## 备考专题
+
+- [备考专题首页](https://www.zehaowang.xin/topics.html)
+- [408 题型结构解析](https://www.zehaowang.xin/articles/408-exam-structure.html)
+- [数学一题型结构解析](https://www.zehaowang.xin/articles/math1-exam-structure.html)
+- [408 三阶段复习规划](https://www.zehaowang.xin/articles/408-study-plan.html)
+
 ## 真题与题库
 
 - [2024 年 408 选择题逐题解析](https://www.zehaowang.xin/408_choice.html)
